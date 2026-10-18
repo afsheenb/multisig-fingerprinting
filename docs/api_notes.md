@@ -14,7 +14,7 @@ our config estimates match so far.
 | `/bitcoin/dashboards/block/{h}` | (1) | HTTP 430 | AVOID on no-key tier |
 | `/bitcoin/outputs` | 10 | HTTP 430 (twice, see below) | AVOID on no-key tier |
 | `/bitcoin/transactions` | 5 | not yet probed (blocked by outputs 430) | unresolved |
-| `/bitcoin/raw/transaction/{txid}` | 1 | not yet probed | unresolved |
+| `/bitcoin/raw/transaction/{txid}` | 1 | empty 200, 1 pt charged | NOT USABLE (soft-blocked) |
 
 ## The HTTP 430 problem
 
@@ -106,6 +106,30 @@ of the estimated cost even though nothing useful was returned.
 - The per-second/per-minute limiter (1 req/s, 20 req/min configured)
   is far below the documented limits, which did NOT prevent the 430s;
   the 430 trigger is endpoint-dependent, not just volume-dependent.
+
+## The raw-transaction endpoint is soft-blocked (2026-10-18)
+
+The Phase 3 validation subset probed `/bitcoin/raw/transaction/{txid}`
+for the first time and it does not work on the no-key tier, but in a
+different way from the index endpoints: it answers HTTP 200 with
+`context.results = 0` and `data` as an empty LIST (the success shape is
+a dict keyed by txid) while still charging the full 1-point estimated
+cost. Observed on two confirmed txids: one mined months inside the
+study period (block 955719, txid independently re-verified by
+recomputing the double-SHA256 from the cached raw block) and one from
+block 971251, fetched minutes after that block was scanned (the
+documented success shape is a dict keyed by txid, never observed on
+this tier). Ledger:
+15:17:36 and 15:31:0x UTC, both 200, both 1 pt. So unlike the index
+endpoints this one does not 430; it silently serves nothing. Client
+handling: `msfp/verify.py` treats a non-dict `data` as "not served"
+instead of crashing, and aborts the validation run after three
+consecutive unserved spending transactions so the budget is not spent
+on guaranteed-empty fetches. The validation subset is BLOCKED on this
+tier until either (a) the spending/prevout transactions are extracted
+from raw blocks already cached or fetched for their heights (1 pt per
+block, same as today), or (b) paid access is authorized. Route (a) is
+the natural redesign and needs no new endpoint class.
 
 ## Manual requests reconciliation
 

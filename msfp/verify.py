@@ -297,6 +297,20 @@ def verify_input_taproot(tx, input_index, utxos, leaf_script=None,
 
 # -- validation driver ------------------------------------------------------------
 
+def _raw_hex_for(payload, txid):
+    """Raw transaction hex for txid from a raw-transaction payload.
+
+    The endpoint answers HTTP 200 with data as an empty list (results 0)
+    when it cannot serve the transaction; a successful answer is a dict
+    keyed by txid. Returns None in the not-served case.
+    """
+    data = payload.get("data")
+    if not isinstance(data, dict):
+        return None
+    entry = data.get(txid) or {}
+    return entry.get("raw_transaction")
+
+
 def run_validation(config, conn, count=20):
     """Fetch raw prevout + spending transactions for a subset and verify.
 
@@ -322,6 +336,7 @@ def run_validation(config, conn, count=20):
     stats = {"commit_ok": 0, "commit_fail": 0, "commit_not_verifiable": 0,
              "sig_present": 0, "sig_verified": 0, "inputs_checked": 0,
              "failures": []}
+    consecutive_unserved = 0
     for r in rows:
         # Spending tx raw (to rebuild sighash context).
         try:
@@ -329,10 +344,24 @@ def run_validation(config, conn, count=20):
         except Exception as exc:
             print("skip %s (spending tx fetch failed: %s)" % (r["txid"], exc))
             continue
-        spx_data = spx_payload["data"].get(r["txid"]) or {}
-        raw_spx = spx_data.get("raw_transaction")
+        raw_spx = _raw_hex_for(spx_payload, r["txid"])
         if not raw_spx:
+            # A confirmed txid answered with an empty payload: the
+            # endpoint is not serving transactions, and every further
+            # candidate would only spend points on the same result.
+            consecutive_unserved += 1
+            stats["failures"].append(
+                {"txid": r["txid"], "input_index": r["input_index"],
+                 "what": "spending tx not served by raw-transaction "
+                         "endpoint (HTTP 200, empty data)"})
+            if consecutive_unserved >= 3:
+                print("stopping validation: raw-transaction endpoint "
+                      "returned empty payloads for %d confirmed txids in "
+                      "a row; remaining candidates skipped to preserve "
+                      "budget" % consecutive_unserved)
+                break
             continue
+        consecutive_unserved = 0
         tx = CTransaction.deserialize(bytes.fromhex(raw_spx))
         # Prevout tx raw (for value + scriptPubKey).
         try:
@@ -341,9 +370,10 @@ def run_validation(config, conn, count=20):
             print("skip %s (prevout fetch failed: %s)" % (r["prevout_txid"],
                                                           exc))
             continue
-        ptx_data = ptx_payload["data"].get(r["prevout_txid"]) or {}
-        raw_ptx = ptx_data.get("raw_transaction")
+        raw_ptx = _raw_hex_for(ptx_payload, r["prevout_txid"])
         if not raw_ptx:
+            print("skip %s (prevout tx not served by raw-transaction "
+                  "endpoint)" % r["prevout_txid"])
             continue
         ptx = CTransaction.deserialize(bytes.fromhex(raw_ptx))
         if r["prevout_n"] >= len(ptx.vout):
