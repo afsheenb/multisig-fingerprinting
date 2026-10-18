@@ -46,14 +46,18 @@ class Client:
     def cost_estimate(self, endpoint):
         return self.config.costs.get(endpoint, self.config.costs["unknown"])
 
-    def get_json(self, endpoint_path, cache_key, endpoint_cost_name, params=None):
+    def get_json(self, endpoint_path, cache_key, endpoint_cost_name, params=None,
+                 fresh=False):
         """Cached GET returning (data, request_cost, cache_path).
 
         cache_key must be stable for the same logical request so restarts
-        and reruns never re-download the same thing.
+        and reruns never re-download the same thing. With fresh=True the
+        cache-read branch is skipped, for endpoints whose answer must
+        reflect the provider's current state (e.g. stats); a fresh
+        request still overwrites the cache and is recorded normally.
         """
         path = self._cache_path(cache_key)
-        if os.path.exists(path):
+        if not fresh and os.path.exists(path):
             with gzip.open(path, "rt", encoding="utf-8") as fh:
                 body = json.load(fh)
             # Cached responses carry their reconciled cost.
@@ -180,11 +184,12 @@ class Client:
             params=params,
         )
 
-    def stats(self):
+    def stats(self, fresh=False):
         return self.get_json(
             "/bitcoin/stats",
             cache_key="stats",
             endpoint_cost_name="stats",
+            fresh=fresh,
         )
 
     # -- internals ----------------------------------------------------------

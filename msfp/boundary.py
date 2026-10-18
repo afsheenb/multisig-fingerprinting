@@ -10,6 +10,7 @@ import datetime
 
 from bitcoin.core import CBlock
 
+from . import db
 from .ledger import QuotaExhausted, Throttled
 
 STUDY_START = datetime.datetime(
@@ -26,7 +27,7 @@ def pin_boundary(config, conn):
     from .client import Client
     client = Client(config, conn)
 
-    stats_payload, _cost, _path = client.stats()
+    stats_payload, _cost, _path = client.stats(fresh=True)
     best = stats_payload["data"]["best_block_height"]
     db.set_meta(conn, "study_end_height", best)
 

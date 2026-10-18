@@ -30,7 +30,7 @@ def run_probes(config, conn, stages=None):
     # before this tool existed; fetching again is 1 point).
     probe_height = None
     if "stats" in stages or "raw_block" in stages or "dashboard" in stages:
-        payload, cost, _ = client.stats()
+        payload, cost, _ = client.stats(fresh=True)
         _save_probe(config, "stats", payload)
         best = payload["data"]["best_block_height"]
         print("stats: ok, cost=%s, best height=%s" % (cost, best))
