@@ -1,0 +1,14 @@
+provider_id,name,control_group
+bitgo,BitGo,False
+unchained,Unchained (formerly Unchained Capital),False
+casa,Casa,False
+anchorwatch,AnchorWatch,False
+onramp,Onramp,False
+blockstream_green,Blockstream Green,False
+nunchuk,Nunchuk,False
+coincover,CoinCover (institutional co-signer),False
+coincorner,CoinCorner (institutional co-signer),False
+lightning_channel_funding,Lightning channel funding output (control group),True
+liana,"Liana (miniscript inheritance wallet, control group)",True
+specter_diy,"Specter DIY (specter-desktop, control group)",True
+generic_bip67_multisig,Generic BIP67 sorted multisig (control group),True

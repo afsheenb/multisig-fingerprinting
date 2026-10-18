@@ -14,6 +14,7 @@ Commands map one-to-one onto the research phases:
                            only the corpus cache: zero points)
     classify               (re)classify stored scripts
     keyindex               build the public-key reuse index + components
+    attribute              graded provider attribution against the registry
     report                 Phase 4: preliminary findings + cost report
     corpus-status          corpus, cache size, disk budget
 """
@@ -118,6 +119,12 @@ def cmd_keyindex(args):
     run_keyindex(conn)
 
 
+def cmd_attribute(args):
+    from .attribute import run_attribute
+    config, conn = _open()
+    run_attribute(config, conn)
+
+
 def cmd_report(args):
     from .report import run_report
     config, conn = _open()
@@ -156,6 +163,7 @@ def main(argv=None):
 
     sub.add_parser("classify").set_defaults(func=cmd_classify)
     sub.add_parser("keyindex").set_defaults(func=cmd_keyindex)
+    sub.add_parser("attribute").set_defaults(func=cmd_attribute)
     sub.add_parser("report").set_defaults(func=cmd_report)
 
     args = parser.parse_args(argv)

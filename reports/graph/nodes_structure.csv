@@ -1,0 +1,27 @@
+structure_id,provider_id,form,script_class,threshold,n_keys,keys_sorted,timelocks,evidence
+bitgo#0,bitgo,p2wsh,multisig,2,3,False,[],source-derived
+bitgo#1,bitgo,p2sh_p2wsh,multisig,2,3,False,[],source-derived
+bitgo#2,bitgo,p2sh_redeem,multisig,2,3,False,[],source-derived
+bitgo#3,bitgo,taproot_scriptpath,other,2,2,False,[],source-derived
+bitgo#4,bitgo,taproot_scriptpath,other,2,2,False,[],source-derived
+unchained#0,unchained,p2wsh,multisig,2,3,True,[],source-derived
+unchained#1,unchained,p2sh_p2wsh,multisig,2,3,True,[],source-derived
+unchained#2,unchained,p2sh_redeem,multisig,2,3,True,[],source-derived
+casa#0,casa,p2sh_p2wsh,multisig,2,3,,[],documented
+casa#1,casa,p2sh_p2wsh,multisig,3,5,,[],documented
+anchorwatch#0,anchorwatch,p2wsh,multisig,2,3,,"[{""op"": ""CSV"", ""value"": null}]",documented
+onramp#0,onramp,,multisig,2,3,,[],documented
+blockstream_green#0,blockstream_green,p2sh_redeem,multisig,2,2,False,[],source-derived
+blockstream_green#1,blockstream_green,p2sh_p2wsh,multisig,2,2,False,[],source-derived
+blockstream_green#2,blockstream_green,p2sh_p2wsh,multisig,2,3,False,[],source-derived
+blockstream_green#3,blockstream_green,p2sh_p2wsh,other,,2,False,"[{""op"": ""CSV"", ""value"": 25920}, {""op"": ""CSV"", ""value"": 51840}, {""op"": ""CSV"", ""value"": 65535}]",source-derived
+nunchuk#0,nunchuk,p2wsh,multisig,2,3,,[],source-derived
+nunchuk#1,nunchuk,taproot_scriptpath,other,,,,[],source-derived
+nunchuk#2,nunchuk,p2wsh,multisig,2,4,,"[{""op"": ""CSV"", ""value"": null}]",documented
+lightning_channel_funding#0,lightning_channel_funding,p2wsh,multisig,2,2,True,[],source-derived
+liana#0,liana,taproot_scriptpath,other,2,2,False,[],source-derived
+liana#1,liana,taproot_scriptpath,other,2,3,False,"[{""op"": ""CSV"", ""value"": 52596}]",source-derived
+liana#2,liana,p2wsh,compound_multisig,,3,False,"[{""op"": ""CSV"", ""value"": 52596}]",source-derived
+specter_diy#0,specter_diy,p2wsh,multisig,2,3,True,[],source-derived
+specter_diy#1,specter_diy,p2sh_p2wsh,multisig,2,3,True,[],source-derived
+generic_bip67_multisig#0,generic_bip67_multisig,p2sh_redeem,multisig,2,3,True,[],source-derived
