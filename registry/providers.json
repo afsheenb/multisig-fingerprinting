@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-18",
+  "version": "2026-10-18.2",
   "note": "registry of publicly documented script structures; template match alone is never attribution",
   "conventions": {
     "template_l3": "exact L3 template as produced by msfp/scripts.py build_templates (keys to <P>, timelock pushes to <T>, other data to <D>, CHECKSIGADD renders as 0xba in this library version); null when not derivable from a public primary source",
@@ -22,7 +22,13 @@
         {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/utxo-lib/test/bitgo/fixtures/psbt/inputUpdate.p2shP2wsh.halfSigned.user-bitgo.json", "what": "published witnessScript hex is a 2-of-3 CHECKMULTISIG whose keys are NOT in BIP67 sorted order", "retrieved": "2026-10-18"},
         {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/utxo-lib/src/payments/p2tr_ns.ts", "what": "p2tr_ns leaf script is a CHECKSIGVERIFY chain ending in one OP_CHECKSIG (all listed keys must sign), not OP_CHECKMULTISIG", "retrieved": "2026-10-18"},
         {"url": "https://developers.bitgo.com/docs/wallets-create-multisig-keys", "what": "BitGo creates and stores the BitGo key per wallet creation flow; example key-creation responses contain example xpubs", "retrieved": "2026-10-18"},
-        {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/sdk-core/src/bitgo/environments.ts", "what": "hardcodedPublicKeys contains provider-wide serverXpub.prod and hsmXpub.prod API verification keys", "retrieved": "2026-10-18"}
+        {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/sdk-core/src/bitgo/environments.ts", "what": "hardcodedPublicKeys contains provider-wide serverXpub.prod and hsmXpub.prod API verification keys", "retrieved": "2026-10-18"},
+        {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/src/descriptor/builder/builder.ts", "what": "descriptor builder emits unsorted multi() wrapped wsh() for Wsh2Of2/Wsh2Of3 and wsh(and_v(r:after(locktime),multi(2,3,...))) for the CLTV-drop staking variant; no sort step on the key list", "retrieved": "2026-10-18"},
+        {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/test/unit/offlineVault/fixtures/Wsh2Of3.buildAdmin.custodial.json", "what": "published offline-vault recovery fixture carries the wallet key triple (user, backup, bitgo) and response descriptors of the form wsh(multi(2,<user>/0/*,<backup>/0/*,<bitgo>/0/*)); the fixture also contains throwaway test xprvs, which this registry does not record", "retrieved": "2026-10-18"},
+        {"url": "https://developers.bitgo.com/docs/withdraw-wallet-type-self-custody-multisig-simple", "what": "withdrawal guide pages embed sample API responses carrying txid-shaped values labeled validTransactionHash; recomputing the txid of the raw transactions shown beside them does not match those values, so the samples look synthetic rather than observed on chain", "retrieved": "2026-10-18"},
+        {"url": "https://developers.bitgo.com/docs/withdraw-wallet-type-custody-multisig", "what": "same sample-response pattern with four txid-shaped validTransactionHash values", "retrieved": "2026-10-18"},
+        {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/utxo-bin/README.md", "what": "CLI usage example parses a mainnet txid and a P2SH address; not tied to any BitGo wallet", "retrieved": "2026-10-18"},
+        {"url": "https://github.com/BitGo/BitGoJS/blob/master/modules/statics/src/networks.ts", "what": "paygoAddressAttestationPubkey is a provider-wide PayGo attestation verification xpub", "retrieved": "2026-10-18"}
       ],
       "expected_structures": [
         {
@@ -32,7 +38,7 @@
           "keys_sorted": false,
           "timelocks": [],
           "template_l3": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
-          "structure_notes": "native segwit is the default address type for new bitcoin wallets. The 2-of-3 CHECKMULTISIG script places keys in fixed positional order user, backup, BitGo with no BIP67 sorting (p2ms receives the triple as-is; the published repo fixture is not in sorted order). No timelock, no miniscript, no recovery branch in the script: recovery is an unsigned user+backup sweep.",
+          "structure_notes": "native segwit is the default address type for new bitcoin wallets. The 2-of-3 CHECKMULTISIG script places keys in fixed positional order user, backup, BitGo with no BIP67 sorting (p2ms receives the triple as-is; the published repo fixture is not in sorted order). The descriptor layer confirms the same ordering: the open-source descriptor builder emits wsh(multi(2,...)) with keys in builder order and no sort step, and the published offline-vault fixture shows the exact form wsh(multi(2,<user>/0/*,<backup>/0/*,<bitgo>/0/*)). No timelock, no miniscript, no recovery branch in the script: recovery is an unsigned user+backup sweep.",
           "evidence": "source-derived",
           "key_staticness": "customer-specific"
         },
@@ -84,9 +90,25 @@
       "known_keys": [
         {"key": "xpub661MyMwAqRbcEtUgu9HF8ai4ipuVKKHBzUqks4jSFypW8dwwQL1zygLgQx99NmC7zJJznSiwKG6RQfVjAKMtCsx8VjR6kQW8x7HrkXFZdnQ", "role": "serverXpub.prod API verification key in sdk-core environments.ts; not a wallet script key", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/sdk-core/src/bitgo/environments.ts"},
         {"key": "xpub661MyMwAqRbcGEtTFgMAoxMFoqsRdDaiaR63byNfZdV7cBZFvovQSNJ5bpyeoQtuKVgXBk6sFQ7TtvyWqadt41DnKwveYgM5KoU2EKYjdY2", "role": "hsmXpub.prod HSM verification key in sdk-core environments.ts; not a wallet script key", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/sdk-core/src/bitgo/environments.ts"},
-        {"key": "xpub661MyMwAqRbcEq5qQLciVPfCyCvx9KstKVp71TxujjY9Kbapv6o2YjtRAV1tfYgQZxBaN6FfFfE3CD21ZRSsd4WkqkFWSZDTiDqf49qtkh7", "role": "documentation example key from the create-multisig-keys doc; never observed as a provider wallet key", "source": "https://developers.bitgo.com/docs/wallets-create-multisig-keys"}
+        {"key": "xpub661MyMwAqRbcEq5qQLciVPfCyCvx9KstKVp71TxujjY9Kbapv6o2YjtRAV1tfYgQZxBaN6FfFfE3CD21ZRSsd4WkqkFWSZDTiDqf49qtkh7", "role": "documentation example key from the create-multisig-keys doc; never observed as a provider wallet key", "source": "https://developers.bitgo.com/docs/wallets-create-multisig-keys"},
+        {"key": "xpub6CncomMyftm44Wo7zJNgmuQcT153FeE3eb2bDPrWMaStw1eCoheYxCdLszWMqYUWU7HVB57s6mD42HrxqqrETvVu6EcjhbhsQyRwrcyq9ph", "role": "user-key slot of the published offlineVault Wsh2Of3 test fixture (paths /0/* and /1/* in the response descriptors); fixture key, not an operated wallet key", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/test/unit/offlineVault/fixtures/Wsh2Of3.buildAdmin.custodial.json"},
+        {"key": "xpub6C3a1dkbEx4NReyHcdckxRDwedQmKH1EnnUf9xetKpBKaAo2qVckgBAaQfi6FdkQ7wX5YmmwakHsf4RWKFrUm3AGtD1WhkAR7nApvwkABC8", "role": "backup-key slot of the same published offlineVault Wsh2Of3 test fixture", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/test/unit/offlineVault/fixtures/Wsh2Of3.buildAdmin.custodial.json"},
+        {"key": "xpub661MyMwAqRbcFzLg5VNruBcXR52hePxoeszcGETvb5ksucEGKArew5k4mhfTkkPt7NfJ1RCGnGpm7LvNtakVGfg9kBiVi4Ybc43Yv7Uthtc", "role": "bitgo-key slot of the same published offlineVault Wsh2Of3 test fixture", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/test/unit/offlineVault/fixtures/Wsh2Of3.buildAdmin.custodial.json"},
+        {"key": "xpub6BKRgmCPX5oQiJgJ6Vq6BF8tDvZhwQki5dVVQohckK2ZJXtxj8K6M9pavLwt9piW33hZz17SWmG8QWsjJ1tHdde2Fs5UA3DFbApCtbdaGKn", "role": "paygoAddressAttestationPubkey, a provider-wide PayGo attestation verification key hardcoded in modules/statics and returned by getPayGoVerificationPubkey; not a wallet script key", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/statics/src/networks.ts"},
+        {"key": "xpub661MyMwAqRbcGZfgedgcQiBJpkHoZ37k6uotUVLoC6Px4Y46Yrdmy1CUogcJMoAsosY381gPjhGe9jFx1uYAcxy2gTHh9YFP32tUWycqHnV", "role": "first master-level key of the DefaultWsh2Of3 descriptor test fixture; generic test key used in wsh(multi(2,...)) descriptor tests", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/test/unit/descriptor/createWallet/fixtures/DefaultWsh2Of3.json"},
+        {"key": "xpub661MyMwAqRbcF8FoYWukS8eTn2gVEojzwf5DYETpB8uqC8t5sqDCEFnuJ39DaPjLRerBDK9QqSMvSYpT4WSugCVbUK5HEevSKAu1wUkVWsS", "role": "second master-level key of the DefaultWsh2Of3 descriptor test fixture", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/test/unit/descriptor/createWallet/fixtures/DefaultWsh2Of3.json"},
+        {"key": "xpub661MyMwAqRbcFdScyinA4JpCViqkKsd37MQ6fwuZQQ4shdaGRRX9a8bWvR9QC1AFqKongweJJfyrm7uCoWmCw7UixwGZkZnCT2mchFr7cQb", "role": "third master-level key of the DefaultWsh2Of3 descriptor test fixture", "source": "https://github.com/BitGo/BitGoJS/blob/master/modules/abstract-utxo/test/unit/descriptor/createWallet/fixtures/DefaultWsh2Of3.json"}
       ],
-      "known_txids": []
+      "known_txids": [
+        "4929b91960acdf2d18076ac6151d0aff96b4f4834f9f78eaf40e78ce05f5c0a4",
+        "e7648c85edac7f9870e511b4ef95b62b1878556791bd52ac715cb2cd4b466e6f",
+        "8747673834d6c71560a2816963585718567419020dc58151d2f7e1ed8c57de14",
+        "ff40ccd5c8ba75ffdce27d8584b6e8ee625cb3f71f7cbb6d072a445a97c2c8c3",
+        "d5621704d7dd06d55c6016709e75a1787fb661d565290611e3eff914f03a4d0e",
+        "c68916ddc1672ec62c474ef0839ec479ad9b2dabc2249177ce6be6247f81dfe7",
+        "5ea8d2b93997ed9fa3597a2f3113817c8216f573a0278c2533bb5db50fdb0dff",
+        "b0b7e5c2fbbbeb42478f91e1c14b300624a9419631e70dd1564084fb28a55155"
+      ]
     },
     {
       "id": "unchained",
@@ -99,7 +121,10 @@
         {"url": "https://raw.githubusercontent.com/unchained-capital/unchained-bitcoin/master/src/multisig.ts", "what": "multisig script built via bitcoinjs payments.p2ms; address types P2SH, P2SH_P2WSH, P2WSH; no P2TR; no timelock script construction anywhere in the repo", "retrieved": "2026-10-18"},
         {"url": "https://raw.githubusercontent.com/unchained-capital/unchained-bitcoin/master/src/braid.ts", "what": "generatePublicKeysAtPath returns Object.keys(...).sort() with a // BIP67 comment; wallet flow sorts keys canonically", "retrieved": "2026-10-18"},
         {"url": "https://raw.githubusercontent.com/unchained-capital/caravan/master/src/components/CreateAddress/AddressGenerator.jsx", "what": "one-off address tool warns when keys are not in standard BIP67 order and offers canonical sorting", "retrieved": "2026-10-18"},
-        {"url": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH_MAINNET.json", "what": "provider-published mainnet demo wallet fixture with two xpubs (fingerprints f57ec65d and 00000004), path m/45'/0'/100'", "retrieved": "2026-10-18"}
+        {"url": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH_MAINNET.json", "what": "provider-published mainnet demo wallet fixture with two xpubs (fingerprints f57ec65d and 00000004), path m/45'/0'/100'", "retrieved": "2026-10-18"},
+        {"url": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH-P2WSH_MAINNET.json", "what": "second published mainnet demo 2-of-2 fixture (fingerprints 00000005 and f57ec65d, path m/48'/0'/100'/1')", "retrieved": "2026-10-18"},
+        {"url": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2WSH_MAINNET.json", "what": "third published mainnet demo 2-of-2 fixture (fingerprints 00000006 and f57ec65d, path m/48'/0'/100'/2'); the f57ec65d root recurs across all three mainnet fixtures", "retrieved": "2026-10-18"},
+        {"url": "https://www.unchained.com/blog/bitcoin-address-types-compared", "what": "address-type explainer uses only historical blockchain examples (genesis coinbase, first P2WSH spend); no Unchained wallet addresses or txids published", "retrieved": "2026-10-18"}
       ],
       "expected_structures": [
         {
@@ -138,7 +163,11 @@
       ],
       "known_keys": [
         {"key": "xpub6CCHViYn5VzPfSR7baop9FtGcbm3UnqHwa54Z2eNvJnRFCJCdo9HtCYoLJKZCoATMLUowDDA1BMGfQGauY3fDYU3HyMzX4NDkoLYCSkLpbH", "role": "demo wallet fixture xpub, fingerprint f57ec65d, published mainnet 2-of-2 Caravan test wallet; not an Unchained-operated key", "source": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH_MAINNET.json"},
-        {"key": "xpub6Ca5CwTgRASgkXbXE5TeddTP9mPCbYHreCpmGt9dhz9y6femstHGCoFESHHKKRcm414xMKnuLjP9LDS7TwaJC9n5gxua6XB1rwPcC6hqDub", "role": "second demo wallet fixture xpub, fingerprint 00000004, same published mainnet 2-of-2 Caravan test wallet", "source": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH_MAINNET.json"}
+        {"key": "xpub6Ca5CwTgRASgkXbXE5TeddTP9mPCbYHreCpmGt9dhz9y6femstHGCoFESHHKKRcm414xMKnuLjP9LDS7TwaJC9n5gxua6XB1rwPcC6hqDub", "role": "second demo wallet fixture xpub, fingerprint 00000004, same published mainnet 2-of-2 Caravan test wallet", "source": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH_MAINNET.json"},
+        {"key": "xpub6EwJjKaiocGvo9f7XSGXGwzo1GLB1URxSZ5Ccp1wqdxNkhrSoqNQkC2CeMsU675urdmFJLHSX62xz56HGcnn6u21wRy6uipovmzaE65PfBp", "role": "demo wallet fixture xpub, fingerprint 00000005, published mainnet 2-of-2 Caravan P2SH-P2WSH test wallet at m/48'/0'/100'/1'; not an Unchained-operated key", "source": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH-P2WSH_MAINNET.json"},
+        {"key": "xpub6DcqYQxnbefzEBJF6osEuT5yXoHVZu1YCCsS5YkATvqD2h7tdMBgdBrUXk26FrJwawDGX6fHKPvhhZxKc5b8dPAPb8uANDhsjAPMJqTFDjH", "role": "second demo fixture xpub, fingerprint f57ec65d, same published mainnet 2-of-2 Caravan P2SH-P2WSH test wallet", "source": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2SH-P2WSH_MAINNET.json"},
+        {"key": "xpub6EwJjKaiocGvqSuM2jRZSuQ9HEddiFUFu9RdjE47zG7kXVNDQpJ3GyvskwYiLmvU4SBTNZyv8UH53QcmFEE23YwozE61V3dwzZJEFQr6H2b", "role": "demo wallet fixture xpub, fingerprint 00000006, published mainnet 2-of-2 Caravan P2WSH test wallet at m/48'/0'/100'/2'; not an Unchained-operated key", "source": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2WSH_MAINNET.json"},
+        {"key": "xpub6DcqYQxnbefzFkaRBK63FSE2GzNuNnNhFGw1xV9RioVG7av6r3JDf1aELqBSq5gt5487CtNxvVtaiJjQU2HQWzgG5NzLyTPbYav6otW8qEc", "role": "second demo fixture xpub, fingerprint f57ec65d, same published mainnet 2-of-2 Caravan P2WSH test wallet", "source": "https://raw.githubusercontent.com/unchained-capital/caravan/master/fixtures/caravan/bitcoin-2-of-2-P2WSH_MAINNET.json"}
       ],
       "known_txids": []
     },
@@ -307,7 +336,8 @@
         {"url": "https://github.com/nunchuk-io/libnunchuk/blob/main/src/descriptor.cpp", "what": "descriptor construction: sh/wsh wrapping with multi or sortedmulti per a caller-supplied sorted flag, multi_a or sortedmulti_a for taproot, wsh(miniscript) and tr(keypath,miniscript) for miniscript wallets, tr(musig(...)) keypath descriptors", "retrieved": "2026-10-18"},
         {"url": "https://github.com/nunchuk-io/libnunchuk/blob/main/src/nunchukgroupwallet.cpp", "what": "MarkPlatformSigners marks the last signer slot (index n-1) as the PLATFORM signer for multisig group wallets; platform key material is fetched per group and replaceable (CreateReplaceGroup replacement_platform_key)", "retrieved": "2026-10-18"},
         {"url": "https://github.com/nunchuk-io/docs/blob/main/off-chain_inheritance.md", "what": "inheritance example: 2-of-4 with owner keys, inheritance key, and the Nunchuk platform key as slot 4; Nunchuk co-signs with the platform key when conditions are met", "retrieved": "2026-10-18"},
-        {"url": "https://github.com/nunchuk-io/libnunchuk/blob/main/include/nunchuk.h", "what": "AddressType includes TAPROOT; WalletType includes MULTI_SIG, ESCROW, MINISCRIPT; miniscript ScriptNode types include OLDER, AFTER, THRESH, MULTI, MUSIG", "retrieved": "2026-10-18"}
+        {"url": "https://github.com/nunchuk-io/libnunchuk/blob/main/include/nunchuk.h", "what": "AddressType includes TAPROOT; WalletType includes MULTI_SIG, ESCROW, MINISCRIPT; miniscript ScriptNode types include OLDER, AFTER, THRESH, MULTI, MUSIG", "retrieved": "2026-10-18"},
+        {"url": "https://github.com/nunchuk-io/resources/blob/main/content/wallet-recovery/core-recovery/_index.en.md", "what": "official recovery guide publishes a BSMS 1.0 example, wsh(sortedmulti(1,[6b7c8e84/48'/1'/1']tpub...,[721143dc/48'/1'/2']tpub...)), and a complete worked recovery with raw signed testnet transaction hex", "retrieved": "2026-10-18"}
       ],
       "expected_structures": [
         {
@@ -317,7 +347,7 @@
           "keys_sorted": null,
           "timelocks": [],
           "template_l3": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
-          "structure_notes": "collaborative/assisted wallets default to NATIVE_SEGWIT m-of-n (2-of-3 in the published BSMS example) with the Nunchuk platform signer occupying the last key slot. sortedmulti vs multi is caller-chosen in the open-source descriptor code, so sortedness is not attributable from public sources; either choice yields the same L3 template. LEGACY (P2SH) and NESTED_SEGWIT (P2SH-P2WSH) address types are also selectable.",
+          "structure_notes": "collaborative/assisted wallets default to NATIVE_SEGWIT m-of-n (2-of-3 in the published BSMS example) with the Nunchuk platform signer occupying the last key slot. sortedmulti vs multi is caller-chosen in the open-source descriptor code, so sortedness is not attributable from public sources; either choice yields the same L3 template. The provider's own recovery guide publishes a BSMS 1.0 example that uses sortedmulti, so sorted ordering is evidenced for at least one published wallet configuration while the code flag stays caller-chosen. LEGACY (P2SH) and NESTED_SEGWIT (P2SH-P2WSH) address types are also selectable.",
           "evidence": "source-derived",
           "key_staticness": "unknown"
         },
@@ -345,9 +375,15 @@
         }
       ],
       "known_keys": [
-        {"key": "xpub6FL8FhxNNUVnG64YurPd16AfGyvFLhh7S2uSsDqR3Qfcm6o9jtcMYwh6DvmcBF9qozxNQmTCVvWtxLpKTnhVLN3Pgnu2D3pAoXYFgVyd8Yz", "role": "documentation example signer xpub (BIP-129 format, path 1cf0bf7e/48'/0'/0'/2') in the e2ee multisig doc; illustrative, not an observed wallet key", "source": "https://github.com/nunchuk-io/docs/blob/main/e2ee-multisig.md"}
+        {"key": "xpub6FL8FhxNNUVnG64YurPd16AfGyvFLhh7S2uSsDqR3Qfcm6o9jtcMYwh6DvmcBF9qozxNQmTCVvWtxLpKTnhVLN3Pgnu2D3pAoXYFgVyd8Yz", "role": "documentation example signer xpub (BIP-129 format, path 1cf0bf7e/48'/0'/0'/2') in the e2ee multisig doc; illustrative, not an observed wallet key", "source": "https://github.com/nunchuk-io/docs/blob/main/e2ee-multisig.md"},
+        {"key": "tpubDDnhmLtGvcXQwi4gGhKKTxQeXVXPjivpfWT9aiZ3VENrRTrzMLj4xymfisG18eVshwovyD9Z1zeqBoB8n7VhXaJkHj6yw3ib8BjAaMViDwU", "role": "first signer of the provider-published BSMS 1.0 example (fingerprint 6b7c8e84, 48'/1'/1', testnet 1-of-2); illustrative, not an observed wallet key", "source": "https://github.com/nunchuk-io/resources/blob/main/content/wallet-recovery/core-recovery/_index.en.md"},
+        {"key": "tpubDD2nPnKDRg6NwikecMFyzPZRSBAKjR2FzcSe46mxWBByShLYwQ19zKpFPL8oMuuwibHXNfuRSknD22xWs7rqf9FShjm8d5SzNNTNpx3Z3kM", "role": "second signer of the same provider-published BSMS 1.0 example (fingerprint 721143dc, 48'/1'/2', testnet)", "source": "https://github.com/nunchuk-io/resources/blob/main/content/wallet-recovery/core-recovery/_index.en.md"},
+        {"key": "0295ba49a8e78beac3210989b3a9ed54e7b7c01b867ede611df42a66367625f3a0", "role": "compressed pubkey inside the witness script of the worked recovery example (testnet 1-of-2, lexicographically lesser of the two keys, sorted order)", "source": "https://github.com/nunchuk-io/resources/blob/main/content/wallet-recovery/core-recovery/_index.en.md"},
+        {"key": "03b1f700197b059c167bdc1b54fd6e354c21aec852a8051468716111ba547d96dd", "role": "second compressed pubkey inside the same worked recovery example witness script", "source": "https://github.com/nunchuk-io/resources/blob/main/content/wallet-recovery/core-recovery/_index.en.md"}
       ],
-      "known_txids": []
+      "known_txids": [
+        "b91276af8b6f5ede632aadfb87bf8a9209a43d0a030396cd0c4629a1ec92b87a"
+      ]
     },
     {
       "id": "coincover",
