@@ -72,7 +72,8 @@ def cmd_corpus_status(args):
 def cmd_probe(args):
     from .probes import run_probes
     config, conn = _open()
-    run_probes(Config(), conn)
+    stages = args.only.split(",") if args.only else None
+    run_probes(config, conn, stages=stages)
 
 
 def cmd_pin_boundary(args):
@@ -124,7 +125,11 @@ def main(argv=None):
 
     sub.add_parser("api-status").set_defaults(func=cmd_api_status)
     sub.add_parser("corpus-status").set_defaults(func=cmd_corpus_status)
-    sub.add_parser("probe").set_defaults(func=cmd_probe)
+    p = sub.add_parser("probe")
+    p.add_argument("--only", default=None,
+                   help="comma-separated subset: stats,raw_block,dashboard,"
+                        "outputs,transactions")
+    p.set_defaults(func=cmd_probe)
     sub.add_parser("pin-boundary").set_defaults(func=cmd_pin_boundary)
 
     p = sub.add_parser("benchmark-acquisition")

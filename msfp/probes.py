@@ -17,32 +17,51 @@ def _save_probe(config, name, payload):
         json.dump(payload, fh, indent=2, sort_keys=True)
 
 
-def run_probes(config, conn):
+def run_probes(config, conn, stages=None):
+    """stages: optional subset of {'stats','raw_block','dashboard',
+    'outputs','transactions'}; default = all. The dashboard probe is
+    skipped once it has been observed to trip the IP blacklist."""
     from .client import Client
     client = Client(config, conn)
+    stages = stages or ["stats", "raw_block", "dashboard", "outputs",
+                        "transactions"]
 
     # 1. Stats: sanity + current best height (already done once interactively
     # before this tool existed; fetching again is 1 point).
-    payload, cost, _ = client.stats()
-    _save_probe(config, "stats", payload)
-    best = payload["data"]["best_block_height"]
-    print("stats: ok, cost=%s, best height=%s" % (cost, best))
+    probe_height = None
+    if "stats" in stages or "raw_block" in stages or "dashboard" in stages:
+        payload, cost, _ = client.stats()
+        _save_probe(config, "stats", payload)
+        best = payload["data"]["best_block_height"]
+        print("stats: ok, cost=%s, best height=%s" % (cost, best))
+        probe_height = best - 10
 
-    # 2. Raw block: verify raw_block hex decodes locally.
-    probe_height = best - 10
-    payload, cost, _ = client.raw_block(probe_height)
-    _save_probe(config, "raw_block_%d" % probe_height, payload)
-    data = payload["data"].get(str(probe_height), {})
-    rb = data.get("raw_block", "")
-    print("raw block %d: cost=%s, raw_block hex len=%d (~%d KiB), keys=%s"
-          % (probe_height, cost, len(rb), len(rb) // 2048, sorted(data.keys())))
+        # 2. Raw block: verify raw_block hex decodes locally.
+        if "raw_block" in stages:
+            payload, cost, _ = client.raw_block(probe_height)
+            _save_probe(config, "raw_block_%d" % probe_height, payload)
+            data = payload["data"].get(str(probe_height), {})
+            rb = data.get("raw_block", "")
+            print("raw block %d: cost=%s, raw_block hex len=%d (~%d KiB), "
+                  "keys=%s" % (probe_height, cost, len(rb), len(rb) // 2048,
+                               sorted(data.keys())))
 
-    # 3. Dashboard block: metadata + timestamp (used for boundary pinning).
-    payload, cost, _ = client.dashboard_block([probe_height])
-    _save_probe(config, "dash_block_%d" % probe_height, payload)
-    print("dashboard block: cost=%s, keys=%s"
-          % (cost, sorted(payload["data"].keys())))
+        # 3. Dashboard block: metadata + timestamp. Trips the IP blacklist
+        # on the no-key tier; retained only for explicit re-checks.
+        if "dashboard" in stages:
+            payload, cost, _ = client.dashboard_block([probe_height])
+            _save_probe(config, "dash_block_%d" % probe_height, payload)
+            print("dashboard block: cost=%s, keys=%s"
+                  % (cost, sorted(payload["data"].keys())))
 
+    if probe_height is None:
+        # Default the probe window to the known-good cached block height.
+        probe_height = 971974
+
+    return _outputs_transactions(config, client, probe_height)
+
+
+def _outputs_transactions(config, client, probe_height):
     # 4. Indexed outputs: what is filterable, and does spending_witness carry
     # the full stack? Query a tiny window: 1 spent P2WSH output at the probe
     # height's block. p=... filter syntax per docs; verify actual behavior.

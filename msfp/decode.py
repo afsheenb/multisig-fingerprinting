@@ -164,12 +164,19 @@ def classify_input(script_sig_hex, witness):
         return "witness_other"
     # Legacy: scriptSig whose final push parses as a script.
     if pushes and len(pushes) >= 2:
+        if pushes[-1] is None:
+            return "legacy"
         try:
             redeem = bytes.fromhex(pushes[-1])
         except ValueError:
             return "legacy"
+        # A P2PKH scriptSig also ends in a pubkey push; raw pubkey bytes
+        # re-parsed as a script can accidentally contain a sig-check
+        # opcode byte, so require a key shape OR a clean script parse.
+        if S.is_pubkey_data(redeem):
+            return "legacy"
         parsed = S.ParsedScript(redeem)
-        if parsed.has_sig_check():
+        if parsed.parse_error is None and parsed.has_sig_check():
             return "p2sh_redeem"
         return "legacy"
     return "legacy" if (script_sig_hex and not has_witness) else "other"

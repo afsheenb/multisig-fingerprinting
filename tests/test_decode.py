@@ -153,6 +153,19 @@ def test_input_forms_recognized():
     form = decode.classify_input(script_sig.hex(), [])
     assert form == "p2sh_redeem"
 
+    # P2PKH: scriptSig = sig pubkey. The trailing pubkey push is NOT a
+    # redeem script even when its bytes happen to contain 0xAC
+    # (OP_CHECKSIG) somewhere; raw pubkey bytes are never a script.
+    sig = b"\x30\x44\x02\x20" + b"\x01" * 32 + b"\x02\x20" + b"\x02" * 32 + \
+        b"\x01"
+    pub_with_ac = bytes([0x02]) + b"\xac" * 32
+    script_sig = CScript([sig, pub_with_ac])
+    assert decode.classify_input(script_sig.hex(), []) == "legacy"
+    # A pubkey whose last byte is OP_CHECKSIG is still a pubkey.
+    pub_end_ac = bytes([0x02]) + b"\x11" * 31 + b"\xac"
+    script_sig = CScript([sig, pub_end_ac])
+    assert decode.classify_input(script_sig.hex(), []) == "legacy"
+
     # Nested P2SH-P2WSH: scriptSig = 0020{32}, witness with script.
     wscript = bytes(CScript([K1, OP_CHECKSIG]))
     program = b"\x00\x20" + hashlib.sha256(wscript).digest()
