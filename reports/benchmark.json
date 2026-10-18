@@ -1,0 +1,152 @@
+{
+  "approach_a": [
+    {
+      "height": 971989,
+      "cost": 1,
+      "inputs": 6294,
+      "multisig_inputs": 22,
+      "error": null
+    },
+    {
+      "height": 971990,
+      "cost": 1,
+      "inputs": 7800,
+      "multisig_inputs": 58,
+      "error": null
+    },
+    {
+      "height": 971991,
+      "cost": 1,
+      "inputs": 6899,
+      "multisig_inputs": 81,
+      "error": null
+    },
+    {
+      "height": 971992,
+      "cost": 1,
+      "inputs": 7759,
+      "multisig_inputs": 35,
+      "error": null
+    },
+    {
+      "height": 971993,
+      "cost": 1,
+      "inputs": 7090,
+      "multisig_inputs": 421,
+      "error": null
+    },
+    {
+      "height": 971994,
+      "cost": 1,
+      "inputs": 8414,
+      "multisig_inputs": 426,
+      "error": null
+    },
+    {
+      "height": 971995,
+      "cost": 1,
+      "inputs": 7730,
+      "multisig_inputs": 794,
+      "error": null
+    },
+    {
+      "height": 971996,
+      "cost": 1,
+      "inputs": 8845,
+      "multisig_inputs": 486,
+      "error": null
+    },
+    {
+      "height": 971997,
+      "cost": 1,
+      "inputs": 7449,
+      "multisig_inputs": 112,
+      "error": null
+    },
+    {
+      "height": 971998,
+      "cost": 1,
+      "inputs": 9433,
+      "multisig_inputs": 41,
+      "error": null
+    },
+    {
+      "height": 971999,
+      "cost": 1,
+      "inputs": 8122,
+      "multisig_inputs": 548,
+      "error": null
+    },
+    {
+      "height": 972000,
+      "cost": 1,
+      "inputs": 6816,
+      "multisig_inputs": 318,
+      "error": null
+    },
+    {
+      "height": 972001,
+      "cost": 1,
+      "inputs": 7416,
+      "multisig_inputs": 532,
+      "error": null
+    },
+    {
+      "height": 972002,
+      "cost": 1,
+      "inputs": 8342,
+      "multisig_inputs": 255,
+      "error": null
+    },
+    {
+      "height": 972003,
+      "cost": 1,
+      "inputs": 9796,
+      "multisig_inputs": 323,
+      "error": null
+    },
+    {
+      "height": 972004,
+      "cost": 1,
+      "inputs": 8130,
+      "multisig_inputs": 154,
+      "error": null
+    },
+    {
+      "height": 972005,
+      "cost": 1,
+      "inputs": 8500,
+      "multisig_inputs": 694,
+      "error": null
+    },
+    {
+      "height": 972006,
+      "cost": 1,
+      "inputs": 4503,
+      "multisig_inputs": 249,
+      "error": null
+    },
+    {
+      "height": 972007,
+      "cost": 1,
+      "inputs": 4242,
+      "multisig_inputs": 862,
+      "error": null
+    },
+    {
+      "height": 972008,
+      "cost": 1,
+      "inputs": 7826,
+      "multisig_inputs": 496,
+      "error": null
+    },
+    {
+      "height": 972009,
+      "cost": 1,
+      "inputs": 8156,
+      "multisig_inputs": 301,
+      "error": null
+    }
+  ],
+  "approach_b": null
+}

@@ -75,13 +75,25 @@ of the estimated cost even though nothing useful was returned.
 - Block metadata (timestamp, height boundary) comes from the block
   header itself after local decode; the dashboard endpoint is not
   needed. Study-boundary pinning therefore uses raw blocks only.
-- If index endpoints stay unavailable, Phase 1's indexed-outputs
-  benchmark arm cannot run on the free tier; the benchmark then
-  reports raw-blocks-only numbers and the paid-access memo (Phase 6)
-  quantifies what index access would add. As of the 14:47 recheck this
-  is the live posture: three index/dashboard attempts over two hours
-  all returned 430, so the raw-blocks-only benchmark is the working
-  plan, not the fallback.
+- The indexed arm is unavailable on this tier, now confirmed by
+  measurement: the Phase 1 acquisition benchmark attempted the single
+  `/bitcoin/outputs` page for its window at 14:55:49 and received the
+  fourth 430 (four index/dashboard attempts, all 430, across two
+  hours). It was recorded in the ledger and not retried;
+  `reports/benchmark.json` therefore carries `approach_b: null`, and
+  the raw-blocks-only plan is the working plan, not the fallback. The
+  paid-access memo (Phase 6) quantifies what index access would add.
+- Measured raw-block acquisition cost (Phase 1 pilot, 21 consecutive
+  blocks at heights 971989..972009, 1 pt each = 21 pts): 159,562
+  inputs examined, 7,208 multisig-bearing inputs, i.e. ~343.2
+  multisig-bearing inputs per point (~7,598 inputs and ~343
+  multisig-bearing inputs per block; every block decoded cleanly).
+- Extrapolated cost to cover the full study period (heights 812688
+  through 972009, 159,322 blocks at 1 pt each): ~159,322 points,
+  about 160 days of the 1000 pt/day budget. The input and
+  multisig-bearing per-block rates are upper bounds: recent blocks
+  carry more inputs than 2023-era blocks, though the point cost per
+  block stays exactly 1.
 - The `spending_witness` question (does the indexed-outputs response
   carry the full witness stack hex?) is still unanswered because no
   `/bitcoin/outputs` payload has ever been obtained on this tier. If
