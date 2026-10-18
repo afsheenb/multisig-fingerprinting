@@ -1,0 +1,90 @@
+{
+  "method": "3 revealed scripts sampled with a fixed seed; each re-derived from the cached raw block JSON (block decode, input classification, script extraction, analyze_script) and compared field-by-field with the stored rows",
+  "seed": 20261018,
+  "results": [
+    {
+      "script_sha256": "f05b138b34a0c3f6d10a1b60cd0f3a3c1cdf4c1c0888bb8c1fdde8429a01d34f",
+      "txid": "0e1c59c80d4a93cf77c5081e3ee10e82d06cccd4749631b272a6f12fd7551eaa",
+      "input_index": 4,
+      "block_height": 862844,
+      "stored": {
+        "source": "p2wsh_witness",
+        "input_form": "p2wsh",
+        "script_class": "multisig",
+        "family_l4": "standard_multisig",
+        "template_l3": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+        "threshold": 2,
+        "n_keys": 3,
+        "keys_sorted": 0
+      },
+      "checks": {
+        "script_sha256": true,
+        "source": true,
+        "input_form": true,
+        "script_class": true,
+        "family_l4": true,
+        "template_l3": true,
+        "threshold": true,
+        "n_keys": true,
+        "keys_sorted": true
+      },
+      "all_match": true
+    },
+    {
+      "script_sha256": "203edb363f83803860163aa182bd4b73c1fe3738dfe3385327d9e3632e33563c",
+      "txid": "c64d9b37e282c62949c361177a1283f11330db05720e02c2a0654aed59164481",
+      "input_index": 0,
+      "block_height": 890268,
+      "stored": {
+        "source": "taproot_leaf",
+        "input_form": "taproot_scriptpath",
+        "script_class": "other",
+        "family_l4": "taproot_conditional_recovery",
+        "template_l3": "<P> OP_CHECKSIG <D> OP_IF <D> <D> <D> <D> <D> OP_ENDIF",
+        "threshold": null,
+        "n_keys": 1,
+        "keys_sorted": null
+      },
+      "checks": {
+        "script_sha256": true,
+        "source": true,
+        "input_form": true,
+        "script_class": true,
+        "family_l4": true,
+        "template_l3": true,
+        "threshold": true,
+        "n_keys": true,
+        "keys_sorted": true
+      },
+      "all_match": true
+    },
+    {
+      "script_sha256": "4b35e130ede6aabb5137e08e9300a848ef780f709c6d5f7c3e2622c1e411e977",
+      "txid": "764cba8242d57f590d135b142db5cc019aacb5f61f04e1cfcceb82f911d1be36",
+      "input_index": 0,
+      "block_height": 822541,
+      "stored": {
+        "source": "taproot_leaf",
+        "input_form": "taproot_scriptpath",
+        "script_class": "other",
+        "family_l4": "taproot_conditional_recovery",
+        "template_l3": "<P> OP_CHECKSIG <D> OP_IF <D> <D> <D> <D> <D> OP_ENDIF",
+        "threshold": null,
+        "n_keys": 1,
+        "keys_sorted": null
+      },
+      "checks": {
+        "script_sha256": true,
+        "source": true,
+        "input_form": true,
+        "script_class": true,
+        "family_l4": true,
+        "template_l3": true,
+        "threshold": true,
+        "n_keys": true,
+        "keys_sorted": true
+      },
+      "all_match": true
+    }
+  ]
+}
