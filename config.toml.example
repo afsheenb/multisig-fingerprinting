@@ -1,0 +1,39 @@
+# Copy to config.toml and edit. config.toml is gitignored.
+[blockchair]
+# Leave empty for the no-key personal/testing tier. A paid key, when
+# authorized, slots in here with no code changes.
+api_key = ""
+base_url = "https://api.blockchair.com"
+
+# Safe defaults sit BELOW the documented no-key limits
+# (1440 points/day, 30 req/min, 5 req/s).
+points_per_day = 1000
+requests_per_minute = 20
+requests_per_second = 1
+
+# Conservative cost estimates used to reserve points before dispatch.
+# Reconciled against context.request_cost after each response.
+cost_raw_block = 1
+cost_raw_transaction = 1
+cost_dashboard_block = 1
+cost_dashboard_transaction = 1
+cost_indexed_transactions = 5
+cost_indexed_outputs = 10
+cost_stats = 1
+cost_unknown = 10
+
+# Observed live behavior: the no-key tier blacklists temporarily
+# (HTTP 430) far sooner than the documented limits suggest, and the
+# dashboard endpoints appear to trip it first. On a throttle: stop,
+# wait this long, then resume. Repeated throttles stop the run.
+throttle_cooldown_seconds = 300
+max_throttles_per_run = 3
+
+[storage]
+data_dir = "data"
+db_filename = "corpus.sqlite3"
+
+[scan]
+# Stratified sampling across the full study period.
+sample_blocks = 180
+random_seed = 20261018

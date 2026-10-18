@@ -1,0 +1,5 @@
+python-bitcoinlib==0.12.2
+coincurve>=13
+requests>=2.25
+pytest>=6
+pycryptodome>=3
