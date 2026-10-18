@@ -9,8 +9,9 @@ Commands map one-to-one onto the research phases:
     scan --sample N        Phase 3: stratified block sampling + extraction
     scan --range S E       scan an explicit height range
     scan --resume          continue the recorded acquisition plan
-    validate               resolve prevouts for a subset; verify commitments
-                           and signatures where data allows
+    validate [--local]     resolve prevouts for a subset; verify commitments
+                           and signatures where data allows (--local uses
+                           only the corpus cache: zero points)
     classify               (re)classify stored scripts
     keyindex               build the public-key reuse index + components
     report                 Phase 4: preliminary findings + cost report
@@ -96,8 +97,12 @@ def cmd_scan(args):
 
 
 def cmd_validate(args):
-    from .verify import run_validation
     config, conn = _open()
+    if args.local:
+        from .verify import run_validation_local
+        run_validation_local(config, conn)
+        return
+    from .verify import run_validation
     run_validation(config, conn, count=args.count)
 
 
@@ -144,6 +149,9 @@ def main(argv=None):
 
     p = sub.add_parser("validate")
     p.add_argument("--count", type=int, default=25)
+    p.add_argument("--local", action="store_true",
+                   help="verify against the local corpus cache only; "
+                        "zero points, no network requests")
     p.set_defaults(func=cmd_validate)
 
     sub.add_parser("classify").set_defaults(func=cmd_classify)

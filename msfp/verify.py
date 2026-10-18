@@ -20,8 +20,11 @@ moves backward, and a signature is never counted as valid merely
 because it is present.
 """
 
+import gzip
 import hashlib
 import json
+import os
+from functools import lru_cache
 
 from Crypto.Hash import RIPEMD160
 
@@ -33,6 +36,7 @@ from bitcoin.core.script import (
 
 from coincurve import PublicKey, PublicKeyXOnly
 
+from . import decode
 from . import scripts as S
 
 
@@ -419,4 +423,160 @@ def run_validation(config, conn, count=20):
              stats["sig_verified"], stats["sig_present"]))
     if stats["failures"]:
         print("failures: %s" % json.dumps(stats["failures"], indent=2))
+    return stats
+
+
+# -- local (zero-point) validation ------------------------------------------------
+
+def _check_commitment_p2sh_p2wsh(script_bytes, script_sig_hex, prevout_spk):
+    """Two-level commitment for nested P2SH-P2WSH inputs.
+
+    The prevout is a P2SH program, so the revealed witnessScript binds
+    through the P2WSH program carried in the scriptSig redeem push:
+    sha256(witnessScript) must equal that program, and hash160(redeem)
+    must equal the prevout's P2SH script hash.
+    """
+    pushes = decode._script_sig_pushes(bytes.fromhex(script_sig_hex)) \
+        if script_sig_hex else None
+    if not pushes or pushes[-1] is None:
+        return False
+    redeem = bytes.fromhex(pushes[-1])
+    if not (len(redeem) == 34 and redeem[0] == 0x00 and redeem[1] == 0x20):
+        return False
+    if hashlib.sha256(script_bytes).digest() != redeem[2:]:
+        return False
+    spk = bytes(prevout_spk)
+    if len(spk) == 23 and spk[0] == 0xA9 and spk[22] == 0x87:
+        return hash160(redeem) == spk[2:22]
+    return False
+
+
+@lru_cache(maxsize=8)
+def _block_tx_index(data_dir, height):
+    """txid -> CTransaction for one cached raw block, or None when the
+    block is not cached. Keeps only recent heights alive (LRU)."""
+    path = os.path.join(data_dir, "cache", "raw_block_%d.json.gz" % height)
+    if not os.path.exists(path):
+        return None
+    with gzip.open(path) as fh:
+        payload = json.load(fh)
+    data = payload.get("data", {})
+    entry = data.get(str(height)) or data.get(height) or {}
+    raw_hex = entry.get("raw_block")
+    if not raw_hex:
+        return None
+    block = decode.decode_block(raw_hex, height)
+    return {b2lx(tx.GetHash()): tx for tx in block.vtx}
+
+
+def run_validation_local(config, conn):
+    """Verify commitments and ECDSA signatures against the local cache.
+
+    For every input that revealed a script, resolve the prevout from the
+    cached raw block of the creating transaction's block (only when that
+    transaction is itself in the corpus) and run check_commitment plus
+    verify_input_ecdsa. No network request is made: inputs whose prevout
+    is outside the corpus, or whose block cache file is absent, are
+    skipped and counted. Taproot leaves get the commitment check only;
+    their signature path needs the BIP341 machinery keyed on resolved
+    prevouts of every tx input, which the corpus rarely supports.
+    """
+    rows = conn.execute(
+        "SELECT o.input_id, i.txid, i.input_index, i.prevout_txid, "
+        "i.prevout_n, i.script_sig_hex, i.input_form, s.script_hex, "
+        "s.source, "
+        "pt.block_height AS ptx_height, st.block_height AS stx_height "
+        "FROM script_observations o "
+        "JOIN inputs i ON i.input_id=o.input_id "
+        "JOIN revealed_scripts s ON s.script_sha256=o.script_sha256 "
+        "JOIN txs st ON st.txid=i.txid "
+        "LEFT JOIN txs pt ON pt.txid=i.prevout_txid "
+        "ORDER BY pt.block_height, st.block_height").fetchall()
+
+    stats = {"inputs_checked": 0, "commit_ok": 0, "commit_fail": 0,
+             "commit_not_verifiable": 0, "sig_present": 0, "sig_verified": 0,
+             "taproot_leaves": 0, "prevout_not_in_corpus": 0,
+             "prevout_cache_missing": 0, "spend_cache_missing": 0,
+             "prevout_n_out_of_range": 0, "failures": []}
+
+    for r in rows:
+        if r["ptx_height"] is None:
+            stats["prevout_not_in_corpus"] += 1
+            continue
+        ptxs = _block_tx_index(config.data_dir, r["ptx_height"])
+        if ptxs is None:
+            stats["prevout_cache_missing"] += 1
+            continue
+        ptx = ptxs.get(r["prevout_txid"])
+        if ptx is None or r["prevout_n"] >= len(ptx.vout):
+            stats["prevout_n_out_of_range"] += 1
+            continue
+        prevout = ptx.vout[r["prevout_n"]]
+
+        script_bytes = bytes.fromhex(r["script_hex"])
+        if r["input_form"] == "p2sh_p2wsh" and r["source"] == "p2wsh_witness":
+            commit = _check_commitment_p2sh_p2wsh(
+                script_bytes, r["script_sig_hex"],
+                bytes(prevout.scriptPubKey))
+        else:
+            commit = check_commitment(script_bytes,
+                                      bytes(prevout.scriptPubKey))
+        stats["inputs_checked"] += 1
+        if commit is True:
+            stats["commit_ok"] += 1
+        elif commit is False:
+            stats["commit_fail"] += 1
+            stats["failures"].append({"txid": r["txid"],
+                                      "input_index": r["input_index"],
+                                      "what": "commitment"})
+        else:
+            stats["commit_not_verifiable"] += 1
+
+        if r["source"] == "taproot_leaf":
+            stats["taproot_leaves"] += 1
+            continue
+        stxs = _block_tx_index(config.data_dir, r["stx_height"])
+        if stxs is None:
+            stats["spend_cache_missing"] += 1
+            continue
+        stx = stxs.get(r["txid"])
+        if stx is None:
+            stats["spend_cache_missing"] += 1
+            continue
+        try:
+            summary = verify_input_ecdsa(stx, r["input_index"], script_bytes,
+                                         prevout.nValue)
+        except Exception as exc:
+            stats["failures"].append({"txid": r["txid"],
+                                      "input_index": r["input_index"],
+                                      "what": "sig check error: %s" % exc})
+            continue
+        stats["sig_present"] += summary["signatures_present"]
+        stats["sig_verified"] += summary["signatures_verified"]
+
+    conn.executemany(
+        "INSERT OR REPLACE INTO meta(key, value) VALUES(?,?)",
+        [("validation_local_inputs_checked", str(stats["inputs_checked"])),
+         ("validation_local_commit_ok", str(stats["commit_ok"])),
+         ("validation_local_commit_fail", str(stats["commit_fail"])),
+         ("validation_local_sig_present", str(stats["sig_present"])),
+         ("validation_local_sig_verified", str(stats["sig_verified"])),
+         ("validation_local_prevout_not_in_corpus",
+          str(stats["prevout_not_in_corpus"])),
+         ("validation_local_prevout_cache_missing",
+          str(stats["prevout_cache_missing"]))])
+    conn.commit()
+    print("local validation: %d of %d script-revealing inputs resolvable "
+          "(%d prevouts not in corpus, %d cache misses); commitments "
+          "%d ok / %d FAILED / %d not verifiable; signatures %d/%d "
+          "verified; %d taproot leaves commitment-checked only"
+          % (stats["inputs_checked"], len(rows),
+             stats["prevout_not_in_corpus"],
+             stats["prevout_cache_missing"] + stats["spend_cache_missing"],
+             stats["commit_ok"], stats["commit_fail"],
+             stats["commit_not_verifiable"], stats["sig_verified"],
+             stats["sig_present"], stats["taproot_leaves"]))
+    if stats["failures"]:
+        print("failures (%d): %s" % (len(stats["failures"]),
+              json.dumps(stats["failures"][:20], indent=2)))
     return stats
