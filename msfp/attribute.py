@@ -269,16 +269,28 @@ def match_liana_multi_a(struct, feats):
     template_l3 was rendered with named opcodes; this library renders the
     same opcode as 0xba, so the exact join misses them. Same constraints as
     the row: taproot script path, unsorted, primary k-of-k or recovery
-    m-of-n behind one CSV.
+    m-of-n behind one CSV. The classifier labels a k-of-k multi_a leaf
+    compound_multisig (its CHECKSIGADD chain parse expects every key to be
+    CHECKSIGADD-separated), so both taproot multisig classes qualify.
     """
     if struct.get("form") != "taproot_scriptpath" \
-            or not _form_matches(struct, feats) \
-            or feats["script_class"] != "taproot_multisig":
+            or not _form_matches(struct, feats):
+        return False, []
+    ok_class = feats["script_class"] == "taproot_multisig" or \
+        (feats["source"] == "taproot_leaf"
+         and feats["family_l4"] == "taproot_scriptpath_multisig")
+    if not ok_class:
         return False, []
     if not _sorted_matches(struct, feats):
         return False, []
     k, n = feats["threshold"], feats["n_keys"]
-    if k is None or n is None:
+    if k is None and feats["template_l3"]:
+        # Compound leaves carry no threshold column; the threshold compare
+        # is the small-int opcode before OP_NUMEQUAL in the template.
+        m = re.search(r"OP_([0-9]+) OP_NUMEQUAL", feats["template_l3"])
+        if m:
+            k = int(m.group(1))
+    if k is None or n is None or not 1 <= k <= n:
         return False, []
     is_recovery_row = bool(struct.get("timelocks"))
     if is_recovery_row:
@@ -292,6 +304,8 @@ def match_liana_multi_a(struct, feats):
         return True, ["multi_a recovery leaf %d-of-%d" % (k, n),
                       "CSV=%d" % value,
                       "form=taproot_scriptpath"]
+    if k != n:
+        return False, []
     if struct.get("threshold") is not None and k != struct["threshold"]:
         return False, []
     if feats["timelocks"]:

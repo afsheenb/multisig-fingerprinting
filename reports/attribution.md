@@ -17,8 +17,8 @@ Generated from registry version 2026-10-18 over the in-study corpus (heights 812
 | A: verified provider attribution | 0 | 0.00% |
 | B: verified institutional key participation | 0 | 0.00% |
 | C: strong implementation match | 430 | 0.57% |
-| D: weak implementation match | 30439 | 40.21% |
-| E: unknown | 44838 | 59.23% |
+| D: weak implementation match | 30642 | 40.47% |
+| E: unknown | 44635 | 58.96% |
 
 ## The zero-A statement
 
@@ -49,6 +49,7 @@ Providers and control groups with at least one A-D match. C and D are implementa
 | specter_diy (Specter DIY (specter-desktop, control group)) | yes | 0 | 0 | 0 | 5371 | 5371 | 0 |
 | lightning_channel_funding (Lightning channel funding output (control group)) | yes | 0 | 0 | 0 | 3518 | 0 | 0 |
 | generic_bip67_multisig (Generic BIP67 sorted multisig (control group)) | yes | 0 | 0 | 0 | 1404 | 1404 | 0 |
+| liana (Liana (miniscript inheritance wallet, control group)) | yes | 0 | 0 | 0 | 203 | 0 | 0 |
 
 ## Ambiguity report
 
@@ -84,7 +85,7 @@ Coverage note: the registry records only Green's optimized CSV layout. The libwa
 
 ## Same-shape buckets (necessary, not sufficient)
 
-Every script that ends at grade E or in an ambiguity group is bucketed by (template_l3, threshold, n_keys, keys_sorted, source, sorted timelock values). Buckets are a same-PROVIDER hypothesis generator only: one provider with per-wallet keys splits into many buckets, and generic shapes merge unrelated providers into one bucket. 1853 buckets exist in total; every one is exported with size, distinct key count, height span and registry-match status in reports/attribution_buckets.json. Top 15 by size:
+Every script that ends at grade E or in an ambiguity group is bucketed by (template_l3, threshold, n_keys, keys_sorted, source, sorted timelock values). Buckets are a same-PROVIDER hypothesis generator only: one provider with per-wallet keys splits into many buckets, and generic shapes merge unrelated providers into one bucket. 1851 buckets exist in total; every one is exported with size, distinct key count, height span and registry-match status in reports/attribution_buckets.json. Top 15 by size:
 
 | n_scripts | source | template | k/n | sorted | CSV values | distinct keys | seen | registry match |
 |---|---|---|---|---|---|---|---|---|

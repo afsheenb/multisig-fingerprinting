@@ -1,6 +1,6 @@
 {
  "note": "same-shape buckets over grade-E and ambiguous scripts; necessary, not sufficient, for same-provider identification",
- "n_buckets": 1853,
+ "n_buckets": 1851,
  "buckets": [
   {
    "template_l3": "<P> OP_CHECKSIG <D> OP_IF <D> <D> <D> <D> <D> OP_ENDIF",
@@ -368,21 +368,6 @@
    "n_distinct_keys": 202,
    "first_seen_height": 849725,
    "last_seen_height": 883488,
-   "any_registry_match": false,
-   "matching_providers": [],
-   "matching_controls": []
-  },
-  {
-   "template_l3": "<P> OP_CHECKSIG <P> 0xba OP_2 OP_NUMEQUAL",
-   "threshold": null,
-   "n_keys": 2,
-   "keys_sorted": null,
-   "source": "taproot_leaf",
-   "timelock_values": [],
-   "n_scripts": 202,
-   "n_distinct_keys": 205,
-   "first_seen_height": 896014,
-   "last_seen_height": 966836,
    "any_registry_match": false,
    "matching_providers": [],
    "matching_controls": []
@@ -11041,21 +11026,6 @@
    "n_distinct_keys": 0,
    "first_seen_height": 954288,
    "last_seen_height": 954288,
-   "any_registry_match": false,
-   "matching_providers": [],
-   "matching_controls": []
-  },
-  {
-   "template_l3": "<D> OP_DROP <P> OP_CHECKSIG <P> 0xba OP_2 OP_NUMEQUAL",
-   "threshold": null,
-   "n_keys": 2,
-   "keys_sorted": null,
-   "source": "taproot_leaf",
-   "timelock_values": [],
-   "n_scripts": 1,
-   "n_distinct_keys": 2,
-   "first_seen_height": 930585,
-   "last_seen_height": 930585,
    "any_registry_match": false,
    "matching_providers": [],
    "matching_controls": []
