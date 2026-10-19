@@ -149,6 +149,253 @@ Onramp's documented 2-of-3 quorum is structurally identical to plain BitGo's uns
 
 These are CANDIDATE institutional keys, grade B pending authentication: no registry entry authenticates any of them, so they raise no script above its current grade and generate no attribution edge. Keys recurring across the whole study window with a single template are the strongest same-implementation signal the corpus can produce without a provider-published key.
 
+## Behavioral enrichment
+
+This section layers spend-behavior evidence on the same-shape buckets:
+which key positions actually sign, how deposits arrive, how spending
+transactions are batched, and which keys cross bucket shapes. It was
+produced by `msfp/enrich.py` (run `./venv/bin/python -m msfp enrich`);
+the full machine output is in reports/enrichment.json.
+
+Method and reading rules:
+
+- Data comes from the corpus database (76,435 revealed scripts,
+  161,968 script observations, witness stacks of all 1,303,573 inputs)
+  plus the permanent mempool.space cache. Fresh network requests were
+  made only where a bucket's verified sample was empty or for deposit
+  address histories not yet cached: 253 requests in total, each
+  recorded in mempool_ledger, each response cached permanently.
+  Reruns are cache-only (0 fresh requests).
+- Buckets profiled: the Green C-grade family and the 10 largest
+  D-grade buckets (the Onramp-candidate unsorted 2-of-3 buckets are
+  among them). Signature positions are provable only on verified
+  spends; signature counts and sighash bytes come from every stored
+  observation.
+- A bucket is still a same-SHAPE population. Operator-looking clusters
+  inside a bucket are hypotheses, not attributions. The false-positive
+  rate of every behavioral signal is UNKNOWN. A template NEVER implies
+  an owner.
+- Verifier fix: during this pass a defect was found and fixed in
+  `verify_input_ecdsa` (flat multi-key templates consume witness
+  signatures in reverse push order; see docs/api_notes.md). The 38
+  affected validation rows were re-verified from cache; without the
+  fix, one signature of each Green family spend would have been
+  silently reported as unverified.
+
+### Per-bucket signer profiles
+
+Raw counts. "position combos" = verified (signature_present ->
+key position) pairs per input over stored validation results plus
+fresh sampled verification; a single letter pair like "0,2" means
+signatures verified at script positions 0 and 2.
+
+| Bucket | scripts | obs | spend txs | sigs/spend | scheme | verified position combos |
+|---|---|---|---|---|---|---|
+| Green CSV family (C) | 430 | 550 | 239 | 1: 95, 2: 455 | ECDSA only | 0: 1, 0,1: 3 (+ 8 sampled two-sig spends, all 0,1) |
+| p2wsh 2/3 unsorted | 14564 | 18759 | 4536 | 2: 18759 | ECDSA only | 0,2: 64, 0,1: 14 |
+| p2wsh 2/3 sorted | 5371 | 7210 | 2407 | 2: 7210 | ECDSA only | 0,2: 25, 0,1: 11, 1,2: 8 |
+| p2sh 2/3 unsorted | 4863 | 6843 | 706 | 2: 6843 | ECDSA (scriptSig, witness n/a) | 0,1: 8, 0,2: 1 |
+| p2sh 2/3 sorted | 1404 | 1877 | 416 | 2: 1877 | ECDSA (scriptSig) | 0,1: 1, 0,2: 1 |
+| p2wsh 2/2 unsorted | 581 | 806 | 195 | 2: 806 | ECDSA only | 0,1: 2 |
+| taproot 2-key leaf | 102 | 120 | 12 | 2: 120 | Schnorr only | 2: 111 (script path, single key) |
+| p2wsh 3/5 sorted | 22 | 24 | 11 | 3: 24 | ECDSA only | 0,1,3: 1, 0,2,4: 1 |
+| p2sh 2/2 unsorted | 8 | 12 | 6 | 2: 12 | ECDSA (scriptSig) | 0,1: 10 |
+| p2sh 2/3 unsorted CSV | 6 | 7 | 1 | 2: 7 | ECDSA (scriptSig) | 0,1: 7 |
+
+Sighash discipline is uniform almost everywhere: ALL dominates (for
+example 37,496 of 37,518 signature items in the unsorted p2wsh 2-of-3
+bucket); the only exception found is 22 items with
+ANYONECANPAY|NONE (0x82) in the same bucket. No Schnorr signature
+appears outside taproot scripts, and no ECDSA signature appears in
+taproot spends: 0 exceptions over 161,968 observations.
+
+Highlights per bucket:
+
+- Green CSV family: two clearly separated signing behaviors. The 455
+  two-signature spends are the normal path: both signatures verify, at
+  positions 0 and 1, with version 2 transactions, sequence 0xfffffffd
+  (disabled, non-RBF), a nLockTime set to a recent block height, and
+  1 to 10 inputs. The 95 one-signature spends are the timelocked
+  recovery path: exactly one signature (position 0), the input
+  sequence set to the script's CSV value (51840: 90, 65535: 4,
+  25920: 1), executed_branch "false" recorded for all 95. Every
+  observed spend of the family fits one of the two paths: 0 outliers.
+- Unsorted p2wsh 2-of-3: the first signature is always at position 0
+  in the verified sample; the second is at position 2 in 64 of 78 and
+  position 1 in 14 of 78. The middle key almost never signs, which
+  matches a fixed-cosigner layout (see Onramp section below).
+- Sorted p2wsh 2-of-3: the verified pair varies across all three
+  combinations (0,1: 11, 0,2: 25, 1,2: 8). No stable quorum, so this
+  bucket is behaviorally heterogeneous: it almost certainly merges
+  several operators (its registry candidates are Casa, Nunchuk,
+  Onramp, Unchained and the DIY control group).
+- Legacy p2sh buckets: signatures live in the scriptSig, so the
+  witness scheme check does not apply; sighash types (from
+  script_observations) are 100% ALL.
+
+### Batching and operator patterns
+
+Transaction-level clusters per bucket (each spending tx counted once;
+shape = version, locktime zero, sequence class, input bin, output
+bin). Systematic shapes are operator hypotheses only.
+
+| Bucket | dominant tx shapes (top, by count) | txs with >50 inputs |
+|---|---|---|
+| Green CSV family | v2, locktime>0, disabled seq, 1 in / 2 out: 113; v2, 2-10 in / 2 out: 38; v2, 1 in / 1 out: 30 | 0 |
+| p2wsh 2/3 unsorted | v1, lt 0, disabled, 1 in / 2 out: 1188; same, all-final: 339 | 101 (up to 200 inputs) |
+| p2wsh 2/3 sorted | v1, lt 0, disabled, 1 in / 2 out: 319; v2, lt>0, disabled, 1 in / 2 out: 204 | 104 |
+| p2sh 2/3 unsorted | v1, lt 0, all-final, 2-10 in / >5 out: 95; 1 in / 2 out: 71 | 37 |
+| p2sh 2/3 sorted | v1, lt 0, all-final, 2-10 in / >5 out: 50; 11-50 in / >5 out: 46 | 36 |
+| p2wsh 2/2 unsorted | v1, lt 0, all-final, 1 in / 2 out: 78 | 4 |
+
+The two legacy p2sh 2-of-3 buckets share a distinctive processor
+fingerprint: version 1 transactions, locktime 0, all-final sequences,
+few inputs and many outputs (batch payouts). The two p2wsh 2-of-3
+buckets both contain a large consolidation cluster of more-than-50
+input transactions (101 and 104 txs) alongside a large population of
+single-input spends, so each of those buckets also merges at least two
+behavioral populations. The Green family is the cleanest
+single-operator shape in the corpus: one version, one sequence policy,
+one spend path plus its recovery path, no consolidation batches.
+
+### Deposit-side address history
+
+For the six largest buckets: 20 sampled spending transactions each,
+the deposit (prevout) addresses feeding their revealed inputs, then
+the mempool.space address history of 20 addresses per bucket. The
+/txs endpoint returns at most 50 confirmed txs per page, so heavy
+addresses saturate; counts are lower bounds.
+
+| Bucket | deposit inputs | distinct deposit addresses | reused across sampled spends | deposit types | addresses receiving in >1 tx (of 20) | first-seen spread (days) |
+|---|---|---|---|---|---|---|
+| Green CSV family | 49 | 48 | 1 | 100% p2sh | 2 | 897 |
+| p2wsh 2/3 unsorted | 59 | 58 | 1 | 26 p2sh / 33 v0_p2wsh | 14 | 1994 |
+| p2wsh 2/3 sorted | 24 | 20 | 2 | 22 v0_p2wsh / 2 p2sh | 5 | 1316 |
+| p2sh 2/3 unsorted | 169 | 161 | 7 | 100% p2sh | 13 | 1062 |
+| p2sh 2/3 sorted | 37 | 35 | 2 | 100% p2sh | 16 | 2555 |
+| p2wsh 2/2 unsorted | 22 | 21 | 1 | 100% p2sh | 14 | 2499 |
+
+- Green deposits arrive on one-time nested P2SH-P2WSH addresses with
+  almost no reuse (1 of 49 reused across sampled spends, no batched
+  inflows, max 1 output per deposit tx). This is per-wallet address
+  behavior, consistent with a consumer wallet product.
+- The p2sh 2-of-3 buckets show the opposite: heavy address reuse (13
+  and 16 of 20 addresses receive in multiple txs), deposit values in
+  the sample almost never round numbers, and the longest-lived
+  populations (first-seen spread up to 2,555 days). Reuse plus batch
+  payouts is an exchange-custody behavior, which weakens a pure
+  "collaborative custody provider" reading of those buckets.
+- Batched inflows (2+ outputs to the same address in one tx) are rare
+  everywhere: max observed 3 outputs in one tx (p2sh 2/3 unsorted).
+
+### Crossover detection
+
+Weak (template-level): the bucket scripts carry 80,099 distinct
+pubkeys in total. Only 7 keys appear in scripts of two or more
+buckets, and every one of the 7 stays within the 2-of-3 multisig
+variants (sorted/unsorted, p2sh/p2wsh); none crosses into the Green
+CSV family, the taproot bucket, the 3-of-5 or any other shape. Each of
+the 7 keys sits at a FIXED position in all its scripts while its
+co-keys are all fresh (exactly 2 distinct co-keys per script, zero
+repetition), the fixed-cosigner signature described below.
+
+Strong (signature-level): mapping verified signature positions to
+script keys across the 2,154 stored validation results, no key has its
+signature verified in spends of two differently-shaped buckets: 0
+strong crossovers. The verified sample is small relative to the
+corpus, so absence here is absence of evidence, not evidence of
+absence.
+
+The weak crossovers are still informative: they are exactly what a
+cosigner service whose customers migrate between script forms (P2SH to
+P2WSH, unsorted to sorted) would produce, and they identify three
+fixed-cosigner key populations, not two:
+
+| key (prefix) | scripts | fixed position | distinct co-keys | shapes |
+|---|---|---|---|---|
+| 033f67b465... | 84 | 1 (all) | 168 (2.0/script) | p2wsh 2/3 unsorted 64 + sorted 20 |
+| 03c96d495b... | 77 | 2 (60), 1 (15), 0 (2) | 154 (2.0/script) | p2sh 2/3 sorted 71 + p2wsh sorted 5 |
+| 03a553e307... | 40 | 1 (all) | 80 (2.0/script) | p2sh 2/3 unsorted 32 + sorted 8 |
+| 0374f3e239... | 14 | 2 (8), 1 (4), 0 (2) | 28 (2.0/script) | p2wsh sorted 11 + unsorted 1 |
+| 02886d88e0... | 4 | 1 (all) | 8 (2.0/script) | p2wsh 2/3 unsorted 3 + sorted 1 |
+| 03e7e00ea5... | 4 | 1 (all) | 5 (1.25/script) | p2sh 2/3 unsorted 4 |
+| 03f01a388a... | 4 | 2 (all) | 5 (1.25/script) | p2sh 2/3 unsorted 4 |
+
+### Onramp cosigner hardening
+
+The two recurring candidate keys of the unsorted 2-of-3 bucket were
+tested against the multi-institution hypothesis (a fixed institution
+cosigner while the other quorum positions rotate per customer
+account):
+
+- 033f67b465...: 64 unsorted 2-of-3 scripts, always at position 1;
+  the other two positions carry 128 distinct keys, exactly 2 fresh
+  keys per script, with zero repetition of any co-key pair across the
+  64 scripts.
+- 03a553e307...: 32 unsorted 2-of-3 scripts, always at position 1;
+  64 distinct co-keys, exactly 2 per script, zero repetition.
+- The two candidates never appear in the same script (0 of 96).
+- Both keys also appear at the same fixed position in SORTED 2-of-3
+  scripts (20 and 8 respectively), the migration crossover noted
+  above.
+- In the bucket's verified spends, the second signature is at
+  position 1 (the cosigner slot) in 14 of 78 inputs and at position 2
+  in 64 of 78: the fixed-position key does sign, but only for the
+  minority of spends in the sample.
+
+Verdict: the data is CONSISTENT with a per-account institution key
+with full rotation of the other two slots, and equally consistent with
+any service that fixes one per-platform key inside per-wallet quorums
+(the BitGo user/backup/bitgo layout produces the same shape). The
+behavioral evidence hardens "these are two institutional cosigner
+populations, plus a third one (03c96d495b...) in the sorted p2sh
+bucket", but grade stays B-PENDING for all three: no first-party
+source ties any of these keys to Onramp or to any other named
+provider, and a fixed-position key is not a name.
+
+### Effect on bucketing confidence
+
+- green_csv_family: RAISED. Every one of the 550 observed spends fits
+  the same two-path behavioral profile (normal path + CSV recovery
+  path) with zero outliers, and deposits show per-wallet one-time
+  addresses. The single-operator reading of the 430 C-grade scripts is
+  now behaviorally supported; what is missing for grade B/A is
+  unchanged: a first-party key disclosure (Green published its legacy
+  v0 service key, which appears in 0 corpus scripts, so the published
+  key alone cannot anchor these).
+- p2sh 2/3 unsorted and sorted: RAISED toward "exchange-style
+  custody operator" and AWAY from "collaborative multisig provider":
+  batch payout shapes, heavy deposit address reuse, long wallet
+  lifetimes. This lowers confidence that Onramp/Unchained/BitGo
+  template matches describe consumer wallets in these buckets.
+- p2wsh 2/3 unsorted: RAISED as a cosigner-service population: the
+  fixed middle key with fully rotating partners is exactly the
+  multi-institution cosigner shape, and it spans the whole study
+  window (heights 812688..971251). Still split into at least two
+  sub-populations by tx shape (consolidation batches vs single-input
+  spends), so it must not be treated as one wallet family.
+- p2wsh 2/3 sorted: LOWERED as a single-population hypothesis: no
+  stable signing quorum plus heterogeneous tx shapes means this bucket
+  merges unrelated operators (as its ambiguity flag already said).
+- taproot 2-key leaf, p2wsh 3/5 sorted, small p2sh buckets: too few
+  observations to move confidence in either direction.
+
+What would graduate a bucket to a named provider:
+
+- Grade B: a provider publishes (or is court/registry-documented as
+  publishing) a static script key that matches one of the 7
+  fixed-position keys above; the behavioral record then attaches
+  immediately (participation only, not ownership).
+- Grade A: a first-party txid or deposit address set: any single
+  verified txid from one of the buckets converts its scripts, and the
+  deposit-address fingerprints (type mix, reuse, batching, first-seen
+  spread) become the link between the published address and the
+  bucket.
+- Alternatively, provider-side data (customer quorum layout: which
+  position the provider's key occupies, whether co-keys rotate per
+  account) would confirm or refute the fixed-cosigner reading without
+  any on-chain artifact.
+
 ## What would change this report
 
 - Index or paid API access for prevout resolution: same-scriptPubKey reuse and spend-graph edges become observable, and deposit-side visibility stops being one-sided; signature-to-key edges scale beyond the 249 locally resolvable observations.
