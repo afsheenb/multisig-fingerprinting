@@ -7,10 +7,13 @@ providers' signing policies are observable on chain, whether institutional
 keys link otherwise unrelated wallets, and what business intelligence can
 be reconstructed from public chain data alone.
 
-All data comes from the Blockchair API free no-key tier. There is no
-Bitcoin node: blocks arrive as raw hex over HTTP and are decoded locally.
-Findings are graded by the evidence that supports them, from exact script
-hash matches down to statistical co-occurrence.
+All data comes from the Blockchair API free no-key tier, with
+mempool.space as a second keyless source for prevout resolution during
+signature verification (1 request/second, 30/minute, permanent cache,
+run stops on a sustained 429). There is no Bitcoin node: blocks arrive
+as raw hex over HTTP and are decoded locally. Findings are graded by
+the evidence that supports them, from exact script hash matches down
+to statistical co-occurrence.
 
 ## Interpretation rules
 

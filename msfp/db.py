@@ -97,6 +97,23 @@ CREATE TABLE IF NOT EXISTS api_ledger (
     note TEXT
 );
 
+CREATE TABLE IF NOT EXISTS mempool_ledger (
+    ledger_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ts_utc TEXT NOT NULL,
+    endpoint TEXT NOT NULL,
+    http_status INTEGER,
+    note TEXT
+);
+
+CREATE TABLE IF NOT EXISTS validation_results (
+    input_id INTEGER PRIMARY KEY REFERENCES inputs(input_id),
+    commitment_status TEXT NOT NULL,   -- ok | failed | not_verifiable | not_applicable
+    signatures_present INTEGER,
+    signatures_verified INTEGER,
+    verified_key_positions_json TEXT,
+    verified_via TEXT NOT NULL         -- ecdsa_bip143 | taproot_key | taproot_script
+);
+
 CREATE TABLE IF NOT EXISTS plan (
     height INTEGER PRIMARY KEY,
     strategy TEXT NOT NULL,            -- random | regular | manual

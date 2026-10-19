@@ -122,7 +122,9 @@ def taproot_sigmsg(tx, input_index, utxos, leaf_script=None,
             _push_bytes(out.scriptPubKey)).digest()
 
     if ext_flag == 1:
-        buf += _push_bytes(leaf_script)
+        # TapLeaf hash: tagged_hash("TapLeaf", leaf_version || push(leaf)).
+        # The SigMsg carries this digest, never the script bytes.
+        buf += tapleaf_hash(leaf_script, leaf_version)
         buf += bytes([key_version])
         buf += codesep_pos.to_bytes(4, "little")
 
@@ -424,6 +426,358 @@ def run_validation(config, conn, count=20):
     if stats["failures"]:
         print("failures: %s" % json.dumps(stats["failures"], indent=2))
     return stats
+
+
+# -- mempool.space-resolved validation ---------------------------------------------
+
+def _tx_from_mempool_json(t):
+    """Rebuild a CTransaction from a mempool.space /tx JSON object.
+
+    Used when the response carries no raw hex (the esplora shape): every
+    field the sighash needs (version, locktime, prevouts, sequences,
+    scriptSigs, witness stacks, outputs) is present in the JSON.
+    """
+    from bitcoin.core import (
+        CMutableTransaction, CMutableTxIn, CMutableTxOut, COutPoint,
+        CTxInWitness, CScriptWitness, CTxWitness, lx,
+    )
+    from bitcoin.core.script import CScript
+
+    vin = []
+    for v in t["vin"]:
+        txin = CMutableTxIn(
+            COutPoint(lx(v["txid"]), v["vout"]),
+            CScript(bytes.fromhex(v.get("scriptsig") or "")),
+            v.get("sequence", 0xFFFFFFFF),
+        )
+        vin.append(txin)
+    vout = [
+        CMutableTxOut(o["value"], CScript(bytes.fromhex(o["scriptpubkey"])))
+        for o in t["vout"]
+    ]
+    tx = CMutableTransaction(vin, vout, t.get("locktime", 0),
+                             t.get("version", 2))
+    stacks = []
+    for v in t["vin"]:
+        stacks.append(CTxInWitness(CScriptWitness(
+            [bytes.fromhex(item) for item in v.get("witness") or []])))
+    tx.wit = CTxWitness(stacks)
+    return tx
+
+
+def _real_txid(data_dir, wtxid, height):
+    """True txid for a corpus-stored transaction identifier.
+
+    decode.py stores tx.GetHash(), which for segwit transactions is the
+    witness-inclusive hash (wtxid semantics), not the txid used by the
+    outside world. The cached raw blocks carry both: GetTxid() recovers
+    the real txid from the same deserialized transaction. Returns None
+    when the block is not cached or the identifier is not in it.
+    """
+    idx = _block_tx_index(data_dir, height)
+    if idx is None:
+        return None
+    tx = idx.get(wtxid)
+    if tx is None:
+        return None
+    return b2lx(tx.GetTxid())
+
+
+def run_validation_mempool(config, conn, count=1000):
+    """Prevout-resolved validation via the mempool.space REST API.
+
+    Selects one script-revealing observation per spending transaction,
+    spread across the study window (a stride over distinct txids walking
+    newest-first), resolves each spending transaction's real txid from
+    the cached raw block (corpus identifiers are witness-inclusive for
+    segwit transactions; see _real_txid), then fetches GET /tx/{txid}
+    once per transaction — the response carries every input's prevout
+    scriptPubKey and value — and verifies script commitments, ECDSA
+    signatures (BIP143) for P2SH/P2WSH inputs, and full Taproot
+    verification (BIP341 sighash + BIP340 Schnorr, key-path against the
+    P2TR prevout key, script-path against the leaf keys) for taproot
+    inputs.
+
+    Results land in validation_results so a rerun skips already
+    validated inputs; requests dedupe through the permanent cache. A
+    persistent 429 stops the run cleanly with progress persisted.
+    """
+    from .mempool import MempoolClient, MempoolThrottled
+
+    client = MempoolClient(config, conn)
+
+    total_txids = conn.execute(
+        "SELECT COUNT(DISTINCT i.txid) AS c "
+        "FROM script_observations o "
+        "JOIN inputs i ON i.input_id=o.input_id "
+        "JOIN revealed_scripts s ON s.script_sha256=o.script_sha256 "
+        "WHERE s.source IN ('p2sh_redeem','p2wsh_witness','taproot_leaf')"
+    ).fetchone()["c"]
+    stride = max(1, total_txids // max(count, 1))
+    print("selecting %d of %d distinct spending txids (stride %d), "
+          "spread newest-first across the study window" % (count, total_txids,
+                                                           stride))
+
+    done = set(row["input_id"] for row in conn.execute(
+        "SELECT input_id FROM validation_results"))
+
+    selected = []
+    seen_txids = set()
+    txid_rank = 0
+    stats = {
+        "inputs_checked": 0, "commit_ok": 0, "commit_fail": 0,
+        "commit_not_verifiable": 0, "sig_present": 0, "sig_verified": 0,
+        "txs_fetched": 0, "requests_made": 0, "throttled": False,
+        "ecdsa_inputs": 0, "taproot_inputs": 0,
+        "taproot_key_path_ok": 0, "taproot_script_path_ok": 0,
+        "taproot_leaf_mismatch": 0, "by_form": {}, "failures": [],
+    }
+    # Done and locally-unresolvable txids free their stride slot, so a
+    # rerun always validates fresh inputs instead of re-walking the top
+    # of the window.
+    todo = []
+    for r in conn.execute(
+        "SELECT o.input_id, i.txid, i.input_index, i.prevout_txid, "
+        "i.prevout_n, i.input_form, i.block_height, s.script_hex, s.source "
+        "FROM script_observations o "
+        "JOIN inputs i ON i.input_id=o.input_id "
+        "JOIN revealed_scripts s ON s.script_sha256=o.script_sha256 "
+        "WHERE s.source IN ('p2sh_redeem','p2wsh_witness','taproot_leaf') "
+        "ORDER BY i.block_height DESC, o.input_id DESC"
+    ):
+        if r["txid"] in seen_txids:
+            continue
+        seen_txids.add(r["txid"])
+        if r["input_id"] in done:
+            continue
+        txid_rank += 1
+        if (txid_rank - 1) % stride:
+            continue
+        real_txid = _real_txid(config.data_dir, r["txid"], r["block_height"])
+        if real_txid is None:
+            stats["failures"].append(
+                {"txid": r["txid"], "block_height": r["block_height"],
+                 "what": "real txid not resolvable (spending block raw "
+                         "not cached or identifier absent)"})
+            txid_rank -= 1
+            continue
+        selected.append((r, real_txid))
+        if len(selected) >= count:
+            break
+    todo = selected
+    print("%d inputs to validate (%d already stored in validation_results)"
+          % (len(todo), len(done)))
+
+    def _bump(form, key, value=1):
+        form_stats = stats["by_form"].setdefault(form, {
+            "inputs": 0, "commit_ok": 0, "commit_fail": 0,
+            "commit_not_verifiable": 0, "sig_present": 0, "sig_verified": 0,
+            "verified_inputs": 0})
+        form_stats[key] += value
+
+    try:
+        for n, (r, real_txid) in enumerate(todo):
+            if n and n % 100 == 0:
+                print("... %d/%d inputs; %d tx fetches; sigs %d/%d verified"
+                      % (n, len(todo), stats["txs_fetched"],
+                         stats["sig_verified"], stats["sig_present"]))
+            try:
+                payload = client.tx(real_txid)
+                stats["txs_fetched"] += 1
+            except MempoolThrottled:
+                stats["throttled"] = True
+                print("STOPPING cleanly: mempool.space throttled the run "
+                      "past the backoff ladder at input %d/%d; progress is "
+                      "persisted and a rerun resumes from validation_results"
+                      % (n, len(todo)))
+                break
+            except Exception as exc:
+                stats["failures"].append({"txid": real_txid,
+                                          "what": "tx fetch failed: %s" % exc})
+                continue
+
+            vin = payload.get("vin") or []
+            if r["input_index"] >= len(vin):
+                stats["failures"].append(
+                    {"txid": real_txid, "input_index": r["input_index"],
+                     "what": "input_index out of range in fetched tx"})
+                continue
+            prevout = vin[r["input_index"]].get("prevout")
+            if not prevout:
+                stats["failures"].append(
+                    {"txid": real_txid, "input_index": r["input_index"],
+                     "what": "fetched vin has no prevout"})
+                continue
+
+            utxos = []
+            for v in vin:
+                po = v.get("prevout")
+                if po:
+                    utxos.append((po["value"],
+                                  bytes.fromhex(po["scriptpubkey"])))
+                else:  # coinbase or malformed; never a selected input
+                    utxos.append((0, b""))
+
+            if payload.get("hex"):
+                tx = CTransaction.deserialize(bytes.fromhex(payload["hex"]))
+            else:
+                tx = _tx_from_mempool_json(payload)
+            if b2lx(tx.GetTxid()) != real_txid:
+                stats["failures"].append(
+                    {"txid": real_txid,
+                     "what": "rebuilt tx txid does not match the requested "
+                             "txid"})
+                continue
+
+            script_bytes = bytes.fromhex(r["script_hex"])
+            spk = bytes.fromhex(prevout["scriptpubkey"])
+            value = prevout["value"]
+            commit = check_commitment(script_bytes, spk)
+
+            form = r["input_form"]
+            source = r["source"]
+            key_positions = []
+            via = None
+            verified_input = False
+            try:
+                if source == "taproot_leaf":
+                    summary = verify_input_taproot(tx, r["input_index"],
+                                                   utxos)
+                    via = "taproot_" + summary.get("path", "unknown")
+                    key_positions = summary.get("verified_key_positions") \
+                        or []
+                    verified_input = summary.get("signatures_verified", 0) > 0
+                    if summary.get("path") == "key":
+                        stats["taproot_key_path_ok"] += \
+                            summary.get("signatures_verified", 0)
+                    elif summary.get("path") == "script":
+                        stats["taproot_script_path_ok"] += \
+                            summary.get("signatures_verified", 0)
+                        leaf = _witness_leaf_hex(tx, r["input_index"])
+                        if leaf is not None and leaf != r["script_hex"]:
+                            stats["taproot_leaf_mismatch"] += 1
+                            stats["failures"].append(
+                                {"txid": real_txid,
+                                 "input_index": r["input_index"],
+                                 "what": "witness leaf script differs from "
+                                         "the stored revealed script"})
+                    sig_present = summary.get("signatures_present", 0)
+                    sig_verified = summary.get("signatures_verified", 0)
+                    if "error" in summary:
+                        stats["failures"].append(
+                            {"txid": real_txid,
+                             "input_index": r["input_index"],
+                             "what": "taproot verify error: %s"
+                                     % summary["error"]})
+                else:
+                    summary = verify_input_ecdsa(tx, r["input_index"],
+                                                 script_bytes, value)
+                    via = "ecdsa_bip143"
+                    key_positions = [v["key_index"]
+                                     for v in summary.get("verified", [])]
+                    sig_present = summary["signatures_present"]
+                    sig_verified = summary["signatures_verified"]
+                    verified_input = sig_verified > 0
+                    stats["ecdsa_inputs"] += 1
+            except Exception as exc:
+                # Leave this input unstored: a rerun will re-attempt it.
+                stats["failures"].append(
+                    {"txid": real_txid, "input_index": r["input_index"],
+                     "what": "verification error: %s" % exc})
+                continue
+
+            stats["inputs_checked"] += 1
+            _bump(form, "inputs")
+            if source == "taproot_leaf":
+                stats["taproot_inputs"] += 1
+            if commit is True:
+                stats["commit_ok"] += 1
+                _bump(form, "commit_ok")
+            elif commit is False:
+                stats["commit_fail"] += 1
+                _bump(form, "commit_fail")
+                stats["failures"].append(
+                    {"txid": real_txid, "input_index": r["input_index"],
+                     "what": "commitment"})
+            else:
+                stats["commit_not_verifiable"] += 1
+                _bump(form, "commit_not_verifiable")
+            stats["sig_present"] += sig_present
+            stats["sig_verified"] += sig_verified
+            _bump(form, "sig_present", sig_present)
+            _bump(form, "sig_verified", sig_verified)
+            if verified_input:
+                _bump(form, "verified_inputs")
+
+            conn.execute(
+                "INSERT OR REPLACE INTO validation_results(input_id, "
+                "commitment_status, signatures_present, signatures_verified, "
+                "verified_key_positions_json, verified_via) "
+                "VALUES(?,?,?,?,?,?)",
+                (r["input_id"], ("ok" if commit is True else
+                                 "failed" if commit is False else
+                                 str(commit)),
+                 sig_present, sig_verified,
+                 json.dumps(key_positions), via))
+            if n % 50 == 0:
+                conn.commit()
+    finally:
+        conn.commit()
+
+    stats["requests_made"] = conn.execute(
+        "SELECT COUNT(*) AS c FROM mempool_ledger").fetchone()["c"]
+    conn.executemany(
+        "INSERT OR REPLACE INTO meta(key, value) VALUES(?,?)",
+        [("validation_mempool_inputs", str(stats["inputs_checked"])),
+         ("validation_mempool_commit_ok", str(stats["commit_ok"])),
+         ("validation_mempool_commit_fail", str(stats["commit_fail"])),
+         ("validation_mempool_commit_not_verifiable",
+          str(stats["commit_not_verifiable"])),
+         ("validation_mempool_sig_present", str(stats["sig_present"])),
+         ("validation_mempool_sig_verified", str(stats["sig_verified"])),
+         ("validation_mempool_taproot_key_path_ok",
+          str(stats["taproot_key_path_ok"])),
+         ("validation_mempool_taproot_script_path_ok",
+          str(stats["taproot_script_path_ok"])),
+         ("validation_mempool_throttled",
+          "1" if stats["throttled"] else "0")])
+    conn.commit()
+
+    print("mempool validation: %d inputs over %d tx fetches; commitments "
+          "%d ok / %d FAILED / %d not verifiable; ECDSA inputs %d; "
+          "taproot inputs %d (key-path verified %d, script-path verified "
+          "%d); signatures %d/%d verified"
+          % (stats["inputs_checked"], stats["txs_fetched"],
+             stats["commit_ok"], stats["commit_fail"],
+             stats["commit_not_verifiable"], stats["ecdsa_inputs"],
+             stats["taproot_inputs"], stats["taproot_key_path_ok"],
+             stats["taproot_script_path_ok"], stats["sig_verified"],
+             stats["sig_present"]))
+    for form, fs in sorted(stats["by_form"].items()):
+        print("  %-22s inputs %5d  commit %4d ok / %3d failed / %4d nv; "
+              "sigs %5d/%5d verified; fully verified inputs %d"
+              % (form, fs["inputs"], fs["commit_ok"], fs["commit_fail"],
+                 fs["commit_not_verifiable"], fs["sig_verified"],
+                 fs["sig_present"], fs["verified_inputs"]))
+    if stats["failures"]:
+        print("failures (%d): %s" % (len(stats["failures"]),
+              json.dumps(stats["failures"][:20], indent=2)))
+    return stats
+
+
+def _witness_leaf_hex(tx, input_index):
+    """Hex of the revealed tapleaf script inside the witness stack, or
+    None when the stack shape does not carry one."""
+    if not (tx.wit.vtxinwit and input_index < len(tx.wit.vtxinwit)):
+        return None
+    stack = [bytes(i) for i in
+             tx.wit.vtxinwit[input_index].scriptWitness.stack]
+    if len(stack) < 2:
+        return None
+    items = list(stack)
+    if len(items) >= 2 and len(items[-1]) >= 1 and items[-1][0] == 0x50:
+        items = items[:-1]
+    return items[-2].hex()
 
 
 # -- local (zero-point) validation ------------------------------------------------

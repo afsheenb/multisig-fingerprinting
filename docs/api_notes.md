@@ -1,9 +1,14 @@
-# Blockchair API notes (observed behavior, no-key tier)
+# API notes (observed behavior, no-key tier)
+
+Part 1 is Blockchair. Part 2 is mempool.space, added 2026-10-18 as the
+second prevout-resolution source.
 
 Everything here is what we measured on the free no-key tier on
 2026-10-18 from this host, not what the docs claim. Costs are the
 `context.request.cost` values returned by the API (authoritative);
 our config estimates match so far.
+
+# Blockchair (observed behavior, no-key tier)
 
 ## Documented vs observed
 
@@ -158,3 +163,79 @@ and are recorded automatically.
    before an index probe.
 3. Does an API key change any of this? (Only answerable if a key is
    ever authorized; out of scope by default.)
+
+# mempool.space API (observed behavior, keyless)
+
+Measured 2026-10-18/19 from this host against `https://mempool.space/api`
+(esplora-style REST; the service documents no API key, HTTP 429 rate
+limiting, and possible bans for repeated abuse). Every request is
+recorded in the `mempool_ledger` table and every response body is
+cached permanently under `data/cache_mempool/` keyed by URL path, so
+confirmed-transaction responses are never downloaded twice.
+
+## Endpoints probed and field shapes
+
+- `GET /tx/{txid}` — full transaction JSON. Per input: `txid`/`vout`
+  (prevout pointer), `prevout` containing `scriptpubkey` (hex),
+  `scriptpubkey_type`, `scriptpubkey_address`, and `value` in sats,
+  plus `witness` as an array of hex items and
+  `inner_witnessscript_asm` on segwit inputs. Per output: the same
+  script fields plus `value`. Top level carries `fee`, `size`,
+  `weight`, `version`, `locktime`, `status` (with `confirmed`,
+  `block_height`, `block_hash`, `block_time`). There is NO raw
+  transaction `hex` field on this endpoint; the tx is rebuilt locally
+  from the JSON (`msfp/verify.py:_tx_from_mempool_json`) and the
+  rebuilt txid is checked against the requested one.
+- `GET /address/{address}/txs` — up to 50 confirmed chain txs per
+  page, same per-tx shape as `/tx/` including full `prevout` objects
+  on every input and the `status` block. Sufficient for spot checks;
+  the study's prevout resolution uses `/tx/` per spending txid.
+
+## Throttling behavior
+
+No HTTP 429 has ever been observed from this host. All traffic so far
+went through the client at 1 request/second and 30 requests/minute
+(both enforced by `msfp/mempool.py`, defaults mirrored in
+`config.toml.example`). The client's throttle handling is written but
+unexercised: a 429 is backed off 5/15/45 seconds with every attempt
+recorded in the ledger, and if it still answers 429 the run stops
+cleanly (`MempoolThrottled`, exit code 2) instead of pushing through.
+One 404 was observed and recorded (see the txid anomaly below); 404
+is an unexpected status for the client, not a retry case, and the
+response is not cached.
+
+## Transport: Python HTTP stacks are tarpitted to this service
+
+Python `requests` and raw stdlib sockets both take ~70 seconds or
+worse per response to mempool.space from this host (sometimes minutes),
+while `curl` answers the same URL in ~0.25 s. User-Agent and IPv4/IPv6
+ordering changes had no effect, so the client shells out to `curl` per
+request. The limiter, ledger, retry ladder, and cache are all
+transport-independent, so this costs nothing in discipline.
+
+## The corpus txid field holds wtxids for segwit transactions
+
+The first `/tx/` probe returned 404 for a confirmed corpus txid. Root
+cause is local, not the service: `msfp/decode.py` stores
+`CTransaction.GetHash()`, which for segwit transactions is the
+wtxid (hash including witness data), not the txid. 522 of 4339 txs in
+a spot-checked block (971251) matched the service's txid list; the
+witness-bearing ones did not. Corpus-internal joins stay consistent
+because the same wrong value is used everywhere in the corpus, but any
+external lookup needs the real txid. `msfp/verify.py:_real_txid`
+resolves it from the already-cached raw block for the input's height
+(`CTransaction.GetTxid()`); inputs whose block is not locally cached
+cannot be resolved and are logged as failures rather than fetched,
+which keeps the mempool client's request count bounded by the
+validation plan. This is a decode-layer defect worth its own fix; the
+resolution path only papers over it for blocks we already hold.
+
+## Verification observations
+
+mempool.space responses carry everything needed for full signature
+verification, which Blockchair's no-key tier never provided (its
+raw-transaction endpoint is soft-blocked; see above): witness stacks
+and all prevout (amount + scriptPubKey) pairs per input. The
+validation run over this source found and fixed a real defect in the
+local BIP-341 script-path SigMsg (the TapLeaf digest was replaced by
+the raw leaf script); key-path vectors had never exercised that branch.

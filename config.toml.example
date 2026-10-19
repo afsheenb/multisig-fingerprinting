@@ -29,6 +29,17 @@ cost_unknown = 10
 throttle_cooldown_seconds = 300
 max_throttles_per_run = 3
 
+# mempool.space: the second data source, used for prevout resolution on
+# confirmed transactions (one GET /tx/{txid} carries every input's
+# prevout scriptPubKey and value). Free and keyless; the service
+# throttles with HTTP 429 and may ban repeated abuse, so the defaults
+# are deliberately slow and a persistent 429 stops the run. Confirmed-tx
+# responses are immutable, so their cache is permanent.
+[mempool]
+base_url = "https://mempool.space/api"
+requests_per_second = 1
+requests_per_minute = 30
+
 [storage]
 data_dir = "data"
 db_filename = "corpus.sqlite3"

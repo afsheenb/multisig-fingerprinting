@@ -107,6 +107,26 @@ def _tweaked_pair(internal_priv, merkle_root):
     return xonly, tweaked, tweaked_xonly
 
 
+def test_scriptpath_sighash_pinned_vector():
+    """Script-path SigMsg pinned against an independent BIP341
+    implementation (the SigMsg carries the TapLeaf HASH of the leaf
+    script, not the script bytes). A self-consistent sign/verify round
+    trip cannot catch this, so the digest is pinned here."""
+    leaf_script = bytes.fromhex(
+        "204d4b6cd1361032ca9bd2aeb9d900aa4d45d9ead80ac9423374c451a7254d076"
+        "6ac")
+    spk = b"\x51\x20" + b"\x33" * 32
+    tx = CMutableTransaction()
+    tx.nVersion = 2
+    tx.vin = [CMutableTxIn(COutPoint(b"\xaa" * 32, 0))]
+    tx.vout = [CMutableTxOut(5000, spk)]
+    utxos = [(10000, spk)]
+    sighash = verify.taproot_sighash(tx, 0, utxos, leaf_script=leaf_script,
+                                     hashtype=0x01)
+    assert sighash.hex() == (
+        "180aa6856f39185d5da588050ef253509776b98789c39baa8582577747113389")
+
+
 def test_scriptpath_roundtrip():
     """Synthetic taproot script-path spend: build, sign with the LEAF key
     (script-path signatures verify against the key in the leaf script,

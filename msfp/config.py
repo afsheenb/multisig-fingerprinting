@@ -27,6 +27,11 @@ DEFAULTS = {
         "throttle_cooldown_seconds": "300",
         "max_throttles_per_run": "3",
     },
+    "mempool": {
+        "base_url": "https://mempool.space/api",
+        "requests_per_second": "1",
+        "requests_per_minute": "30",
+    },
     "storage": {
         "data_dir": "data",
         "db_filename": "corpus.sqlite3",
@@ -69,6 +74,11 @@ class Config:
         }
         self.throttle_cooldown_seconds = int(get(bc, "throttle_cooldown_seconds"))
         self.max_throttles_per_run = int(get(bc, "max_throttles_per_run"))
+
+        mp = "mempool"
+        self.mempool_base_url = get(mp, "base_url").rstrip("/")
+        self.mempool_requests_per_second = int(get(mp, "requests_per_second"))
+        self.mempool_requests_per_minute = int(get(mp, "requests_per_minute"))
 
         st = "storage"
         root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

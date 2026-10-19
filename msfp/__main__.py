@@ -12,6 +12,8 @@ Commands map one-to-one onto the research phases:
     validate [--local]     resolve prevouts for a subset; verify commitments
                            and signatures where data allows (--local uses
                            only the corpus cache: zero points)
+    validate --mempool     full verification against mempool.space-resolved
+                           prevouts, taproot included
     classify               (re)classify stored scripts
     keyindex               build the public-key reuse index + components
     attribute              graded provider attribution against the registry
@@ -103,8 +105,20 @@ def cmd_validate(args):
         from .verify import run_validation_local
         run_validation_local(config, conn)
         return
+    if args.mempool:
+        from .verify import run_validation_mempool
+        from .mempool import MempoolThrottled
+        try:
+            run_validation_mempool(config, conn,
+                                   count=args.count if args.count
+                                   is not None else 1000)
+        except MempoolThrottled as exc:
+            print("mempool.space throttled: %s" % exc, file=sys.stderr)
+            sys.exit(2)
+        return
     from .verify import run_validation
-    run_validation(config, conn, count=args.count)
+    run_validation(config, conn, count=args.count if args.count is not None
+                   else 25)
 
 
 def cmd_classify(args):
@@ -155,10 +169,15 @@ def main(argv=None):
     p.set_defaults(func=cmd_scan)
 
     p = sub.add_parser("validate")
-    p.add_argument("--count", type=int, default=25)
+    p.add_argument("--count", type=int, default=None,
+                   help="sample size (default 1000 with --mempool, "
+                        "25 for the Blockchair path)")
     p.add_argument("--local", action="store_true",
                    help="verify against the local corpus cache only; "
                         "zero points, no network requests")
+    p.add_argument("--mempool", action="store_true",
+                   help="resolve prevouts via the mempool.space REST API "
+                        "and run full verification including taproot")
     p.set_defaults(func=cmd_validate)
 
     sub.add_parser("classify").set_defaults(func=cmd_classify)
