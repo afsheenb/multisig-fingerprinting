@@ -102,3 +102,37 @@ Observed endpoint behavior and the HTTP 430 timeline are documented in
 The suite runs BIP-0340 and BIP-0341 official test vectors plus synthetic
 signed-transaction tests, covering decoding, script classification, and
 signature verification.
+
+## Anonymous shared-key cohorts (offline)
+
+The `cohorts` command discovers anonymous implementation families **without
+knowing the custody provider's keys or identity**:
+
+    python -m msfp cohorts --graph-dir reports/graph --out-dir reports/cohorts
+
+It uses only the existing `nodes_script.csv` and `edges_key_in_script.csv`
+exports, with **zero Blockchair or mempool.space requests**, so it also works
+when the original `data/corpus.sqlite3` is unavailable. The included ZIP does
+not contain the SQLite corpus, but does contain both graph exports.
+
+Outputs:
+
+- `reports/cohorts/anonymous_cohorts.md`: human-readable findings and caveats.
+- `reports/cohorts/anonymous_cohorts.json`: machine-readable groups and metrics.
+- `reports/cohorts/cohort_script_members.csv`: exact script membership for each
+  key-anchored cohort, with stable content-derived cohort IDs.
+
+A *key-anchored cohort* means a public key occurs in at least five distinct
+CHECKMULTISIG scripts with the same quorum. Closely co-occurring repeated keys
+are consolidated to avoid triple-counting a fixed 3-of-4 institutional quorum.
+This is an **exact script-to-key relationship**, not a verified company or
+customer attribution. The report also distinguishes purely structural families
+that must never be equated with legal entities.
+
+The exported graph contains no per-observation transaction IDs or full
+validation records, so the cohort report **does not infer signer behavior**
+from signature byte order or claim that a key was the active signer. Join its
+script hashes with the local `script_observations` and `validation_results`
+tables to verify signing positions and build a transaction-based holdout set.
+
+Standalone tests: `python -m unittest tests.test_cohorts`.

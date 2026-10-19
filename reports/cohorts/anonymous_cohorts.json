@@ -1,0 +1,1432 @@
+{
+  "method": "anonymous shared-key cohorts; exact ECDSA pubkeys, quorum scope, >=5 distinct scripts per anchor",
+  "graph_dir": "reports/graph",
+  "n_standard_multisig_scripts": 39058,
+  "n_excluded_incomplete_scripts": 0,
+  "n_unique_pubkeys": 100724,
+  "n_anonymous_key_cohorts": 23,
+  "n_structural_groups": 45,
+  "counts_by_quorum": [
+    {
+      "threshold": 1,
+      "n_keys": 1,
+      "n_scripts": 3839,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 1,
+      "n_keys": 2,
+      "n_scripts": 248,
+      "n_scripts_in_hub_cohorts": 187,
+      "fraction_hub_linked": 0.754032
+    },
+    {
+      "threshold": 1,
+      "n_keys": 3,
+      "n_scripts": 15,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 1,
+      "n_keys": 4,
+      "n_scripts": 2,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 1,
+      "n_keys": 5,
+      "n_scripts": 1,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 2,
+      "n_keys": 2,
+      "n_scripts": 6361,
+      "n_scripts_in_hub_cohorts": 3743,
+      "fraction_hub_linked": 0.588429
+    },
+    {
+      "threshold": 2,
+      "n_keys": 3,
+      "n_scripts": 26208,
+      "n_scripts_in_hub_cohorts": 308,
+      "fraction_hub_linked": 0.011752
+    },
+    {
+      "threshold": 2,
+      "n_keys": 4,
+      "n_scripts": 527,
+      "n_scripts_in_hub_cohorts": 129,
+      "fraction_hub_linked": 0.244782
+    },
+    {
+      "threshold": 2,
+      "n_keys": 5,
+      "n_scripts": 24,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 2,
+      "n_keys": 6,
+      "n_scripts": 6,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 2,
+      "n_keys": 15,
+      "n_scripts": 1,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 3,
+      "n_keys": 3,
+      "n_scripts": 4,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 3,
+      "n_keys": 4,
+      "n_scripts": 1576,
+      "n_scripts_in_hub_cohorts": 114,
+      "fraction_hub_linked": 0.072335
+    },
+    {
+      "threshold": 3,
+      "n_keys": 5,
+      "n_scripts": 153,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 3,
+      "n_keys": 6,
+      "n_scripts": 18,
+      "n_scripts_in_hub_cohorts": 8,
+      "fraction_hub_linked": 0.444444
+    },
+    {
+      "threshold": 3,
+      "n_keys": 7,
+      "n_scripts": 3,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 3,
+      "n_keys": 8,
+      "n_scripts": 1,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 4,
+      "n_keys": 4,
+      "n_scripts": 2,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 4,
+      "n_keys": 6,
+      "n_scripts": 5,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 4,
+      "n_keys": 15,
+      "n_scripts": 2,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 5,
+      "n_keys": 6,
+      "n_scripts": 21,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    },
+    {
+      "threshold": 5,
+      "n_keys": 7,
+      "n_scripts": 41,
+      "n_scripts_in_hub_cohorts": 0,
+      "fraction_hub_linked": 0.0
+    }
+  ],
+  "sorted_2of3_mixture": {
+    "model": "two-component (always BIP67 sorted versus uniformly randomly ordered; exploratory only)",
+    "population": "native/segwit P2WSH revealed 2-of-3 scripts; distinct scripts",
+    "n_scripts": 19935,
+    "n_sorted": 5371,
+    "observed_sorted_fraction": 0.269426,
+    "estimated_deliberate_sorted_fraction": 0.123311,
+    "caveat": "This is NOT a provider count. Independence, uniform permutation, and representative sampling are unverified. Do not attribute individual sorted scripts."
+  },
+  "key_cohorts": [
+    {
+      "cohort_id": "cohort_8100366f6ef1",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "03a3af0f49a21d29106ebeef9b3c3d69fc375c856a7153d97156a5b7a161ca6c25",
+      "co_recurring_keys": [
+        "03a3af0f49a21d29106ebeef9b3c3d69fc375c856a7153d97156a5b7a161ca6c25"
+      ],
+      "n_distinct_scripts": 2221,
+      "n_jointly_shared_scripts": 2221,
+      "n_distinct_cosigner_sets": 2221,
+      "sources": {
+        "p2wsh_witness": 2221
+      },
+      "sorting": {
+        "sorted": 1812,
+        "unsorted": 409
+      },
+      "anchor_positions": {
+        "1": 2221
+      },
+      "all_repeated_key_positions": {
+        "03a3af0f49a21d29106ebeef9b3c3d69fc375c856a7153d97156a5b7a161ca6c25": {
+          "1": 2221
+        }
+      },
+      "first_height": 812688,
+      "last_height": 971251,
+      "n_distinct_first_seen_heights": 22,
+      "largest_same_height_batch": 343,
+      "example_scripts": [
+        "0037bfd452302c2140c9f076accedde0db404c02331a0a5ad6d95a9c131d6256",
+        "0043f7eb224dcaa26ef5fb93369f3f0c886dda63d795c91ac9bd16c6872dd7a5",
+        "0079a633fd208f3145ba4c3ae9288204534cd69d2836c20c03e6ad4316327bd0"
+      ]
+    },
+    {
+      "cohort_id": "cohort_885d3e6273c2",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "03beb36420d9845197c7255f48073b30cc5844800fba18f8dcf5b588d4c5783aed",
+      "co_recurring_keys": [
+        "03beb36420d9845197c7255f48073b30cc5844800fba18f8dcf5b588d4c5783aed"
+      ],
+      "n_distinct_scripts": 722,
+      "n_jointly_shared_scripts": 722,
+      "n_distinct_cosigner_sets": 722,
+      "sources": {
+        "p2wsh_witness": 722
+      },
+      "sorting": {
+        "sorted": 618,
+        "unsorted": 104
+      },
+      "anchor_positions": {
+        "1": 722
+      },
+      "all_repeated_key_positions": {
+        "03beb36420d9845197c7255f48073b30cc5844800fba18f8dcf5b588d4c5783aed": {
+          "1": 722
+        }
+      },
+      "first_height": 814663,
+      "last_height": 814663,
+      "n_distinct_first_seen_heights": 1,
+      "largest_same_height_batch": 722,
+      "example_scripts": [
+        "003a712f471fb761be7c917fa8cdf43587b092489b42d0d2d85b896aa97e9eb2",
+        "003e6d3a4d958fdc9660af24122e9472652da858c2d98ce6a5d0b541fd960a60",
+        "0063c6c0e6c51defcecb9574d4b3bfb716420f9cb74df846446687b9175a776c"
+      ]
+    },
+    {
+      "cohort_id": "cohort_1ffc3873cf35",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "026577aaa0a3b12c16cf6f42e8eb89d757dc80a66a4a9555f3c671840624969a32",
+      "co_recurring_keys": [
+        "026577aaa0a3b12c16cf6f42e8eb89d757dc80a66a4a9555f3c671840624969a32"
+      ],
+      "n_distinct_scripts": 406,
+      "n_jointly_shared_scripts": 406,
+      "n_distinct_cosigner_sets": 406,
+      "sources": {
+        "p2wsh_witness": 406
+      },
+      "sorting": {
+        "sorted": 67,
+        "unsorted": 339
+      },
+      "anchor_positions": {
+        "1": 406
+      },
+      "all_repeated_key_positions": {
+        "026577aaa0a3b12c16cf6f42e8eb89d757dc80a66a4a9555f3c671840624969a32": {
+          "1": 406
+        }
+      },
+      "first_height": 815680,
+      "last_height": 815680,
+      "n_distinct_first_seen_heights": 1,
+      "largest_same_height_batch": 406,
+      "example_scripts": [
+        "003b71aa6d8048b66caf24790a29c8d2d03e943b9438a4defe4f1a7cca0bdfa3",
+        "00e81ffa24bcfcdae526fd0f33605d55e5a5d3cb3bf4e84f9849a7757f9a95b0",
+        "010d9a01ccbd74dd19ce091a043b4cbd9d44c7da1bbc864b0f694ef430af5714"
+      ]
+    },
+    {
+      "cohort_id": "cohort_4cde8b95f31d",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "0390661cfc8a1601800c1194e02d4b2478dcf780079a731e75c9e497747101c39d",
+      "co_recurring_keys": [
+        "0390661cfc8a1601800c1194e02d4b2478dcf780079a731e75c9e497747101c39d"
+      ],
+      "n_distinct_scripts": 182,
+      "n_jointly_shared_scripts": 182,
+      "n_distinct_cosigner_sets": 182,
+      "sources": {
+        "p2wsh_witness": 182
+      },
+      "sorting": {
+        "sorted": 140,
+        "unsorted": 42
+      },
+      "anchor_positions": {
+        "1": 182
+      },
+      "all_repeated_key_positions": {
+        "0390661cfc8a1601800c1194e02d4b2478dcf780079a731e75c9e497747101c39d": {
+          "1": 182
+        }
+      },
+      "first_height": 819351,
+      "last_height": 819351,
+      "n_distinct_first_seen_heights": 1,
+      "largest_same_height_batch": 182,
+      "example_scripts": [
+        "000b8784893606e60b39788f504f33e53ddad47359b8881ae4e210aec4211a00",
+        "099e89dd7d6e16464eb6ea0a2466f6fa60db418f4ac1c1f655562fc42b16d10c",
+        "0a2de686dde7000052cb970cb6a808b1bff060e9b5345fd7938a55fc82775bcf"
+      ]
+    },
+    {
+      "cohort_id": "cohort_6182dd652730",
+      "threshold": 1,
+      "n_keys": 2,
+      "anchor_key": "030fc95478aa991d514722c9491362ab28017a2423e9758e43ba8c664011d8f1df",
+      "co_recurring_keys": [
+        "030fc95478aa991d514722c9491362ab28017a2423e9758e43ba8c664011d8f1df"
+      ],
+      "n_distinct_scripts": 175,
+      "n_jointly_shared_scripts": 175,
+      "n_distinct_cosigner_sets": 172,
+      "sources": {
+        "p2wsh_witness": 175
+      },
+      "sorting": {
+        "sorted": 89,
+        "unsorted": 86
+      },
+      "anchor_positions": {
+        "0": 88,
+        "1": 87
+      },
+      "all_repeated_key_positions": {
+        "030fc95478aa991d514722c9491362ab28017a2423e9758e43ba8c664011d8f1df": {
+          "0": 88,
+          "1": 87
+        }
+      },
+      "first_height": 840725,
+      "last_height": 939322,
+      "n_distinct_first_seen_heights": 64,
+      "largest_same_height_batch": 15,
+      "example_scripts": [
+        "0320332b943a3dc746d5241e533266e922be71e0bff14c77453cd752b5129542",
+        "054563319af36812245e91a29cef6a31c99304b8ef1ba40a71a6d8478e442cc1",
+        "0bd239ec303c49f93faf99d1304411e4b22dd9edc1c8fe21d7f4a9ee4d834625"
+      ]
+    },
+    {
+      "cohort_id": "cohort_dba8c90141e2",
+      "threshold": 2,
+      "n_keys": 4,
+      "anchor_key": "0349ee17c6b65bd20b611c6e01bff250075608a5f19b63ef33a9a8f87024cce64e",
+      "co_recurring_keys": [
+        "0349ee17c6b65bd20b611c6e01bff250075608a5f19b63ef33a9a8f87024cce64e",
+        "03d2785ced709987804a8f6f99a864c731b2b635fbcd93d79bff06f42ea8030d27"
+      ],
+      "n_distinct_scripts": 129,
+      "n_jointly_shared_scripts": 126,
+      "n_distinct_cosigner_sets": 129,
+      "sources": {
+        "p2wsh_witness": 129
+      },
+      "sorting": {
+        "sorted": 129
+      },
+      "anchor_positions": {
+        "0": 19,
+        "1": 59,
+        "2": 49,
+        "3": 2
+      },
+      "all_repeated_key_positions": {
+        "0349ee17c6b65bd20b611c6e01bff250075608a5f19b63ef33a9a8f87024cce64e": {
+          "0": 19,
+          "1": 59,
+          "2": 49,
+          "3": 2
+        },
+        "03d2785ced709987804a8f6f99a864c731b2b635fbcd93d79bff06f42ea8030d27": {
+          "2": 23,
+          "3": 103
+        }
+      },
+      "first_height": 815680,
+      "last_height": 853009,
+      "n_distinct_first_seen_heights": 6,
+      "largest_same_height_batch": 46,
+      "example_scripts": [
+        "0038236eecaaaa387391b9ce4f89e0a05342bb510b13ea48f1c3c084556949ea",
+        "008458e2b5b8b8de926f63355d46ff46e9079a7830511e5075b2147fd1f19956",
+        "022177c793e0ba9fdb79124875bc73c54dca1d38a9fc61ed0c55e59dbbcce1fb"
+      ]
+    },
+    {
+      "cohort_id": "cohort_97528c091227",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "03a0066a5bb3b8593e7be2c5a924a887b97eb9843335fed5debfeab4f5ea9e8c30",
+      "co_recurring_keys": [
+        "03a0066a5bb3b8593e7be2c5a924a887b97eb9843335fed5debfeab4f5ea9e8c30"
+      ],
+      "n_distinct_scripts": 117,
+      "n_jointly_shared_scripts": 117,
+      "n_distinct_cosigner_sets": 117,
+      "sources": {
+        "p2wsh_witness": 117
+      },
+      "sorting": {
+        "sorted": 87,
+        "unsorted": 30
+      },
+      "anchor_positions": {
+        "1": 117
+      },
+      "all_repeated_key_positions": {
+        "03a0066a5bb3b8593e7be2c5a924a887b97eb9843335fed5debfeab4f5ea9e8c30": {
+          "1": 117
+        }
+      },
+      "first_height": 812688,
+      "last_height": 819351,
+      "n_distinct_first_seen_heights": 7,
+      "largest_same_height_batch": 40,
+      "example_scripts": [
+        "0287d827611b85477f985fbdf4df4bb806961a89261f69d1e613a4150b4bfe85",
+        "08167a49da43584bccfdeeeea044223a1c5c257d6720c9cc746138a19282cce1",
+        "083e76bff4c0f7b6b6bcd80613c45bbd432d9f772ea8be847d02fd3c045ec6d6"
+      ]
+    },
+    {
+      "cohort_id": "cohort_8f5496c21ee9",
+      "threshold": 3,
+      "n_keys": 4,
+      "anchor_key": "04220936c3245597b1513a9a7fe96d96facf1a840ee21432a1b73c2cf42c1810284dd730f21ded9d818b84402863a2b5cd1afe3a3d13719d524482592fb23c88a3",
+      "co_recurring_keys": [
+        "04220936c3245597b1513a9a7fe96d96facf1a840ee21432a1b73c2cf42c1810284dd730f21ded9d818b84402863a2b5cd1afe3a3d13719d524482592fb23c88a3",
+        "0472225d3abc8665cf01f703a270ee65be5421c6a495ce34830061eb0690ec27dfd1194e27b6b0b659418d9f91baec18923078aac18dc19699aae82583561fefe5",
+        "04a24db5c0e8ed34da1fd3b6f9f797244981b928a8750c8f11f9252041daad7b2d95309074fed791af77dc85abdd8bb2774ed8d53379d28cd49f251b9c08cab7fc"
+      ],
+      "n_distinct_scripts": 114,
+      "n_jointly_shared_scripts": 114,
+      "n_distinct_cosigner_sets": 114,
+      "sources": {
+        "p2sh_redeem": 114
+      },
+      "sorting": {
+        "sorted": 114
+      },
+      "anchor_positions": {
+        "0": 103,
+        "1": 11
+      },
+      "all_repeated_key_positions": {
+        "04220936c3245597b1513a9a7fe96d96facf1a840ee21432a1b73c2cf42c1810284dd730f21ded9d818b84402863a2b5cd1afe3a3d13719d524482592fb23c88a3": {
+          "0": 103,
+          "1": 11
+        },
+        "0472225d3abc8665cf01f703a270ee65be5421c6a495ce34830061eb0690ec27dfd1194e27b6b0b659418d9f91baec18923078aac18dc19699aae82583561fefe5": {
+          "1": 66,
+          "2": 48
+        },
+        "04a24db5c0e8ed34da1fd3b6f9f797244981b928a8750c8f11f9252041daad7b2d95309074fed791af77dc85abdd8bb2774ed8d53379d28cd49f251b9c08cab7fc": {
+          "2": 44,
+          "3": 70
+        }
+      },
+      "first_height": 827127,
+      "last_height": 827127,
+      "n_distinct_first_seen_heights": 1,
+      "largest_same_height_batch": 114,
+      "example_scripts": [
+        "02b3941e4b4c4339bdafc0a53746f96ac5b91a5461da358877d905ea7016bf0c",
+        "06c5e9a088fefe3760b3f7ad9fcb4d7706cfe35545d82e7047c6b21be285ee41",
+        "0885f58c33921c7c758755ebb268489e02aa185efc26911f7e1ebd4e644636dc"
+      ]
+    },
+    {
+      "cohort_id": "cohort_d6f087b8d8bf",
+      "threshold": 2,
+      "n_keys": 3,
+      "anchor_key": "033f67b4653f6f60081c649081c5626c1d4bf03f6b9f092a713558d29cdbf64987",
+      "co_recurring_keys": [
+        "033f67b4653f6f60081c649081c5626c1d4bf03f6b9f092a713558d29cdbf64987"
+      ],
+      "n_distinct_scripts": 84,
+      "n_jointly_shared_scripts": 84,
+      "n_distinct_cosigner_sets": 84,
+      "sources": {
+        "p2wsh_witness": 84
+      },
+      "sorting": {
+        "sorted": 20,
+        "unsorted": 64
+      },
+      "anchor_positions": {
+        "1": 84
+      },
+      "all_repeated_key_positions": {
+        "033f67b4653f6f60081c649081c5626c1d4bf03f6b9f092a713558d29cdbf64987": {
+          "1": 84
+        }
+      },
+      "first_height": 812688,
+      "last_height": 969769,
+      "n_distinct_first_seen_heights": 54,
+      "largest_same_height_batch": 4,
+      "example_scripts": [
+        "00e370985d206485b67c29eccd27ec217688c0ca9816612ee361df766bebf156",
+        "038232b0203ad741ca3c0c9e06631183f50c22935cefbc158ecdf7a15d511061",
+        "078a5976a7b6bb296fc9ac2643f57cd9646a041101490639a5a08f471c00cc21"
+      ]
+    },
+    {
+      "cohort_id": "cohort_70512168cf32",
+      "threshold": 2,
+      "n_keys": 3,
+      "anchor_key": "03c96d495bfdd5ba4145e3e046fee45e84a8a48ad05bd8dbb395c011a32cf9f880",
+      "co_recurring_keys": [
+        "03c96d495bfdd5ba4145e3e046fee45e84a8a48ad05bd8dbb395c011a32cf9f880"
+      ],
+      "n_distinct_scripts": 76,
+      "n_jointly_shared_scripts": 76,
+      "n_distinct_cosigner_sets": 76,
+      "sources": {
+        "p2sh_redeem": 71,
+        "p2wsh_witness": 5
+      },
+      "sorting": {
+        "sorted": 76
+      },
+      "anchor_positions": {
+        "0": 2,
+        "1": 15,
+        "2": 59
+      },
+      "all_repeated_key_positions": {
+        "03c96d495bfdd5ba4145e3e046fee45e84a8a48ad05bd8dbb395c011a32cf9f880": {
+          "0": 2,
+          "1": 15,
+          "2": 59
+        }
+      },
+      "first_height": 815680,
+      "last_height": 963138,
+      "n_distinct_first_seen_heights": 11,
+      "largest_same_height_batch": 59,
+      "example_scripts": [
+        "004aa866d4938c73a0d7377f378b2d4ab789912eb36ceb39b9d8b2e1a418c64d",
+        "022c6a77b09ae68f1502a8c8f824259a595792e338ac681c4f9f919346e340cb",
+        "08325320d0b0d817e7945611828c7461214e9bb11d730cec8e0f75e2f359d677"
+      ]
+    },
+    {
+      "cohort_id": "cohort_04205fae636f",
+      "threshold": 2,
+      "n_keys": 3,
+      "anchor_key": "02fc2d7c42692ad1967ace8751d59a8fb2db6d4859db3ba7447a791e64844e14b4",
+      "co_recurring_keys": [
+        "02fc2d7c42692ad1967ace8751d59a8fb2db6d4859db3ba7447a791e64844e14b4",
+        "03d91309fffed9730450f2ad0ac7ddc8b86e30bda5d77679da85fe89d5dff28c83"
+      ],
+      "n_distinct_scripts": 54,
+      "n_jointly_shared_scripts": 54,
+      "n_distinct_cosigner_sets": 54,
+      "sources": {
+        "p2wsh_witness": 54
+      },
+      "sorting": {
+        "sorted": 54
+      },
+      "anchor_positions": {
+        "0": 26,
+        "1": 28
+      },
+      "all_repeated_key_positions": {
+        "02fc2d7c42692ad1967ace8751d59a8fb2db6d4859db3ba7447a791e64844e14b4": {
+          "0": 26,
+          "1": 28
+        },
+        "03d91309fffed9730450f2ad0ac7ddc8b86e30bda5d77679da85fe89d5dff28c83": {
+          "1": 4,
+          "2": 50
+        }
+      },
+      "first_height": 942826,
+      "last_height": 968553,
+      "n_distinct_first_seen_heights": 16,
+      "largest_same_height_batch": 20,
+      "example_scripts": [
+        "018cb1991b1255e4af35fe669ba75e7bb220648bcca6bb9e92c6558cc1130d51",
+        "0739087364249deac3bc2f2a6ef53bb56cd74ffbf97fd014c0ab12732d64fe0a",
+        "0f387d280f5a2f8f7fddaa06778e3181111a0d816357e204d06a853d890d13eb"
+      ]
+    },
+    {
+      "cohort_id": "cohort_19cb0d281d18",
+      "threshold": 2,
+      "n_keys": 3,
+      "anchor_key": "03a553e30733d7a8df6d390d59cc136e2c9d9cf4e808f3b6ab009beae68dd60822",
+      "co_recurring_keys": [
+        "03a553e30733d7a8df6d390d59cc136e2c9d9cf4e808f3b6ab009beae68dd60822"
+      ],
+      "n_distinct_scripts": 40,
+      "n_jointly_shared_scripts": 40,
+      "n_distinct_cosigner_sets": 40,
+      "sources": {
+        "p2sh_redeem": 40
+      },
+      "sorting": {
+        "sorted": 8,
+        "unsorted": 32
+      },
+      "anchor_positions": {
+        "1": 40
+      },
+      "all_repeated_key_positions": {
+        "03a553e30733d7a8df6d390d59cc136e2c9d9cf4e808f3b6ab009beae68dd60822": {
+          "1": 40
+        }
+      },
+      "first_height": 812688,
+      "last_height": 971251,
+      "n_distinct_first_seen_heights": 33,
+      "largest_same_height_batch": 2,
+      "example_scripts": [
+        "01c9d30c342d74c77b47973a3c020d98186e200cf54adda64df67c842d527e65",
+        "0e78e7d17945d999ea02941943955d5c3da28fe711713941b144d0d79af5d24c",
+        "11adb7ea80e264dd1230af9517b2c93c03447ead0bb5568f17eb54802539b7af"
+      ]
+    },
+    {
+      "cohort_id": "cohort_8f3c236615bf",
+      "threshold": 2,
+      "n_keys": 3,
+      "anchor_key": "02ba60b798675989b4db608dff11f3c7e2204d20ddaee331a84a5f86a5cf1d4554",
+      "co_recurring_keys": [
+        "02ba60b798675989b4db608dff11f3c7e2204d20ddaee331a84a5f86a5cf1d4554",
+        "02e5683b73c8713394189ee7a8441ab7268d43ac5a55ea9890eb92947b48a4ffa9"
+      ],
+      "n_distinct_scripts": 36,
+      "n_jointly_shared_scripts": 36,
+      "n_distinct_cosigner_sets": 36,
+      "sources": {
+        "p2wsh_witness": 36
+      },
+      "sorting": {
+        "unsorted": 36
+      },
+      "anchor_positions": {
+        "2": 36
+      },
+      "all_repeated_key_positions": {
+        "02ba60b798675989b4db608dff11f3c7e2204d20ddaee331a84a5f86a5cf1d4554": {
+          "2": 36
+        },
+        "02e5683b73c8713394189ee7a8441ab7268d43ac5a55ea9890eb92947b48a4ffa9": {
+          "1": 36
+        }
+      },
+      "first_height": 848088,
+      "last_height": 848088,
+      "n_distinct_first_seen_heights": 1,
+      "largest_same_height_batch": 36,
+      "example_scripts": [
+        "0413982fc31d1d29d98dc0233a658ea1ef3e62de94762711b2532f9b87da1a55",
+        "0a5cba8173dd3d5ac1d45551f9cc44fca0c3e6f53ca284c4092b49d372a5d81d",
+        "12908948e18cdbe94f6c9d7a00a055db6154a52b0cfc0f64a72a861b1337eb3e"
+      ]
+    },
+    {
+      "cohort_id": "cohort_d59b06f2e810",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "03dff3d9683fcd686ecb65ad9bc2990be36ec2a43384ddcf1be2f91ab98e39e705",
+      "co_recurring_keys": [
+        "03dff3d9683fcd686ecb65ad9bc2990be36ec2a43384ddcf1be2f91ab98e39e705"
+      ],
+      "n_distinct_scripts": 36,
+      "n_jointly_shared_scripts": 36,
+      "n_distinct_cosigner_sets": 36,
+      "sources": {
+        "p2wsh_witness": 36
+      },
+      "sorting": {
+        "sorted": 2,
+        "unsorted": 34
+      },
+      "anchor_positions": {
+        "0": 36
+      },
+      "all_repeated_key_positions": {
+        "03dff3d9683fcd686ecb65ad9bc2990be36ec2a43384ddcf1be2f91ab98e39e705": {
+          "0": 36
+        }
+      },
+      "first_height": 827127,
+      "last_height": 882242,
+      "n_distinct_first_seen_heights": 17,
+      "largest_same_height_batch": 6,
+      "example_scripts": [
+        "056a4a36655c65959d3ee95bc5f07b461b0578f6af4d2c9566400e3df0af074c",
+        "0881f7d2ee14dd332bb54538ee343944964637fd78bc4917a340b7ece2d110b4",
+        "08f30f298c6fa58b8e642373e035d8a35b1edf7d9bc7008c38f0ba171025e1d7"
+      ]
+    },
+    {
+      "cohort_id": "cohort_af3c537a2869",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "022ce1aad322a2a6012996ff109aabdc16ec611b3d454426d3799bca6cb6af4ea0",
+      "co_recurring_keys": [
+        "022ce1aad322a2a6012996ff109aabdc16ec611b3d454426d3799bca6cb6af4ea0"
+      ],
+      "n_distinct_scripts": 20,
+      "n_jointly_shared_scripts": 20,
+      "n_distinct_cosigner_sets": 20,
+      "sources": {
+        "p2wsh_witness": 20
+      },
+      "sorting": {
+        "sorted": 3,
+        "unsorted": 17
+      },
+      "anchor_positions": {
+        "1": 20
+      },
+      "all_repeated_key_positions": {
+        "022ce1aad322a2a6012996ff109aabdc16ec611b3d454426d3799bca6cb6af4ea0": {
+          "1": 20
+        }
+      },
+      "first_height": 814374,
+      "last_height": 844433,
+      "n_distinct_first_seen_heights": 13,
+      "largest_same_height_batch": 4,
+      "example_scripts": [
+        "0c3e6c3e6974756e6c1bd13399add5802349454c15e78961bd1eac8d567ff467",
+        "126ea0f4d31319d53635d05e303441c28d0b4a9be953dde0febae6b17069d399",
+        "1f0ea367ad7eb60b19648e36d722db950e2bb9b15160a06b53a0e3d20efd03d0"
+      ]
+    },
+    {
+      "cohort_id": "cohort_b4c0ef9919ff",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "03d318880c2bd8d97914b5f6c164a79ce452766b4c14f5d962d91cf4aad55bcd1a",
+      "co_recurring_keys": [
+        "03d318880c2bd8d97914b5f6c164a79ce452766b4c14f5d962d91cf4aad55bcd1a"
+      ],
+      "n_distinct_scripts": 16,
+      "n_jointly_shared_scripts": 16,
+      "n_distinct_cosigner_sets": 16,
+      "sources": {
+        "p2wsh_witness": 16
+      },
+      "sorting": {
+        "sorted": 16
+      },
+      "anchor_positions": {
+        "1": 16
+      },
+      "all_repeated_key_positions": {
+        "03d318880c2bd8d97914b5f6c164a79ce452766b4c14f5d962d91cf4aad55bcd1a": {
+          "1": 16
+        }
+      },
+      "first_height": 812688,
+      "last_height": 841815,
+      "n_distinct_first_seen_heights": 5,
+      "largest_same_height_batch": 5,
+      "example_scripts": [
+        "12a9083d50c68072f8a2f6c4a8164b6a0d4295711d4785eb4e48d565000fa531",
+        "150f84afe3ce73d727366bccb78ae659969df93b9aefa5ba5c2fa3bae17e91e6",
+        "1559448ef69a93c568058669fc6ed7813ada1dda6022dae6283c0e041a72322e"
+      ]
+    },
+    {
+      "cohort_id": "cohort_c12f87cebe94",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "02ed6288cd6f491fce6157b06e76ab686e5f9e102ea4290a6b7b5a6ec5d81e6050",
+      "co_recurring_keys": [
+        "02ed6288cd6f491fce6157b06e76ab686e5f9e102ea4290a6b7b5a6ec5d81e6050"
+      ],
+      "n_distinct_scripts": 13,
+      "n_jointly_shared_scripts": 13,
+      "n_distinct_cosigner_sets": 13,
+      "sources": {
+        "p2wsh_witness": 13
+      },
+      "sorting": {
+        "sorted": 6,
+        "unsorted": 7
+      },
+      "anchor_positions": {
+        "1": 13
+      },
+      "all_repeated_key_positions": {
+        "02ed6288cd6f491fce6157b06e76ab686e5f9e102ea4290a6b7b5a6ec5d81e6050": {
+          "1": 13
+        }
+      },
+      "first_height": 815680,
+      "last_height": 843399,
+      "n_distinct_first_seen_heights": 6,
+      "largest_same_height_batch": 5,
+      "example_scripts": [
+        "2ac7c057f75bcf47835a3a5fb9b90e6c8861d299eb7dbe8d6901d11cbbb916a8",
+        "2f0bb08a7d81adfaf4e6311a19078956f5167934783636d610c3774db3d9c678",
+        "311fd2e7b8c9f9dcba29627ec390efe7253a277ca3ccf4d826495a0a768d3589"
+      ]
+    },
+    {
+      "cohort_id": "cohort_1c4e87d11021",
+      "threshold": 1,
+      "n_keys": 2,
+      "anchor_key": "03d91309fffed9730450f2ad0ac7ddc8b86e30bda5d77679da85fe89d5dff28c83",
+      "co_recurring_keys": [
+        "03d91309fffed9730450f2ad0ac7ddc8b86e30bda5d77679da85fe89d5dff28c83"
+      ],
+      "n_distinct_scripts": 12,
+      "n_jointly_shared_scripts": 12,
+      "n_distinct_cosigner_sets": 12,
+      "sources": {
+        "p2wsh_witness": 12
+      },
+      "sorting": {
+        "sorted": 12
+      },
+      "anchor_positions": {
+        "1": 12
+      },
+      "all_repeated_key_positions": {
+        "03d91309fffed9730450f2ad0ac7ddc8b86e30bda5d77679da85fe89d5dff28c83": {
+          "1": 12
+        }
+      },
+      "first_height": 940150,
+      "last_height": 971251,
+      "n_distinct_first_seen_heights": 9,
+      "largest_same_height_batch": 3,
+      "example_scripts": [
+        "28f3e3ebc0802afe1614ba9a5ff07c772dcc88f10233869dc4bbfcba02b0b421",
+        "3fca368fb2a0ded8c46ce661ddab75d48b7dd6dd8bbc6f0c23e94aff874ac99d",
+        "40e24d79d32841f16b46fe46f6c4fbb42a3b011808047a31ff7adcfaabee2336"
+      ]
+    },
+    {
+      "cohort_id": "cohort_d1baae673948",
+      "threshold": 2,
+      "n_keys": 3,
+      "anchor_key": "0374f3e239bf6a0b988d6bbd1798fa32829ceec30f4d345b4be172190d9e805ece",
+      "co_recurring_keys": [
+        "0374f3e239bf6a0b988d6bbd1798fa32829ceec30f4d345b4be172190d9e805ece"
+      ],
+      "n_distinct_scripts": 12,
+      "n_jointly_shared_scripts": 12,
+      "n_distinct_cosigner_sets": 12,
+      "sources": {
+        "p2wsh_witness": 12
+      },
+      "sorting": {
+        "sorted": 11,
+        "unsorted": 1
+      },
+      "anchor_positions": {
+        "0": 2,
+        "1": 4,
+        "2": 6
+      },
+      "all_repeated_key_positions": {
+        "0374f3e239bf6a0b988d6bbd1798fa32829ceec30f4d345b4be172190d9e805ece": {
+          "0": 2,
+          "1": 4,
+          "2": 6
+        }
+      },
+      "first_height": 812688,
+      "last_height": 949254,
+      "n_distinct_first_seen_heights": 10,
+      "largest_same_height_batch": 3,
+      "example_scripts": [
+        "0be0d333fc024916c5e617a143029062d4c5627c729a72aa02b7b0e58a6c9a99",
+        "2dd8bed98381e856e6cde2b37a134d0651b05bbb2335f24ba115cf042460fb53",
+        "44709e063fb66d783831a1237a60471d7b2a3de03a41000f4ed9e1d1afa15904"
+      ]
+    },
+    {
+      "cohort_id": "cohort_9a46d6713dcb",
+      "threshold": 3,
+      "n_keys": 6,
+      "anchor_key": "020f915bd0b62a56bd05f6d12cf2f97a7f4e4b98aa9a5b9768e45e2b6acc449c00",
+      "co_recurring_keys": [
+        "020f915bd0b62a56bd05f6d12cf2f97a7f4e4b98aa9a5b9768e45e2b6acc449c00",
+        "0238bf3226984fa4c83bb3950da0163c1828a0510e095cdf4b7de81b45f4b8429c",
+        "02b0554230296d8bba0a50cd6de54c8d505127549c4862d3e24d62990ea4f23192",
+        "02fbc0534c733df47fa57d2183fb54b1996a6bf42b70b38510e71221e09546557c",
+        "03b5e06a8b36a6c744860d8c17ec54834c8f35ad3e79ff775e3a84a26700c8d4cd"
+      ],
+      "n_distinct_scripts": 8,
+      "n_jointly_shared_scripts": 8,
+      "n_distinct_cosigner_sets": 8,
+      "sources": {
+        "p2wsh_witness": 8
+      },
+      "sorting": {
+        "unsorted": 8
+      },
+      "anchor_positions": {
+        "4": 8
+      },
+      "all_repeated_key_positions": {
+        "020f915bd0b62a56bd05f6d12cf2f97a7f4e4b98aa9a5b9768e45e2b6acc449c00": {
+          "4": 8
+        },
+        "0238bf3226984fa4c83bb3950da0163c1828a0510e095cdf4b7de81b45f4b8429c": {
+          "2": 8
+        },
+        "02b0554230296d8bba0a50cd6de54c8d505127549c4862d3e24d62990ea4f23192": {
+          "1": 8
+        },
+        "02fbc0534c733df47fa57d2183fb54b1996a6bf42b70b38510e71221e09546557c": {
+          "0": 8
+        },
+        "03b5e06a8b36a6c744860d8c17ec54834c8f35ad3e79ff775e3a84a26700c8d4cd": {
+          "3": 8
+        }
+      },
+      "first_height": 960435,
+      "last_height": 966836,
+      "n_distinct_first_seen_heights": 3,
+      "largest_same_height_batch": 5,
+      "example_scripts": [
+        "5d121072e7d0f32046bfb7d05ca45b29ae0e32257038f022a30046f29ff29b03",
+        "694cf3b31b21c1f9e5f6ed9c61714afbda5b1a4ff8cbc28ddf67125a03e66d56",
+        "72ce02efea5d1cc377bbdc020cd9f26bef21159f2977d434b82df876b5fba303"
+      ]
+    },
+    {
+      "cohort_id": "cohort_932a3ecae424",
+      "threshold": 2,
+      "n_keys": 3,
+      "anchor_key": "027072ba2319ead2b0b387d69d36508f57b397da8d4ac76ea64676ee8a1356dae0",
+      "co_recurring_keys": [
+        "027072ba2319ead2b0b387d69d36508f57b397da8d4ac76ea64676ee8a1356dae0",
+        "02f39d0b69c3b8e06030ef9dc295cf8c848f51e398fe85414e33509afdc7f01fb3",
+        "0352d50656796dd79e3e3385c29636d849b8705c9c6d9b86a1717adc38e4a567c7"
+      ],
+      "n_distinct_scripts": 6,
+      "n_jointly_shared_scripts": 6,
+      "n_distinct_cosigner_sets": 1,
+      "sources": {
+        "p2sh_redeem": 6
+      },
+      "sorting": {
+        "unsorted": 6
+      },
+      "anchor_positions": {
+        "2": 6
+      },
+      "all_repeated_key_positions": {
+        "027072ba2319ead2b0b387d69d36508f57b397da8d4ac76ea64676ee8a1356dae0": {
+          "2": 6
+        },
+        "02f39d0b69c3b8e06030ef9dc295cf8c848f51e398fe85414e33509afdc7f01fb3": {
+          "1": 6
+        },
+        "0352d50656796dd79e3e3385c29636d849b8705c9c6d9b86a1717adc38e4a567c7": {
+          "0": 6
+        }
+      },
+      "first_height": 896014,
+      "last_height": 896014,
+      "n_distinct_first_seen_heights": 1,
+      "largest_same_height_batch": 6,
+      "example_scripts": [
+        "0fc60e472f606d19452487680a96b6130c1ed18733db9ea42c9ca5e8ba872109",
+        "8acaa760ab5ded865f172dc459ccdcda3971449de9d442c68ffad035b87063a1",
+        "96002be013df91a68a29d4a828858b659f35b35606ca06ef45e6f09cd07679f7"
+      ]
+    },
+    {
+      "cohort_id": "cohort_4fd0b106de22",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "02fcc0a1bafd0ca2cb93847ee0b234e5258d6c59151e4bead09f8b00e8d258de16",
+      "co_recurring_keys": [
+        "02fcc0a1bafd0ca2cb93847ee0b234e5258d6c59151e4bead09f8b00e8d258de16"
+      ],
+      "n_distinct_scripts": 5,
+      "n_jointly_shared_scripts": 5,
+      "n_distinct_cosigner_sets": 5,
+      "sources": {
+        "p2wsh_witness": 5
+      },
+      "sorting": {
+        "sorted": 4,
+        "unsorted": 1
+      },
+      "anchor_positions": {
+        "1": 5
+      },
+      "all_repeated_key_positions": {
+        "02fcc0a1bafd0ca2cb93847ee0b234e5258d6c59151e4bead09f8b00e8d258de16": {
+          "1": 5
+        }
+      },
+      "first_height": 812688,
+      "last_height": 833978,
+      "n_distinct_first_seen_heights": 5,
+      "largest_same_height_batch": 1,
+      "example_scripts": [
+        "14624405ea1e3ff91dd27ad97cf7cfdcd071d92245e7b64be751635622037218",
+        "1e61eca6387cc4d933178538bb2326d4afe0872d26bda772fddd98332b7a71f1",
+        "688323655241bef2907162751de5fcfc51e721620bd28f8f71d881a50269ba87"
+      ]
+    },
+    {
+      "cohort_id": "cohort_abd5f0fb2514",
+      "threshold": 2,
+      "n_keys": 2,
+      "anchor_key": "0201880d29c5e38c6356259b90b02a992be853129f2714d18adc4764f84ef0ed35",
+      "co_recurring_keys": [
+        "0201880d29c5e38c6356259b90b02a992be853129f2714d18adc4764f84ef0ed35"
+      ],
+      "n_distinct_scripts": 5,
+      "n_jointly_shared_scripts": 5,
+      "n_distinct_cosigner_sets": 5,
+      "sources": {
+        "p2wsh_witness": 5
+      },
+      "sorting": {
+        "unsorted": 5
+      },
+      "anchor_positions": {
+        "1": 5
+      },
+      "all_repeated_key_positions": {
+        "0201880d29c5e38c6356259b90b02a992be853129f2714d18adc4764f84ef0ed35": {
+          "1": 5
+        }
+      },
+      "first_height": 824160,
+      "last_height": 844433,
+      "n_distinct_first_seen_heights": 5,
+      "largest_same_height_batch": 1,
+      "example_scripts": [
+        "392eb6674cd383df745d97d7bbffa4d7a8efb4a5bf4032bbda956e7f69ec48ff",
+        "766ac90817a84b0ca8bd53384aa668c4f284d43b50d3fde986f1a62b865a2004",
+        "a5e42b57eddd1099722e53d5e9e69cd82b8fbe2b702ff69502eef447c2b762c9"
+      ]
+    }
+  ],
+  "structural_groups": [
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 3,
+      "keys_sorted": 0,
+      "template": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 14564
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 3,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 5371
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 3,
+      "keys_sorted": 0,
+      "template": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 4863
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 2,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> OP_2 OP_CHECKMULTISIG",
+      "n_scripts": 4457
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 1,
+      "n_keys": 1,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> OP_1 OP_CHECKMULTISIG",
+      "n_scripts": 3838
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 2,
+      "keys_sorted": 0,
+      "template": "OP_2 <P> <P> OP_2 OP_CHECKMULTISIG",
+      "n_scripts": 1771
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 3,
+      "n_keys": 4,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> OP_4 OP_CHECKMULTISIG",
+      "n_scripts": 1462
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 3,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 1404
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 4,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> <P> <P> OP_4 OP_CHECKMULTISIG",
+      "n_scripts": 526
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 1,
+      "n_keys": 2,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> <P> OP_2 OP_CHECKMULTISIG",
+      "n_scripts": 148
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 2,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> OP_2 OP_CHECKMULTISIG",
+      "n_scripts": 125
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 3,
+      "n_keys": 4,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> OP_4 OP_CHECKMULTISIG",
+      "n_scripts": 114
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 1,
+      "n_keys": 2,
+      "keys_sorted": 0,
+      "template": "OP_1 <P> <P> OP_2 OP_CHECKMULTISIG",
+      "n_scripts": 95
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 3,
+      "n_keys": 5,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> <P> OP_5 OP_CHECKMULTISIG",
+      "n_scripts": 83
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 3,
+      "n_keys": 5,
+      "keys_sorted": 0,
+      "template": "OP_3 <P> <P> <P> <P> <P> OP_5 OP_CHECKMULTISIG",
+      "n_scripts": 64
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 5,
+      "n_keys": 7,
+      "keys_sorted": 0,
+      "template": "OP_5 <P> <P> <P> <P> <P> <P> <P> OP_7 OP_CHECKMULTISIG",
+      "n_scripts": 40
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 5,
+      "n_keys": 6,
+      "keys_sorted": 1,
+      "template": "OP_5 <P> <P> <P> <P> <P> <P> OP_6 OP_CHECKMULTISIG",
+      "n_scripts": 21
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 5,
+      "keys_sorted": 0,
+      "template": "OP_2 <P> <P> <P> <P> <P> OP_5 OP_CHECKMULTISIG",
+      "n_scripts": 16
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 1,
+      "n_keys": 3,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 11
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 3,
+      "n_keys": 6,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> <P> <P> OP_6 OP_CHECKMULTISIG",
+      "n_scripts": 9
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 2,
+      "keys_sorted": 0,
+      "template": "OP_2 <P> <P> OP_2 OP_CHECKMULTISIG",
+      "n_scripts": 8
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 3,
+      "n_keys": 6,
+      "keys_sorted": 0,
+      "template": "OP_3 <P> <P> <P> <P> <P> <P> OP_6 OP_CHECKMULTISIG",
+      "n_scripts": 8
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 5,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> <P> <P> <P> OP_5 OP_CHECKMULTISIG",
+      "n_scripts": 7
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 3,
+      "n_keys": 5,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> <P> OP_5 OP_CHECKMULTISIG",
+      "n_scripts": 6
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 3,
+      "keys_sorted": 0,
+      "template": "OP_2 <P> <P> <P> OP_3 OP_CHECKMULTISIGVERIFY <D> OP_DROP OP_DEPTH <D> OP_EQUAL",
+      "n_scripts": 6
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 2,
+      "n_keys": 6,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> <P> <P> <P> <P> OP_6 OP_CHECKMULTISIG",
+      "n_scripts": 6
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 1,
+      "n_keys": 2,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> <P> OP_2 OP_CHECKMULTISIG",
+      "n_scripts": 5
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 3,
+      "n_keys": 3,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 4
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 4,
+      "n_keys": 6,
+      "keys_sorted": 1,
+      "template": "OP_4 <P> <P> <P> <P> <P> <P> OP_6 OP_CHECKMULTISIG",
+      "n_scripts": 3
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 1,
+      "n_keys": 3,
+      "keys_sorted": 0,
+      "template": "OP_1 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 2
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 3,
+      "n_keys": 7,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> <P> <P> <P> OP_7 OP_CHECKMULTISIG",
+      "n_scripts": 2
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 4,
+      "n_keys": 15,
+      "keys_sorted": 1,
+      "template": "OP_4 <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> OP_15 OP_CHECKMULTISIG",
+      "n_scripts": 2
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 4,
+      "n_keys": 4,
+      "keys_sorted": 1,
+      "template": "OP_4 <P> <P> <P> <P> OP_4 OP_CHECKMULTISIG",
+      "n_scripts": 2
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 1,
+      "n_keys": 4,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> <P> <P> <P> OP_4 OP_CHECKMULTISIG",
+      "n_scripts": 2
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 4,
+      "n_keys": 6,
+      "keys_sorted": 1,
+      "template": "OP_4 <P> <P> <P> <P> <P> <P> OP_6 OP_CHECKMULTISIG",
+      "n_scripts": 2
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 1,
+      "n_keys": 3,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> <P> <P> OP_3 OP_CHECKMULTISIG",
+      "n_scripts": 2
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 15,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> <P> OP_15 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 5,
+      "keys_sorted": 0,
+      "template": "OP_2 <P> <P> <P> <P> <P> OP_5 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 1,
+      "n_keys": 5,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> <P> <P> <P> <P> OP_5 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 5,
+      "n_keys": 7,
+      "keys_sorted": 1,
+      "template": "OP_5 <P> <P> <P> <P> <P> <P> <P> OP_7 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 1,
+      "n_keys": 1,
+      "keys_sorted": 1,
+      "template": "OP_1 <P> OP_1 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2wsh_witness",
+      "threshold": 3,
+      "n_keys": 7,
+      "keys_sorted": 0,
+      "template": "OP_3 <P> <P> <P> <P> <P> <P> <P> OP_7 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 3,
+      "n_keys": 8,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> <P> <P> <P> <P> OP_8 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 2,
+      "n_keys": 4,
+      "keys_sorted": 1,
+      "template": "OP_2 <P> <P> <P> <P> OP_4 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    },
+    {
+      "source": "p2sh_redeem",
+      "threshold": 3,
+      "n_keys": 6,
+      "keys_sorted": 1,
+      "template": "OP_3 <P> <P> <P> <P> <P> <P> OP_6 OP_CHECKMULTISIG",
+      "n_scripts": 1
+    }
+  ],
+  "notes": [
+    "Shared exact keys provide a deterministic script link, not a company identity.",
+    "Same script structures and BIP67 orderings do not establish an operator.",
+    "Known script IDs appear only when spent in sampled blocks; rates are not chain-wide estimates.",
+    "Signature-role assignments require validated signed transactions and are unavailable in exported graph.",
+    "No new Blockchair or mempool.space requests are performed."
+  ]
+}

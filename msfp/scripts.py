@@ -291,6 +291,25 @@ class ParsedScript:
                     positions.append(i)
         return positions
 
+    def has_ord_inscription_envelope(self):
+        """Recognize the standard unexecuted `OP_FALSE OP_IF "ord" ... OP_ENDIF`
+        data envelope in tapscripts. It is NOT a recovery branch.
+
+        OP_FALSE may appear as an empty push in python-bitcoinlib's raw_iter,
+        so accept either a zero-byte data push or the OP_0 opcode.
+        """
+        for i in range(1, len(self.items) - 1):
+            if not self.is_op(i, OP_IF):
+                continue
+            prev = self.items[i - 1]
+            is_false = (prev == ("push", b"") or
+                        (prev[0] == "op" and prev[1] == OP_0))
+            if not is_false:
+                continue
+            if self.items[i + 1] == ("push", b"ord"):
+                return True
+        return False
+
     def has_sig_check(self):
         return any(it[0] == "op" and it[1] in SIG_CHECK_OPS | MULTISIG_CHECK_OPS
                    for it in self.items)
@@ -394,6 +413,10 @@ def classify_family(parsed, tapscript=False):
     has_cond = (conds["if"] + conds["notif"]) > 0
 
     if tapscript:
+        # Inscription envelopes are unconditional data branches and should
+        # never be called "conditional recovery" merely for containing IF.
+        if parsed.has_ord_inscription_envelope() and not csa and not timelocks:
+            return "taproot_inscription_envelope"
         if csa and not has_cond and not timelocks:
             return "taproot_scriptpath_multisig"
         if csa and (has_cond or timelocks):

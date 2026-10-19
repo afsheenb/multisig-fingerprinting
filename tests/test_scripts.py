@@ -167,3 +167,15 @@ def test_l2_preserves_thresholds_and_branch_structure():
     a = S.analyze_script(raw)
     assert "OP_3" in a["template_l2"] and "OP_5" in a["template_l2"]
     assert a["template_l2"].count("<PUBKEY>") == 4
+
+
+def test_inscription_envelope_is_not_recovery():
+    # Common Taproot inscription construction: key spend followed by
+    # OP_FALSE OP_IF "ord" payload OP_ENDIF. The branch is unexecuted data.
+    x1 = bytes.fromhex(X1)
+    raw = bytes(CScript([x1, OP_CHECKSIG, OP_0, OP_IF, b"ord",
+                         b"text/plain", b"hello", OP_ENDIF]))
+    a = S.analyze_script(raw, tapscript=True)
+    assert a["family_l4"] == "taproot_inscription_envelope"
+    assert a["threshold"] is None
+    assert a["script_class"] == "other"

@@ -19,6 +19,7 @@ Commands map one-to-one onto the research phases:
     attribute              graded provider attribution against the registry
     report                 Phase 4: preliminary findings + cost report
     enrich                 behavioral enrichment pass over the buckets
+    cohorts                anonymous key-anchored custody families (offline)
     corpus-status          corpus, cache size, disk budget
 """
 
@@ -161,6 +162,14 @@ def cmd_enrich(args):
         sys.exit(2)
 
 
+def cmd_cohorts(args):
+    from .cohorts import analyze, write_outputs
+    data, members = analyze(args.graph_dir, args.min_shared)
+    write_outputs(data, members, args.out_dir)
+    print("%d standard scripts; %d exact-key anonymous cohorts, report in %s" % (
+        data["n_standard_multisig_scripts"],
+        data["n_anonymous_key_cohorts"],args.out_dir))
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="msfp", description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -215,6 +224,12 @@ def main(argv=None):
     p.add_argument("--deposit-addrs", type=int, default=20,
                    help="deposit addresses profiled per bucket")
     p.set_defaults(func=cmd_enrich)
+
+    p = sub.add_parser("cohorts", help="offline anonymous provider-family detection from graph exports")
+    p.add_argument("--graph-dir", default="reports/graph")
+    p.add_argument("--out-dir", default="reports/cohorts")
+    p.add_argument("--min-shared", type=int, default=5)
+    p.set_defaults(func=cmd_cohorts)
 
     args = parser.parse_args(argv)
     try:
