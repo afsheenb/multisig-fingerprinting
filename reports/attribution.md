@@ -1,6 +1,6 @@
 # Provider attribution report
 
-Generated from registry version 2026-10-18 over the in-study corpus (heights 812688..972009, 75707 revealed scripts). All figures are RAW COUNTS over the sampled corpus, not population estimates.
+Generated from registry version 2026-10-18.2 over the in-study corpus (heights 812688..972009, 75707 revealed scripts). All figures are RAW COUNTS over the sampled corpus, not population estimates.
 
 ## Interpretation rules (apply to every number below)
 - A shared script template NEVER implies shared ownership. Templates are structural shapes; unrelated wallets converge on the same shapes.
