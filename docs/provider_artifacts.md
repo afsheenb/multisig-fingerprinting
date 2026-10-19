@@ -267,3 +267,93 @@ Mainnet chain lookups (this agent did not query the chain):
    `f91d0a8a78462bc59398f2c5d7a84fcff491c26ba54c4833478b202796c8aafd`, address
    `bc1qgnsq6zuzctep7c53vpjye67k3dvc6ps47jmdde`. Highest-value lookup on the
    list: if real and multisig, it is Casa's only published on-chain artifact.
+
+## Chain lookup results (2026-10-19, mempool.space client)
+
+Every lookup went through `msfp/mempool.py` (1 request/second, 30/minute,
+each recorded in `mempool_ledger`, each 200 response permanently cached
+under `data/cache_mempool/`). Requests: 8 tx lookups + 1 address lookup
+for BitGo, 1 tx lookup + 1 address lookup for Casa. No other network
+calls. Nunchuk examples were skipped per the handoff (testnet by
+construction).
+
+### 1. BitGo doc txids: 7 synthetic, 1 real-but-unrelated
+
+Seven of the eight doc-example `validTransactionHash` values do NOT
+exist on mainnet (mempool.space `GET /tx/{txid}` answered 404 for each;
+the 404s are recorded in `mempool_ledger`):
+
+- `4929b91960acdf2d18076ac6151d0aff96b4f4834f9f78eaf40e78ce05f5c0a4`
+- `e7648c85edac7f9870e511b4ef95b62b1878556791bd52ac715cb2cd4b466e6f`
+- `8747673834d6c71560a2816963585718567419020dc58151d2f7e1ed8c57de14`
+- `ff40ccd5c8ba75ffdce27d8584b6e8ee625cb3f71f7cbb6d072a445a97c2c8c3`
+- `d5621704d7dd06d55c6016709e75a1787fb661d565290611e3eff914f03a4d0e`
+- `c68916ddc1672ec62c474ef0839ec479ad9b2dabc2249177ce6be6247f81dfe7`
+- `5ea8d2b93997ed9fa3597a2f3113817c8216f573a0278c2533bb5db50fdb0dff`
+
+This confirms the earlier suspicion for the withdraw-guide samples: the
+values labeled `validTransactionHash` are fabricated placeholders, not
+observed transactions.
+
+The eighth, `b0b7e5c2fbbbeb42478f91e1c14b300624a9419631e70dd1564084fb28a55155`
+(the `parseTx` example in the utxo-bin README), DOES exist: confirmed in
+block 793,101 (2023-06-06 10:47:19 UTC). Its structure is an ordinary
+one-input batch spend: single P2WPKH input from
+`bc1qm34lsc65zpw79lxes69zkqmk6ee3ewf0j77s3h` (8,881,849 sats, witness
+stack of one 72-byte DER ECDSA signature plus one 33-byte compressed
+pubkey, no script), 78 outputs of mixed type (33 `p2sh`, 34
+`v0_p2wpkh`, 3 `v1_p2tr`, 8 `p2pkh`). Nothing about it is BitGo-shaped
+(no multisig, no 2-of-3 structure, no provider address pattern); it is
+a real unrelated transaction the README used as an arbitrary example.
+Verdict: no BitGo doc txid is a BitGo wallet artifact, and none can
+anchor anything.
+
+### 2. BitGo doc address: exists, ordinary P2SH, not BitGo's
+
+`3QJmV3qfvL9SuYo34YihAf3sRCW3qSinyC` exists and carries a long, active
+mainnet history (the address txs page returns its cap of 50 confirmed
+transactions, the newest seen mined in block 944,217 in 2026). It is
+the widely reused bitcoinjs documentation example address, exactly as
+expected; not a BitGo wallet.
+
+### 3. Casa lead: RESOLVED NEGATIVE, with a structural finding
+
+The txid quoted by the search-result summary of the deleted
+"Emergency Lock-In TxID" post DOES exist on mainnet, but it is NOT a
+Casa artifact, and the quoted address cannot exist at all:
+
+- `f91d0a8a78462bc59398f2c5d7a84fcff491c26ba54c4833478b202796c8aafd`
+  is confirmed in block 481,824 (2017-08-24 01:57:37 UTC). Its full
+  fetched structure: version 1, locktime 0, size 269, weight 746, fee
+  31,240 sats; ONE input, a P2WPKH prevout
+  (`00148d7a0a3461e3891723e5fdf8129caa0075060cff`,
+  `bc1q34aq5drpuwy3wgl9lhup9892qp6svr8ldzyy7c`, 194,300 sats) spent
+  with a single 72-byte DER ECDSA signature plus one compressed pubkey
+  (witness stack of 2, no script); THREE outputs: two 81,530-sat
+  P2WPKH outputs back to the same address, and a zero-value OP_RETURN
+  whose payload decodes verbatim to `#Bitbank Inc. Japan supports
+  SegWit!` (script hex
+  `6a2342697462616e6b20496e632e204a6170616e20737570706f7274732053656757697421`).
+  This is the famous first-ever SegWit spend (block 481,824 is the
+  first SegWit block). It contains no multisig, no 3-of-5, nothing
+  Casa-shaped, and predates the 2019 post by two years.
+- `bc1qgnsq6zuzctep7c53vpjye67k3dvc6ps47jmdde` is syntactically
+  INVALID: mempool.space answers HTTP 400 "Invalid Bitcoin address"
+  (bech32 checksum failure). No mainnet address with these characters
+  exists.
+
+Conclusion: the search-result summary carried at least one fabricated
+or corrupted value (the invalid address), and its txid belongs to a
+different, famous transaction. The lead is dead on both counts. What
+is and is not verified, explicitly: it IS verified that the txid exists
+and what its structure is (fetched, cached, ledgered); it is NOT
+verified that the deleted post ever contained either value, because the
+post was never archived. The archive sweep performed: Wayback
+availability API empty for both `blog.casa.io/new-feature-emergency-lock-in-txid/`
+and `blog.keys.casa/new-feature-emergency-lock-in-txid/`; CDX exact and
+prefix queries return nothing; a whole-domain CDX sweep of `casa.io`
+for emergency-lockdown/lock-in URLs surfaces only unrelated pages
+(product-update, docs, support); archive.today is unreachable from
+this host. Casa therefore keeps zero verified on-chain artifacts and
+the row stays "none verified"; no artifact graduated to corpus match or
+grade-relevant anchor status from this hunt.
