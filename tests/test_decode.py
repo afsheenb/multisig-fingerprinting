@@ -14,7 +14,7 @@ from bitcoin.core import (
 from bitcoin.core.script import (
     CScript, SignatureHash, SIGVERSION_WITNESS_V0, SIGVERSION_BASE,
     OP_0, OP_1, OP_2, OP_3, OP_CHECKMULTISIG, OP_CHECKSIG, OP_DUP,
-    OP_HASH160, OP_EQUALVERIFY,
+    OP_HASH160, OP_EQUAL, OP_EQUALVERIFY,
 )
 from bitcoin.core.script import CScriptOp
 OP_CHECKSIGADD = CScriptOp(0xBA)
@@ -112,6 +112,84 @@ def test_commitment_check_p2wsh_and_p2sh():
     spk_tr = b"\x51\x20" + b"\x11" * 32
     assert verify.check_commitment(script, spk_tr) == "not_verifiable"
     assert verify.check_commitment(script, b"\x76\xa9\x14") == "not_applicable"
+
+
+def test_commitment_check_nested_p2sh_p2wsh():
+    """A P2SH prevout commits to the scriptSig's redeem push. For a
+    nested P2SH-P2WSH spend that push is a segwit program, so the
+    revealed witnessScript binds only through BOTH levels:
+    sha256(witnessScript) -> program payload, hash160(program) -> P2SH
+    hash. Comparing hash160(witnessScript) against the P2SH hash
+    directly would reject every genuine nested spend."""
+    from msfp import verify
+
+    witness_script = bytes(CScript([OP_2, K1, K2, K3, OP_3,
+                                    OP_CHECKMULTISIG]))
+    program = b"\x00\x20" + hashlib.sha256(witness_script).digest()
+    spk_p2sh = b"\xa9\x14" + verify.hash160(program) + b"\x87"
+    script_sig = CScript([program]).hex()
+
+    # Correct witnessScript, nested path: True.
+    assert verify.check_commitment(witness_script, spk_p2sh,
+                                   script_sig_hex=script_sig) is True
+    # Without the scriptSig the direct (plain-P2SH) comparison runs and
+    # must NOT pass: hash160(witnessScript) is not the P2SH hash.
+    assert verify.check_commitment(witness_script, spk_p2sh) is False
+    # Wrong witnessScript at the inner level: False even with the
+    # scriptSig present.
+    other = bytes(CScript([OP_2, K1, K3, K2, OP_3, OP_CHECKMULTISIG]))
+    assert verify.check_commitment(other, spk_p2sh,
+                                   script_sig_hex=script_sig) is False
+    # Tampered P2SH hash: False.
+    tampered = bytearray(spk_p2sh)
+    tampered[5] ^= 1
+    assert verify.check_commitment(witness_script, bytes(tampered),
+                                   script_sig_hex=script_sig) is False
+    # A plain P2SH spend (redeem push is the revealed script itself)
+    # still checks directly, with or without the scriptSig.
+    redeem = bytes(CScript([OP_1, K1, OP_1, OP_CHECKMULTISIG]))
+    spk_plain = b"\xa9\x14" + verify.hash160(redeem) + b"\x87"
+    ss = CScript([b"", b"\x30" * 70 + b"\x01", redeem]).hex()
+    assert verify.check_commitment(redeem, spk_plain) is True
+    assert verify.check_commitment(redeem, spk_plain,
+                                   script_sig_hex=ss) is True
+
+
+def test_nested_p2sh_p2wsh_spend_end_to_end():
+    """Full synthetic nested spend: commitment, form classification, and
+    ordered signature verification all agree on the same construction."""
+    from msfp import decode
+    from msfp import verify
+    from coincurve import PrivateKey
+
+    witness_script = bytes(CScript([OP_2, K1, K2, K3, OP_3,
+                                    OP_CHECKMULTISIG]))
+    program = b"\x00\x20" + hashlib.sha256(witness_script).digest()
+    spk = CScript([OP_HASH160, verify.hash160(program), OP_EQUAL])
+
+    fund = CMutableTransaction()
+    fund.vout = [CMutableTxOut(10000, spk)]
+
+    spend = CMutableTransaction()
+    spend.vin = [CMutableTxIn(COutPoint(fund.GetHash(), 0),
+                              scriptSig=CScript([program]))]
+    spend.vout = [CMutableTxOut(9000, CScript())]
+
+    msg = SignatureHash(CScript(witness_script), spend, 0, 1, amount=10000,
+                        sigversion=SIGVERSION_WITNESS_V0)
+    sig1 = _sign_ecdsa(PrivateKey(PRIV1), msg) + b"\x01"
+    sig2 = _sign_ecdsa(PrivateKey(PRIV2), msg) + b"\x01"
+    sw = CScriptWitness(stack=[b"", sig1, sig2, witness_script])
+    spend.wit = CTxWitness(vtxinwit=[CTxInWitness(scriptWitness=sw)])
+
+    script_sig_hex = bytes(spend.vin[0].scriptSig).hex()
+    wit = [bytes(i) for i in sw.stack]
+    assert decode.classify_input(script_sig_hex, wit) == "p2sh_p2wsh"
+    assert verify.check_commitment(witness_script, bytes(spk),
+                                   script_sig_hex=script_sig_hex) is True
+    summary = verify.verify_input_ecdsa(spend, 0, witness_script, 10000)
+    assert summary["signatures_present"] == 2
+    assert summary["signatures_verified"] == 2
 
 
 def _block_from_txs(txids_prev, txs, prev_hash=b"\x00" * 32, ntime=1700000000):

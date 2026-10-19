@@ -162,16 +162,43 @@ def verify_ecdsa(sig_der, msg32, pubkey):
 
 # -- commitment checks ---------------------------------------------------------
 
-def check_commitment(revealed_script, prevout_spk):
+def _segwit_program_push(script_sig_hex):
+    """The scriptSig's final push when it is a segwit program (0x0020
+    followed by 32 bytes), else None. For a nested P2SH-P2WSH input this
+    push is the redeem script the P2SH output commits to."""
+    pushes = decode._script_sig_pushes(bytes.fromhex(script_sig_hex)) \
+        if script_sig_hex else None
+    if not pushes or pushes[-1] is None:
+        return None
+    redeem = bytes.fromhex(pushes[-1])
+    if len(redeem) == 34 and redeem[0] == 0x00 and redeem[1] == 0x20:
+        return redeem
+    return None
+
+
+def check_commitment(revealed_script, prevout_spk, script_sig_hex=None):
     """Verify a revealed script commits to the spent output's scriptPubKey.
 
     Returns True / False / 'not_verifiable' (taproot) / 'not_applicable'
     (prevout shape not a commitment to a script).
+
+    A P2SH prevout commits to the scriptSig's redeem push, not to the
+    revealed witnessScript. When that push is a segwit program the input
+    is nested P2SH-P2WSH and the commitment holds only if BOTH levels
+    bind: sha256(witnessScript) equals the program's payload AND
+    hash160(program) equals the prevout's script hash. Without the
+    scriptSig (or when the push is not a segwit program) the revealed
+    script is compared directly, which is the plain-P2SH case.
     """
     spk = bytes(prevout_spk)
     if len(spk) == 34 and spk[0] == 0x00 and spk[1] == 0x20:
         return hashlib.sha256(revealed_script).digest() == spk[2:]
     if len(spk) == 23 and spk[0] == 0xA9 and spk[22] == 0x87:
+        program = _segwit_program_push(script_sig_hex)
+        if program is not None:
+            if hashlib.sha256(revealed_script).digest() != program[2:]:
+                return False
+            return hash160(program) == spk[2:22]
         return hash160(revealed_script) == spk[2:22]
     if len(spk) == 34 and spk[0] == 0x51 and spk[1] == 0x20:
         return "not_verifiable"  # P2TR: needs the taptree to bind
@@ -538,7 +565,8 @@ def run_validation_mempool(config, conn, count=1000):
     todo = []
     for r in conn.execute(
         "SELECT o.input_id, i.txid, i.input_index, i.prevout_txid, "
-        "i.prevout_n, i.input_form, i.block_height, s.script_hex, s.source "
+        "i.prevout_n, i.input_form, i.block_height, i.script_sig_hex, "
+        "s.script_hex, s.source "
         "FROM script_observations o "
         "JOIN inputs i ON i.input_id=o.input_id "
         "JOIN revealed_scripts s ON s.script_sha256=o.script_sha256 "
@@ -632,7 +660,8 @@ def run_validation_mempool(config, conn, count=1000):
             script_bytes = bytes.fromhex(r["script_hex"])
             spk = bytes.fromhex(prevout["scriptpubkey"])
             value = prevout["value"]
-            commit = check_commitment(script_bytes, spk)
+            commit = check_commitment(script_bytes, spk,
+                                      script_sig_hex=r["script_sig_hex"])
 
             form = r["input_form"]
             source = r["source"]
@@ -788,14 +817,12 @@ def _check_commitment_p2sh_p2wsh(script_bytes, script_sig_hex, prevout_spk):
     The prevout is a P2SH program, so the revealed witnessScript binds
     through the P2WSH program carried in the scriptSig redeem push:
     sha256(witnessScript) must equal that program, and hash160(redeem)
-    must equal the prevout's P2SH script hash.
+    must equal the prevout's P2SH script hash. Strictly False when the
+    scriptSig does not carry a segwit program: a caller here already
+    knows the input form is nested.
     """
-    pushes = decode._script_sig_pushes(bytes.fromhex(script_sig_hex)) \
-        if script_sig_hex else None
-    if not pushes or pushes[-1] is None:
-        return False
-    redeem = bytes.fromhex(pushes[-1])
-    if not (len(redeem) == 34 and redeem[0] == 0x00 and redeem[1] == 0x20):
+    redeem = _segwit_program_push(script_sig_hex)
+    if redeem is None:
         return False
     if hashlib.sha256(script_bytes).digest() != redeem[2:]:
         return False

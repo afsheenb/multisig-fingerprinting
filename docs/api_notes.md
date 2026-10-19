@@ -281,3 +281,17 @@ and all prevout (amount + scriptPubKey) pairs per input. The
 validation run over this source found and fixed a real defect in the
 local BIP-341 script-path SigMsg (the TapLeaf digest was replaced by
 the raw leaf script); key-path vectors had never exercised that branch.
+
+The same run exposed a second defect, fixed 2026-10-19:
+`check_commitment` compared hash160(revealed witnessScript) directly
+against a P2SH prevout, which is only correct for plain P2SH spends.
+For a nested P2SH-P2WSH input the P2SH prevout commits to the scriptSig's
+segwit program push (0x0020 || sha256(witnessScript)), so the
+commitment holds only when BOTH levels bind (sha256(witnessScript)
+equals the program payload AND hash160(program) equals the P2SH hash).
+`check_commitment` now unwraps the program from the scriptSig when one
+is supplied (the local-validation mode already checked it this way);
+all 36 nested P2SH-P2WSH inputs that had been stored as commitment
+FAILED re-checked against their cached mempool.space responses and
+every one flipped to ok, so the corpus carries zero commitment
+failures across the 2,154 validated inputs.
