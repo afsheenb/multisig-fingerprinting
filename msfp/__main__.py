@@ -18,6 +18,7 @@ Commands map one-to-one onto the research phases:
     keyindex               build the public-key reuse index + components
     attribute              graded provider attribution against the registry
     report                 Phase 4: preliminary findings + cost report
+    enrich                 behavioral enrichment pass over the buckets
     corpus-status          corpus, cache size, disk budget
 """
 
@@ -145,6 +146,21 @@ def cmd_report(args):
     run_report(config, conn)
 
 
+def cmd_enrich(args):
+    from .enrich import run_enrich
+    from .mempool import MempoolThrottled
+    config, conn = _open()
+    try:
+        run_enrich(config, conn, steps=args.steps.split(",") if args.steps
+                   else None, budget=args.budget,
+                   verify_sample=args.verify_sample,
+                   deposit_txs=args.deposit_txs,
+                   deposit_addrs=args.deposit_addrs)
+    except MempoolThrottled as exc:
+        print("mempool.space throttled: %s" % exc, file=sys.stderr)
+        sys.exit(2)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="msfp", description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -184,6 +200,21 @@ def main(argv=None):
     sub.add_parser("keyindex").set_defaults(func=cmd_keyindex)
     sub.add_parser("attribute").set_defaults(func=cmd_attribute)
     sub.add_parser("report").set_defaults(func=cmd_report)
+
+    p = sub.add_parser("enrich")
+    p.add_argument("--steps", default=None,
+                   help="comma-separated subset: profiles,verify_sample,"
+                        "deposits,crossover,onramp,report")
+    p.add_argument("--budget", type=int, default=300,
+                   help="cap on fresh mempool.space requests this run")
+    p.add_argument("--verify-sample", type=int, default=10,
+                   help="spend txs to verify per bucket whose validation "
+                        "sample is empty")
+    p.add_argument("--deposit-txs", type=int, default=20,
+                   help="spend txs sampled per deposit-profiled bucket")
+    p.add_argument("--deposit-addrs", type=int, default=20,
+                   help="deposit addresses profiled per bucket")
+    p.set_defaults(func=cmd_enrich)
 
     args = parser.parse_args(argv)
     try:

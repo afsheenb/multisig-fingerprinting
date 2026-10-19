@@ -80,6 +80,10 @@ class MempoolClient:
     def __init__(self, config, conn):
         self.config = config
         self.conn = conn
+        # False only for the most recent get_json call that went to the
+        # network; cache hits leave it True. Callers use it to tell
+        # cache-only work from budgeted work without re-checking files.
+        self.cached_last = True
         self.base_url = config.mempool_base_url
         self.cache_dir = os.path.join(config.data_dir, "cache_mempool")
         os.makedirs(self.cache_dir, exist_ok=True)
@@ -100,8 +104,10 @@ class MempoolClient:
         """
         path = self._cache_path(endpoint_path, params)
         if os.path.exists(path):
+            self.cached_last = True
             with gzip.open(path, "rt", encoding="utf-8") as fh:
                 return json.load(fh), path
+        self.cached_last = False
 
         url = self.base_url + endpoint_path
         ladder = None

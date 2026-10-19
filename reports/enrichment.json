@@ -1,0 +1,4561 @@
+{
+ "buckets": [
+  {
+   "bucket_id": "green_csv_family",
+   "bucket_timelock_values": {
+    "25920": 6,
+    "51840": 400,
+    "65535": 24
+   },
+   "deposit_profile": {
+    "address_histories": [
+     {
+      "address": "38shkZ9s5bvxsGqvZBt9nV5HKAXGqHFm76",
+      "first_block_time": 1730746535,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 4,
+      "spend_txs": 3,
+      "txs_on_page": 7
+     },
+     {
+      "address": "329cL4AgAgob1c3Q5YkN8nVSvhNUnWtdwo",
+      "first_block_time": 1668389990,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "32krLPFTB83WzqjnxbZcjES2ZiqLhvAddp",
+      "first_block_time": 1670356441,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "332KG6K1tnVh9AZTqpQF6SsWFH4xF1gNu3",
+      "first_block_time": 1664846893,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "34KKf7LBdEWyTHWZqXY3JPAabEeWCuz9zW",
+      "first_block_time": 1736918655,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 46,
+      "spend_txs": 4,
+      "txs_on_page": 50
+     },
+     {
+      "address": "34cDXn1iqdYvVbs7SA3wAKe1YLa42tJjGM",
+      "first_block_time": 1675188700,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "34n9fGtyoHpjCbzs8NpG96ffBb7pDB2j2h",
+      "first_block_time": 1692445932,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "35KHMJPK4XGmEYMPGWfGqFnHmSELTrRoMS",
+      "first_block_time": 1665515351,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "35Q9qCBGE4DEVdFXbLS7FckHdYxrpRqLVV",
+      "first_block_time": 1673471190,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "35XUHagamm66U1QXLwpuC14Fsq219nvsPS",
+      "first_block_time": 1665454510,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "35rufXywU6Gf6sAvaT57owC6nKTLf8sezj",
+      "first_block_time": 1676478825,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "36LmhXJbKh3xfG8oh27DNFyDrzPJ5u8LTW",
+      "first_block_time": 1734490702,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "36PG8HKw72hqJGK7dbEYQLXW7EWiFN2bW7",
+      "first_block_time": 1668991969,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "37g1okWQQRzJRJTH8WQ3QBV7F6WTKGe54y",
+      "first_block_time": 1742388361,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "38AJTxoNchioiz9uLV8fFJMGZHxnd8Fz6z",
+      "first_block_time": 1738526282,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "38MvJqoBwPt2drRJ2LLsuK4u3iPpsAaU9L",
+      "first_block_time": 1691265429,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "39DaKMriuY5631dD8zsE6k9oDRxeLuGSuF",
+      "first_block_time": 1668034768,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "39jizv9F9ayoJEKW2fNfj8QtJApowUpgos",
+      "first_block_time": 1718307493,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3A2vCU27HtueehNYsojXVwXnc3T7NfATZ8",
+      "first_block_time": 1665251478,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3APceHZTo1vzJyoojwMwBDBH2JuXoypWGV",
+      "first_block_time": 1699642256,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     }
+    ],
+    "addresses_reused_across_sampled_spends": 1,
+    "deposit_inputs_observed": 49,
+    "deposit_type_mix": {
+     "p2sh": 49
+    },
+    "deposit_values_multiple_of_01btc": 1,
+    "distinct_deposit_addresses": 48,
+    "first_seen_max": 1742388361,
+    "first_seen_min": 1664846893,
+    "fresh_address_requests": 0,
+    "fresh_tx_requests": 0,
+    "payload_errors": 0,
+    "sampled_spend_txs": 20
+   },
+   "n_scripts": 430,
+   "origin": "green C-grade family (grade C scripts plus the same template at D)",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [
+     [
+      "0x01",
+      1005
+     ]
+    ],
+    "ecdsa_inputs": 550,
+    "executed_branch_top": [
+     [
+      "false",
+      95
+     ]
+    ],
+    "input_forms": {
+     "p2sh_p2wsh": 550
+    },
+    "n_observations": 550,
+    "n_scripts": 430,
+    "n_spend_txs": 239,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      1005
+     ]
+    ],
+    "signatures_per_spend": {
+     "1": 95,
+     "2": 455
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 113,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 38,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "1",
+      "n_txs": 30,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "2-10",
+      "n_outputs": "1",
+      "n_txs": 14,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "1",
+      "n_txs": 11,
+      "sequence": "any_rbf",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 10,
+      "sequence": "any_rbf",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "2-10",
+      "n_outputs": "1",
+      "n_txs": 7,
+      "sequence": "any_rbf",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 6,
+      "sequence": "any_rbf",
+      "version": 2
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      841814,
+      38
+     ],
+     [
+      833561,
+      35
+     ],
+     [
+      862002,
+      28
+     ],
+     [
+      918078,
+      25
+     ],
+     [
+      957357,
+      20
+     ],
+     [
+      873830,
+      19
+     ]
+    ],
+    "tx_n_inputs_ge_50": 0,
+    "tx_n_inputs_top": [
+     [
+      1,
+      164
+     ],
+     [
+      2,
+      86
+     ],
+     [
+      38,
+      38
+     ],
+     [
+      35,
+      35
+     ],
+     [
+      3,
+      33
+     ],
+     [
+      16,
+      32
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      2,
+      306
+     ],
+     [
+      1,
+      244
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 455,
+     "timelock": 95
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967293,
+      455
+     ],
+     [
+      51840,
+      90
+     ],
+     [
+      65535,
+      4
+     ],
+     [
+      25920,
+      1
+     ]
+    ],
+    "tx_version": {
+     "2": 550
+    },
+    "validation_inputs": 4,
+    "verified_key_positions": {
+     "0": 4
+    },
+    "verified_position_combinations": {
+     "0": 4
+    },
+    "verified_via": {
+     "ecdsa_bip143": 4
+    }
+   },
+   "providers": [
+    "blockstream_green"
+   ]
+  },
+  {
+   "bucket_id": "p2wsh_witness|2of3|unsorted|796025d6",
+   "bucket_timelock_values": null,
+   "deposit_profile": {
+    "address_histories": [
+     {
+      "address": "3MCMZjWAMdGqAhi1iF1oyiiE2jY5yBAYzV",
+      "first_block_time": 1792064058,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 30,
+      "spend_txs": 20,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3287AZjbQsxMGXXXJL2yyfo5YBYy3HBZgA",
+      "first_block_time": 1732999509,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 14,
+      "spend_txs": 14,
+      "txs_on_page": 28
+     },
+     {
+      "address": "34jm4DeShqUH6R2hojjJTwKuYmQsiaC8EK",
+      "first_block_time": 1759046364,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 26,
+      "spend_txs": 24,
+      "txs_on_page": 50
+     },
+     {
+      "address": "352J41AXPim19NhQk1DrQM3GqrV5YGk6Vf",
+      "first_block_time": 1735458086,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "361W1diKZpJy3euyREkb1aoLKg3DsdfpdK",
+      "first_block_time": 1744242571,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "36TV95ejTiNNDwHGtftYmMKKUEvDCVWh4B",
+      "first_block_time": 1735458086,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "37G5SpGTSi9uBgWaD9D3qjDtMmiwDaz9bB",
+      "first_block_time": 1767561387,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "37Zrwfinveai7zKt2CvN89Bgf9LqkRVRWo",
+      "first_block_time": 1758245876,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "37srGEAiU6kcyQf8AVzyxB7HdNk1yCMdge",
+      "first_block_time": 1735458086,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "399XZjnFJjBzEPwDjJacmvmC5SqRhEwTYX",
+      "first_block_time": 1729576680,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 9,
+      "spend_txs": 9,
+      "txs_on_page": 18
+     },
+     {
+      "address": "3ACeHy3LHoXSkXeZdyVQ47BSHE9k44FTEy",
+      "first_block_time": 1735453864,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 3,
+      "spend_txs": 3,
+      "txs_on_page": 6
+     },
+     {
+      "address": "3AXYemCKR5qehiz8S1f9vm4MJud13R8TrB",
+      "first_block_time": 1735458086,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3BAMknvjmcma1RPqvjFoBEmpAeRwMt2xBM",
+      "first_block_time": 1619789950,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 8,
+      "spend_txs": 8,
+      "txs_on_page": 16
+     },
+     {
+      "address": "3CJzpX2gPRgKLHUqKx2BuHnrLDQNqSM86q",
+      "first_block_time": 1735455653,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 4,
+      "spend_txs": 4,
+      "txs_on_page": 8
+     },
+     {
+      "address": "3CPir4uHA9wAEJ8GSkT56xKb2sR3xT9z8G",
+      "first_block_time": 1735453864,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3DSaqpZbCg5MHgePTdNiWWBpVgMNwtKPDJ",
+      "first_block_time": 1733883923,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 24,
+      "spend_txs": 26,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3EZr3LMXigwLUeYT3rpsvc4GfzG1q6kZwF",
+      "first_block_time": 1769955268,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3GCDSAZadfLSepVQVm4r1wyqUJBJv1ZdYq",
+      "first_block_time": 1766118312,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3GKnjmXhoojqps9Ad7qYfhqpuBJVVL3mxA",
+      "first_block_time": 1779099811,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3Kcrq5DmLLMcKc6Rq53aB9U9Fyg85SZWg7",
+      "first_block_time": 1710010265,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     }
+    ],
+    "addresses_reused_across_sampled_spends": 1,
+    "deposit_inputs_observed": 59,
+    "deposit_type_mix": {
+     "p2sh": 26,
+     "v0_p2wsh": 33
+    },
+    "deposit_values_multiple_of_01btc": 2,
+    "distinct_deposit_addresses": 58,
+    "first_seen_max": 1792064058,
+    "first_seen_min": 1619789950,
+    "fresh_address_requests": 0,
+    "fresh_tx_requests": 0,
+    "payload_errors": 0,
+    "sampled_spend_txs": 20
+   },
+   "n_scripts": 14564,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [
+     [
+      "0x01",
+      37496
+     ],
+     [
+      "0x82",
+      22
+     ]
+    ],
+    "ecdsa_inputs": 18759,
+    "executed_branch_top": [
+     [
+      "false",
+      18759
+     ]
+    ],
+    "input_forms": {
+     "p2sh_p2wsh": 10011,
+     "p2wsh": 8748
+    },
+    "n_observations": 18759,
+    "n_scripts": 14564,
+    "n_spend_txs": 4536,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      37496
+     ],
+     [
+      "ANYONECANPAY|NONE",
+      22
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 18759
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 1188,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 362,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 339,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 338,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "3-5",
+      "n_txs": 302,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": ">5",
+      "n_txs": 190,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 128,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 122,
+      "sequence": "all_final",
+      "version": 1
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      11761
+     ],
+     [
+      910995,
+      1682
+     ],
+     [
+      910997,
+      1316
+     ],
+     [
+      910996,
+      1141
+     ],
+     [
+      910998,
+      327
+     ],
+     [
+      910994,
+      171
+     ]
+    ],
+    "tx_n_inputs_ge_50": 101,
+    "tx_n_inputs_top": [
+     [
+      200,
+      5884
+     ],
+     [
+      1,
+      3166
+     ],
+     [
+      31,
+      1205
+     ],
+     [
+      10,
+      1150
+     ],
+     [
+      2,
+      814
+     ],
+     [
+      250,
+      400
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      1,
+      6827
+     ],
+     [
+      2,
+      5667
+     ],
+     [
+      3,
+      1412
+     ],
+     [
+      4,
+      481
+     ],
+     [
+      6,
+      459
+     ],
+     [
+      7,
+      397
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 15115,
+     "final": 3589,
+     "timelock": 55
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967293,
+      14967
+     ],
+     [
+      4294967295,
+      3589
+     ],
+     [
+      4294967294,
+      148
+     ],
+     [
+      0,
+      55
+     ]
+    ],
+    "tx_version": {
+     "1": 15501,
+     "2": 3258
+    },
+    "validation_inputs": 78,
+    "verified_key_positions": {
+     "0": 78,
+     "1": 14,
+     "2": 64
+    },
+    "verified_position_combinations": {
+     "0,1": 14,
+     "0,2": 64
+    },
+    "verified_via": {
+     "ecdsa_bip143": 78
+    }
+   },
+   "providers": [
+    "bitgo",
+    "blockstream_green",
+    "casa",
+    "nunchuk",
+    "onramp"
+   ]
+  },
+  {
+   "bucket_id": "p2wsh_witness|2of3|sorted|796025d6",
+   "bucket_timelock_values": null,
+   "deposit_profile": {
+    "address_histories": [
+     {
+      "address": "bc1qp0sdxvluqfy3d30xz7s5xq5svt2v2cnuw2d892szk7cwtznvn2vs8dvlal",
+      "first_block_time": 1779001687,
+      "max_outputs_to_address_in_one_tx": 2,
+      "receive_txs": 49,
+      "spend_txs": 50,
+      "txs_on_page": 50
+     },
+     {
+      "address": "bc1quhruqrghgcca950rvhtrg7cpd7u8k6svpzgzmrjy8xyukacl5lkq0r8l2d",
+      "first_block_time": 1792360463,
+      "max_outputs_to_address_in_one_tx": 2,
+      "receive_txs": 50,
+      "spend_txs": 30,
+      "txs_on_page": 50
+     },
+     {
+      "address": "35BXBVVXqaS6waUTVscSxtKBDkJkRqWgKY",
+      "first_block_time": 1698665468,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3AEqNbZUxc8y6s1heuxiLsJxo7ADwnYREn",
+      "first_block_time": 1678647543,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 4,
+      "spend_txs": 3,
+      "txs_on_page": 4
+     },
+     {
+      "address": "bc1q2am2s0ppvwsgp49jqyvd28gsgmtwypvwxlkj5jzugwlpd8xyy5xqlly9yd",
+      "first_block_time": 1775605317,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1q4wurquypzuglena8s42tqk6mmuwh3przw8ma22wy5pf5ppyf9hesq8vwpp",
+      "first_block_time": 1766432870,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1q5nnuqwhxs02tqhhjcpklxk8zjat4wyxzhndntvp7nnuv74dcza5q3mujz4",
+      "first_block_time": 1765612865,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1q6suals9q2zjjhcae0zdjv3upchhy0vcfenuhvucwcff5daxpuwlqn784zd",
+      "first_block_time": 1780424856,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1q9sw3addmuh2aefps35swqlc4krg692kdwggs3gxl00mr5jxhvavqvv08gk",
+      "first_block_time": 1765635903,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qapxrsrzz23exe36cu4lj5k3q2ztm499mwa49gdz5fkluyr4tvchsfrywfe",
+      "first_block_time": 1774805129,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qcze963p52x2fnpgv4lusztzqlsf4fq8u0zupf6duxz2jjwg7wamsm77dfw",
+      "first_block_time": 1790341560,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qe9ezl8maw0aykzqkwms3a25ne9ul4lhjr7p3tlgpl4n9pknq2unsjd8l55",
+      "first_block_time": 1787158011,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 13,
+      "spend_txs": 13,
+      "txs_on_page": 26
+     },
+     {
+      "address": "bc1qfhz8zn5tjph2x77sjt0dhk5acxf5dqdks4s66sy9kn9xlw00a23qmmu59g",
+      "first_block_time": 1760242157,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qjsf2wthrscf8fe0ad5uj2q64hy4waz9wh9zd8edfqemugy6qet3sjavds9",
+      "first_block_time": 1778696115,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qk2d6uf2ra4f7e65dpvrydl9cy046sr7r8ewug7vdss2nh92a2q9qg8dg6e",
+      "first_block_time": 1742477480,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 29,
+      "spend_txs": 21,
+      "txs_on_page": 50
+     },
+     {
+      "address": "bc1qsyjp5heduutm6rxlsk9wtmtrajkas8cfhfgvcqc87d43p4rclq3qrmxfjg",
+      "first_block_time": 1775624257,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qv87q4yu6kf5pqyyyfs4duepf2ut6hnqeznp6ez8ax2jlauw4h0ps7tt7lf",
+      "first_block_time": 1711541998,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qvt2x270nmnjkm0ph8v63qegh948n00uzh0xngyaaxxgw5ltg6ddq3djtmq",
+      "first_block_time": 1727289118,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qvvg8lst7nstpjxqpsa9e0hwfde6lv3r678j2uh3mf7wn90566xrqc47e7w",
+      "first_block_time": 1741969967,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "bc1qzrhstflycu4um26zsv50rlegjyj4n7nn742d778pse43gqqqz36sc40sr9",
+      "first_block_time": 1765637465,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     }
+    ],
+    "addresses_reused_across_sampled_spends": 2,
+    "deposit_inputs_observed": 24,
+    "deposit_type_mix": {
+     "p2sh": 2,
+     "v0_p2wsh": 22
+    },
+    "deposit_values_multiple_of_01btc": 1,
+    "distinct_deposit_addresses": 20,
+    "first_seen_max": 1792360463,
+    "first_seen_min": 1678647543,
+    "fresh_address_requests": 0,
+    "fresh_tx_requests": 0,
+    "payload_errors": 0,
+    "sampled_spend_txs": 20
+   },
+   "n_scripts": 5371,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [
+     [
+      "0x01",
+      14416
+     ],
+     [
+      "0x82",
+      4
+     ]
+    ],
+    "ecdsa_inputs": 7210,
+    "executed_branch_top": [
+     [
+      "false",
+      7210
+     ]
+    ],
+    "input_forms": {
+     "p2sh_p2wsh": 2264,
+     "p2wsh": 4946
+    },
+    "n_observations": 7210,
+    "n_scripts": 5371,
+    "n_spend_txs": 2407,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      14416
+     ],
+     [
+      "ANYONECANPAY|NONE",
+      4
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 7210
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 319,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 204,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 169,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 113,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 96,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": ">5",
+      "n_txs": 87,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "1",
+      "n_txs": 87,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": ">5",
+      "n_txs": 76,
+      "sequence": "all_final",
+      "version": 1
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      4697
+     ],
+     [
+      910995,
+      317
+     ],
+     [
+      910997,
+      282
+     ],
+     [
+      910996,
+      259
+     ],
+     [
+      862843,
+      122
+     ],
+     [
+      910998,
+      74
+     ]
+    ],
+    "tx_n_inputs_ge_50": 104,
+    "tx_n_inputs_top": [
+     [
+      1,
+      1315
+     ],
+     [
+      200,
+      1195
+     ],
+     [
+      2,
+      380
+     ],
+     [
+      10,
+      278
+     ],
+     [
+      3,
+      222
+     ],
+     [
+      31,
+      222
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      2,
+      2775
+     ],
+     [
+      1,
+      2216
+     ],
+     [
+      3,
+      397
+     ],
+     [
+      11,
+      358
+     ],
+     [
+      9,
+      270
+     ],
+     [
+      4,
+      140
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 4576,
+     "final": 2622,
+     "timelock": 12
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967293,
+      4491
+     ],
+     [
+      4294967295,
+      2622
+     ],
+     [
+      4294967294,
+      85
+     ],
+     [
+      0,
+      12
+     ]
+    ],
+    "tx_version": {
+     "1": 5412,
+     "2": 1798
+    },
+    "validation_inputs": 44,
+    "verified_key_positions": {
+     "0": 36,
+     "1": 19,
+     "2": 33
+    },
+    "verified_position_combinations": {
+     "0,1": 11,
+     "0,2": 25,
+     "1,2": 8
+    },
+    "verified_via": {
+     "ecdsa_bip143": 44
+    }
+   },
+   "providers": [
+    "casa",
+    "nunchuk",
+    "onramp",
+    "unchained"
+   ]
+  },
+  {
+   "bucket_id": "p2sh_redeem|2of3|unsorted|796025d6",
+   "bucket_timelock_values": null,
+   "deposit_profile": {
+    "address_histories": [
+     {
+      "address": "3LXmk7UVY7Q6DBQzas23H7jCJURKh3NpG9",
+      "first_block_time": 1781882541,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 41,
+      "spend_txs": 9,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3MjFm3piY2C4uzjKcm97cCprzdR3khoBRo",
+      "first_block_time": null,
+      "max_outputs_to_address_in_one_tx": 0,
+      "receive_txs": 0,
+      "spend_txs": 50,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3PHu7Z1dtRYbeum2SNWFCA4Fmq8r3UeXdQ",
+      "first_block_time": null,
+      "max_outputs_to_address_in_one_tx": 0,
+      "receive_txs": 0,
+      "spend_txs": 50,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3CJ7zGhmSzVxnd1zFJxFY7aFyUWSZSt5aE",
+      "first_block_time": 1761020592,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 24,
+      "spend_txs": 26,
+      "txs_on_page": 50
+     },
+     {
+      "address": "39r28fYEiGTgA6sa9Dhf24P6q4tqrWMVey",
+      "first_block_time": 1753419766,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 23,
+      "spend_txs": 27,
+      "txs_on_page": 50
+     },
+     {
+      "address": "39HcwewTNYEPjHkSQP55qiicEqDwovvL1Y",
+      "first_block_time": 1784257578,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3BDHPmvVqJ1xFw7PmSznM3qD2RK7BQRRsW",
+      "first_block_time": null,
+      "max_outputs_to_address_in_one_tx": 0,
+      "receive_txs": 0,
+      "spend_txs": 50,
+      "txs_on_page": 50
+     },
+     {
+      "address": "31nUiVckoKXyZ24ZacTsTVbzMdGt4HHg78",
+      "first_block_time": 1766985846,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "325jDRgqYthPt9SueNwU4gZg49iXvcuhec",
+      "first_block_time": 1772557961,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "327zbRKk91g3vUnvYQxKxd1cYk46MyQjat",
+      "first_block_time": 1742868137,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 6,
+      "spend_txs": 6,
+      "txs_on_page": 12
+     },
+     {
+      "address": "32Mruz5ZTHcMAZTnEGWFRumL2G6jRPigg4",
+      "first_block_time": null,
+      "max_outputs_to_address_in_one_tx": 0,
+      "receive_txs": 0,
+      "spend_txs": 50,
+      "txs_on_page": 50
+     },
+     {
+      "address": "32NbsBZ7GUBZMGBrMRPNwxz7wkgekoffux",
+      "first_block_time": 1720510301,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 49,
+      "txs_on_page": 50
+     },
+     {
+      "address": "32SMyCGm3ro3gJEkxNsvSd1P3XByHvvUpa",
+      "first_block_time": 1788059138,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 50,
+      "spend_txs": 0,
+      "txs_on_page": 50
+     },
+     {
+      "address": "335dTPatvK3mDgM92JaTAo7JnFPTgitwVs",
+      "first_block_time": 1789878826,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 27,
+      "spend_txs": 23,
+      "txs_on_page": 50
+     },
+     {
+      "address": "33JqRvTduuXmhdi3bVEtqReFzAz1t8Dpwn",
+      "first_block_time": 1700274626,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 23,
+      "spend_txs": 23,
+      "txs_on_page": 46
+     },
+     {
+      "address": "33K6kYbbsG4NyJ5TLuWdQm7rZ8Bb1XnBSo",
+      "first_block_time": 1724060495,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "33WuuPq3UfYrts7LqAp5jNAnekr11ogaME",
+      "first_block_time": 1737922662,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 49,
+      "txs_on_page": 50
+     },
+     {
+      "address": "33j5fuJc14aff3Z6vHZBxaHEKMdNmKbRxQ",
+      "first_block_time": 1791991062,
+      "max_outputs_to_address_in_one_tx": 3,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "33yuyXiNPbVX8W1nvVX2Wt9PLKTyiR4dTN",
+      "first_block_time": 1716286760,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "344pyTC3DAwhEkSy2xkWFHx9Ej8itcdy14",
+      "first_block_time": 1764640576,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 3,
+      "spend_txs": 47,
+      "txs_on_page": 50
+     }
+    ],
+    "addresses_reused_across_sampled_spends": 7,
+    "deposit_inputs_observed": 169,
+    "deposit_type_mix": {
+     "p2sh": 169
+    },
+    "deposit_values_multiple_of_01btc": 2,
+    "distinct_deposit_addresses": 161,
+    "first_seen_max": 1791991062,
+    "first_seen_min": 1700274626,
+    "fresh_address_requests": 0,
+    "fresh_tx_requests": 0,
+    "payload_errors": 0,
+    "sampled_spend_txs": 20
+   },
+   "n_scripts": 4863,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [],
+    "ecdsa_inputs": 0,
+    "executed_branch_top": [],
+    "input_forms": {
+     "p2sh_redeem": 6843
+    },
+    "n_observations": 6843,
+    "n_scripts": 4863,
+    "n_spend_txs": 706,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      13686
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 6843
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": ">5",
+      "n_txs": 95,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 71,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "3-5",
+      "n_txs": 68,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 64,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "11-50",
+      "n_outputs": ">5",
+      "n_txs": 62,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 50,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "3-5",
+      "n_txs": 33,
+      "sequence": "all_final",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": ">5",
+      "n_txs": 31,
+      "sequence": "all_final",
+      "version": 1
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      6812
+     ],
+     [
+      872925,
+      8
+     ],
+     [
+      893424,
+      3
+     ],
+     [
+      871196,
+      2
+     ],
+     [
+      896013,
+      2
+     ],
+     [
+      964582,
+      2
+     ]
+    ],
+    "tx_n_inputs_ge_50": 37,
+    "tx_n_inputs_top": [
+     [
+      300,
+      2465
+     ],
+     [
+      150,
+      2262
+     ],
+     [
+      1,
+      286
+     ],
+     [
+      6,
+      166
+     ],
+     [
+      2,
+      121
+     ],
+     [
+      8,
+      99
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      1,
+      4869
+     ],
+     [
+      2,
+      552
+     ],
+     [
+      9,
+      158
+     ],
+     [
+      7,
+      151
+     ],
+     [
+      6,
+      146
+     ],
+     [
+      4,
+      122
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 241,
+     "final": 6602
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967295,
+      6602
+     ],
+     [
+      4294967293,
+      225
+     ],
+     [
+      4294967294,
+      16
+     ]
+    ],
+    "tx_version": {
+     "1": 6672,
+     "2": 171
+    },
+    "validation_inputs": 9,
+    "verified_key_positions": {
+     "0": 9,
+     "1": 8,
+     "2": 1
+    },
+    "verified_position_combinations": {
+     "0,1": 8,
+     "0,2": 1
+    },
+    "verified_via": {
+     "ecdsa_bip143": 9
+    }
+   },
+   "providers": [
+    "bitgo",
+    "onramp"
+   ]
+  },
+  {
+   "bucket_id": "p2sh_redeem|2of3|sorted|796025d6",
+   "bucket_timelock_values": null,
+   "deposit_profile": {
+    "address_histories": [
+     {
+      "address": "3K3eBGQWDD32PdQmMcY9rZbPnA1Z6gLfvY",
+      "first_block_time": 1677850995,
+      "max_outputs_to_address_in_one_tx": 2,
+      "receive_txs": 6,
+      "spend_txs": 4,
+      "txs_on_page": 7
+     },
+     {
+      "address": "3ADQH9ysAP4UU7vLdMEXJskzDBovzSUb33",
+      "first_block_time": 1790741538,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 27,
+      "spend_txs": 24,
+      "txs_on_page": 50
+     },
+     {
+      "address": "32A5LBwZabY5HAsAc7rFzF8uZY56d3tQ31",
+      "first_block_time": 1766828005,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 24,
+      "spend_txs": 26,
+      "txs_on_page": 50
+     },
+     {
+      "address": "32L1KfKvWMfAbBaG8LbqbezGMx873X1y47",
+      "first_block_time": 1775010995,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 23,
+      "spend_txs": 27,
+      "txs_on_page": 50
+     },
+     {
+      "address": "32yqk5GWivG52eLEX2Rn2W4W2CaHUhWP8T",
+      "first_block_time": 1685789503,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 7,
+      "spend_txs": 6,
+      "txs_on_page": 13
+     },
+     {
+      "address": "35pRA1AfaH9EqWeesDVfvnCaJL8Vdgnj7Q",
+      "first_block_time": 1715672658,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 6,
+      "spend_txs": 6,
+      "txs_on_page": 12
+     },
+     {
+      "address": "37i4tcRBw4ypYJ6K8yBXpvK4HuRYzj6Exh",
+      "first_block_time": 1736119718,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 23,
+      "spend_txs": 27,
+      "txs_on_page": 50
+     },
+     {
+      "address": "38VkqE83wkw2HxiqZt1CpcjsoU2xVeWvWL",
+      "first_block_time": 1738009832,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 22,
+      "spend_txs": 28,
+      "txs_on_page": 50
+     },
+     {
+      "address": "38kk4EyhUizvKxzxuBAn58B2qQYwpZ1hh3",
+      "first_block_time": 1770978661,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 4,
+      "spend_txs": 3,
+      "txs_on_page": 7
+     },
+     {
+      "address": "39MzNK7PPeP3GsAiTwbaXEdYQ5pX6H6hnb",
+      "first_block_time": 1725931189,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 17,
+      "spend_txs": 16,
+      "txs_on_page": 33
+     },
+     {
+      "address": "39TUWb72BdYdQPNENZ8KNz4FycKCbNG8nt",
+      "first_block_time": 1724668360,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "39is5gEitg2NxCrrDVtpJsugS45jppWJYm",
+      "first_block_time": 1755187887,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "39whGyJg8y6APGNSeYE9CMky7H2hGyKA2J",
+      "first_block_time": 1784864352,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 47,
+      "spend_txs": 3,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3A8rkRpWKCujnBrHyZd68VCPpNdmWKnF3d",
+      "first_block_time": 1724674380,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3AukkxBqPU3fbm4xi2w8QYa1YQS4n2PUy3",
+      "first_block_time": 1731478949,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 14,
+      "spend_txs": 12,
+      "txs_on_page": 26
+     },
+     {
+      "address": "3BAaHGWmWBA5QfvmVQtPwoKrfipnqGn3AM",
+      "first_block_time": 1704285844,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 4,
+      "spend_txs": 4,
+      "txs_on_page": 8
+     },
+     {
+      "address": "3BipZRvC76QQZXaeDFsTEaQWPszqo5R5hx",
+      "first_block_time": 1570028166,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3CmBRMnybcEDqBdkRoa8g29tGN3aP9Ej6E",
+      "first_block_time": 1709874194,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 15,
+      "spend_txs": 15,
+      "txs_on_page": 30
+     },
+     {
+      "address": "3CwRHuFZ1rd9wJpj9PfYEFWS2bFfL26gtL",
+      "first_block_time": 1790597070,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 26,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3DBq9Jf8WuSRGw1i6fYYqv8Cmi4XT441x7",
+      "first_block_time": 1762188187,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 7,
+      "spend_txs": 7,
+      "txs_on_page": 14
+     }
+    ],
+    "addresses_reused_across_sampled_spends": 2,
+    "deposit_inputs_observed": 37,
+    "deposit_type_mix": {
+     "p2sh": 37
+    },
+    "deposit_values_multiple_of_01btc": 3,
+    "distinct_deposit_addresses": 35,
+    "first_seen_max": 1790741538,
+    "first_seen_min": 1570028166,
+    "fresh_address_requests": 0,
+    "fresh_tx_requests": 0,
+    "payload_errors": 0,
+    "sampled_spend_txs": 20
+   },
+   "n_scripts": 1404,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [],
+    "ecdsa_inputs": 0,
+    "executed_branch_top": [],
+    "input_forms": {
+     "p2sh_redeem": 1877
+    },
+    "n_observations": 1877,
+    "n_scripts": 1404,
+    "n_spend_txs": 416,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      3754
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 1877
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": ">5",
+      "n_txs": 50,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "11-50",
+      "n_outputs": ">5",
+      "n_txs": 46,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 39,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "3-5",
+      "n_txs": 30,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": ">50",
+      "n_outputs": "1",
+      "n_txs": 30,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 28,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 19,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 16,
+      "sequence": "disabled",
+      "version": 1
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      1710
+     ],
+     [
+      817176,
+      33
+     ],
+     [
+      827126,
+      31
+     ],
+     [
+      966834,
+      15
+     ],
+     [
+      916719,
+      9
+     ],
+     [
+      815679,
+      8
+     ]
+    ],
+    "tx_n_inputs_ge_50": 36,
+    "tx_n_inputs_top": [
+     [
+      300,
+      492
+     ],
+     [
+      150,
+      488
+     ],
+     [
+      1,
+      148
+     ],
+     [
+      6,
+      81
+     ],
+     [
+      2,
+      68
+     ],
+     [
+      71,
+      65
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      1,
+      1234
+     ],
+     [
+      2,
+      319
+     ],
+     [
+      5,
+      38
+     ],
+     [
+      9,
+      37
+     ],
+     [
+      4,
+      32
+     ],
+     [
+      7,
+      31
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 325,
+     "final": 1551,
+     "timelock": 1
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967295,
+      1551
+     ],
+     [
+      4294967293,
+      318
+     ],
+     [
+      4294967294,
+      7
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    "tx_version": {
+     "1": 1660,
+     "2": 217
+    },
+    "validation_inputs": 2,
+    "verified_key_positions": {
+     "0": 2,
+     "1": 1,
+     "2": 1
+    },
+    "verified_position_combinations": {
+     "0,1": 1,
+     "0,2": 1
+    },
+    "verified_via": {
+     "ecdsa_bip143": 2
+    }
+   },
+   "providers": [
+    "onramp",
+    "unchained"
+   ]
+  },
+  {
+   "bucket_id": "p2wsh_witness|2of2|unsorted|a8e8400d",
+   "bucket_timelock_values": null,
+   "deposit_profile": {
+    "address_histories": [
+     {
+      "address": "3Qnajezxg1nHPt5qVVcN7egCuMwVGkoJaE",
+      "first_block_time": 1715965123,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 49,
+      "spend_txs": 48,
+      "txs_on_page": 50
+     },
+     {
+      "address": "32c9xx6sNGcVin5CHX4Dr7cKvztrFn2JYY",
+      "first_block_time": 1743598524,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "35PuYaVrf3nqnQiZ11ojwwKrcEZA3rAYUL",
+      "first_block_time": 1572579008,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "35vBU94qYcvoviQp5m8HDu1LAn9adfxAb6",
+      "first_block_time": 1695873811,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 2,
+      "spend_txs": 2,
+      "txs_on_page": 3
+     },
+     {
+      "address": "37wgefnLcWbn9wtt2nsZyTw2jS4Ki7RGfw",
+      "first_block_time": 1724080497,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3997GfZTaNnikbEZeq8fNk5ycgAmRzE3cn",
+      "first_block_time": 1712305705,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 18,
+      "spend_txs": 10,
+      "txs_on_page": 28
+     },
+     {
+      "address": "39EnzW5ZHKE1B56fBMXAZdm11anBtxUcRD",
+      "first_block_time": 1788466543,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3AgrSDnxFngZedERE3DQWqbLK1xLWNpZgS",
+      "first_block_time": 1759048694,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3CES4XYkKhiNsxHR8DmPcfAvNDWiid4V1j",
+      "first_block_time": 1784787027,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3D1ijbduLU5Qy6nRE6E4Yruq3CUeE3wMsx",
+      "first_block_time": 1782675554,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 26,
+      "spend_txs": 24,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3DKj8HgeWuqZpiQGh12ssbcboRcANMPVxj",
+      "first_block_time": 1714686680,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 50,
+      "spend_txs": 49,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3DcL6suJRZ4SE7GcTbv8BMYXK4uLFW41Pg",
+      "first_block_time": 1740254669,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3EHGFwfW6UZr7xiQNsrcs72i482nGNbKxW",
+      "first_block_time": 1717104604,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 49,
+      "spend_txs": 46,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3GCjaJAwrPn3RhaQPNfL9MNz6yhLCYyeM4",
+      "first_block_time": 1709798301,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 38,
+      "spend_txs": 37,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3GQC3567mFWhaYpVvYp5HBvWQ5ZZ9K1uT4",
+      "first_block_time": 1782864482,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 25,
+      "spend_txs": 25,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3HUvs7fyA2M9bjyhNfnU8yaSnA297NByxm",
+      "first_block_time": 1756850880,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3HVn6LtjLUCTEk6EfG9sCzJD6B9W3xkMqi",
+      "first_block_time": 1717073989,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 49,
+      "spend_txs": 44,
+      "txs_on_page": 50
+     },
+     {
+      "address": "3HXj8DXPTgqpn8pY7nKiiLbVCgnSjVF7P8",
+      "first_block_time": 1746824928,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 1,
+      "spend_txs": 1,
+      "txs_on_page": 2
+     },
+     {
+      "address": "3K7JtU16PjPhwxMcvzeevtruNaL6rigsde",
+      "first_block_time": 1723230167,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 13,
+      "spend_txs": 13,
+      "txs_on_page": 26
+     },
+     {
+      "address": "3LPBayLCYDAz8pcQRpZvSQkm2qpfhv1GBP",
+      "first_block_time": 1694217583,
+      "max_outputs_to_address_in_one_tx": 1,
+      "receive_txs": 26,
+      "spend_txs": 26,
+      "txs_on_page": 50
+     }
+    ],
+    "addresses_reused_across_sampled_spends": 1,
+    "deposit_inputs_observed": 22,
+    "deposit_type_mix": {
+     "p2sh": 22
+    },
+    "deposit_values_multiple_of_01btc": 0,
+    "distinct_deposit_addresses": 21,
+    "first_seen_max": 1788466543,
+    "first_seen_min": 1572579008,
+    "fresh_address_requests": 0,
+    "fresh_tx_requests": 0,
+    "payload_errors": 0,
+    "sampled_spend_txs": 20
+   },
+   "n_scripts": 581,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [
+     [
+      "0x01",
+      1612
+     ]
+    ],
+    "ecdsa_inputs": 806,
+    "executed_branch_top": [
+     [
+      "false",
+      806
+     ]
+    ],
+    "input_forms": {
+     "p2sh_p2wsh": 806
+    },
+    "n_observations": 806,
+    "n_scripts": 581,
+    "n_spend_txs": 195,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      1612
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 806
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 78,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 24,
+      "sequence": "any_rbf",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "3-5",
+      "n_txs": 21,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 17,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 15,
+      "sequence": "any_rbf",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "1",
+      "n_txs": 14,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": ">5",
+      "n_txs": 5,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "3-5",
+      "n_txs": 5,
+      "sequence": "any_rbf",
+      "version": 1
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      805
+     ],
+     [
+      878410,
+      1
+     ]
+    ],
+    "tx_n_inputs_ge_50": 4,
+    "tx_n_inputs_top": [
+     [
+      495,
+      402
+     ],
+     [
+      1,
+      139
+     ],
+     [
+      771,
+      116
+     ],
+     [
+      2,
+      37
+     ],
+     [
+      231,
+      29
+     ],
+     [
+      21,
+      21
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      2,
+      579
+     ],
+     [
+      1,
+      186
+     ],
+     [
+      3,
+      22
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      6,
+      4
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 1,
+     "final": 736,
+     "timelock": 69
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967295,
+      736
+     ],
+     [
+      0,
+      69
+     ],
+     [
+      4294967293,
+      1
+     ]
+    ],
+    "tx_version": {
+     "1": 805,
+     "2": 1
+    },
+    "validation_inputs": 2,
+    "verified_key_positions": {
+     "0": 2,
+     "1": 2
+    },
+    "verified_position_combinations": {
+     "0,1": 2
+    },
+    "verified_via": {
+     "ecdsa_bip143": 2
+    }
+   },
+   "providers": [
+    "blockstream_green"
+   ]
+  },
+  {
+   "bucket_id": "taproot_leaf|c03b27c9",
+   "bucket_timelock_values": null,
+   "fresh_verification_sample": {
+    "results": [
+     {
+      "commitment": "not_verifiable",
+      "input_id": 1201427,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "5774b30b3756093ed6ffab9e1f80741d78096ef192d337b2d8745e9ac08d1320",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 1218527,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "8e2ec6e36887be06cbf28e102a3ab6d97c376c59f80a62b6c310e28bece6f136",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 1284619,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "68c2f951cfd7a1a0390f8d12d7d27a70ac5d7711d195fe8e0b9ae7868125f878",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230662,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230663,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230665,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230667,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230668,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230671,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230672,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230673,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230675,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230676,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230678,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230679,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230681,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230683,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230684,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230686,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230687,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230688,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230691,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230692,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230694,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230697,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230698,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230699,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230700,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230701,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230703,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230705,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230706,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230707,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230708,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230711,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230712,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230713,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230715,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230717,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230721,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230722,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230724,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230725,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230726,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230728,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230732,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230735,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230736,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230737,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230738,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230740,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230742,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230743,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230745,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230746,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230747,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230749,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230752,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230753,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230755,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230756,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230760,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230761,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230762,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230763,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230764,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230767,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230769,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230772,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230774,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230777,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230778,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230780,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230782,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230784,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230786,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230789,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230790,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230794,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230795,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230799,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230802,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230805,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230807,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230809,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230810,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230813,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230814,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230817,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230820,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230821,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230822,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230825,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230827,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230832,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230835,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230836,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230839,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230841,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230842,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230843,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230844,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230845,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230847,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230850,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230854,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230856,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230857,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230858,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230859,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     },
+     {
+      "commitment": "not_verifiable",
+      "input_id": 230861,
+      "signatures_present": 1,
+      "signatures_verified": 1,
+      "txid": "b497717cbf5873a4759bf6faa890fa338345c8ad58dbf9f7ad87de3c06aa4ae9",
+      "verified_positions": [
+       2
+      ],
+      "via": "taproot_script"
+     }
+    ],
+    "spend_txs_attempted": 10
+   },
+   "n_scripts": 102,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [],
+    "ecdsa_inputs": 0,
+    "executed_branch_top": [],
+    "input_forms": {
+     "taproot_scriptpath": 120
+    },
+    "n_observations": 120,
+    "n_scripts": 102,
+    "n_spend_txs": 12,
+    "schnorr_inputs": 120,
+    "sighash_types_top": [
+     [
+      "DEFAULT",
+      131
+     ],
+     [
+      "ALL",
+      109
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 120
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 5,
+      "sequence": "all_final",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 2,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "2-10",
+      "n_outputs": "2",
+      "n_txs": 1,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": ">50",
+      "n_outputs": "2",
+      "n_txs": 1,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "1",
+      "n_txs": 1,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": false,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 1,
+      "sequence": "disabled",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "1",
+      "n_txs": 1,
+      "sequence": "disabled",
+      "version": 2
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      117
+     ],
+     [
+      844432,
+      1
+     ],
+     [
+      960434,
+      1
+     ],
+     [
+      962166,
+      1
+     ]
+    ],
+    "tx_n_inputs_ge_50": 1,
+    "tx_n_inputs_top": [
+     [
+      200,
+      108
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      2
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      2,
+      118
+     ],
+     [
+      1,
+      2
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 6,
+     "final": 114
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967295,
+      114
+     ],
+     [
+      4294967293,
+      6
+     ]
+    ],
+    "tx_version": {
+     "1": 109,
+     "2": 11
+    },
+    "validation_inputs": 111,
+    "verified_key_positions": {
+     "2": 111
+    },
+    "verified_position_combinations": {
+     "2": 111
+    },
+    "verified_via": {
+     "taproot_script": 111
+    }
+   },
+   "providers": [
+    "bitgo"
+   ]
+  },
+  {
+   "bucket_id": "p2wsh_witness|3of5|sorted|0454a104",
+   "bucket_timelock_values": null,
+   "n_scripts": 22,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [
+     [
+      "0x01",
+      72
+     ]
+    ],
+    "ecdsa_inputs": 24,
+    "executed_branch_top": [
+     [
+      "false",
+      24
+     ]
+    ],
+    "input_forms": {
+     "p2sh_p2wsh": 24
+    },
+    "n_observations": 24,
+    "n_scripts": 22,
+    "n_spend_txs": 11,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      72
+     ]
+    ],
+    "signatures_per_spend": {
+     "3": 24
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 4,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "2",
+      "n_txs": 2,
+      "sequence": "all_final",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": "1",
+      "n_txs": 2,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "1",
+      "n_txs": 2,
+      "sequence": "disabled",
+      "version": 1
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "1",
+      "n_txs": 1,
+      "sequence": "all_final",
+      "version": 1
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      24
+     ]
+    ],
+    "tx_n_inputs_ge_50": 0,
+    "tx_n_inputs_top": [
+     [
+      6,
+      12
+     ],
+     [
+      1,
+      8
+     ],
+     [
+      4,
+      4
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      1,
+      18
+     ],
+     [
+      2,
+      6
+     ]
+    ],
+    "tx_sequence_class": {
+     "disabled": 8,
+     "final": 16
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967295,
+      16
+     ],
+     [
+      4294967293,
+      8
+     ]
+    ],
+    "tx_version": {
+     "1": 24
+    },
+    "validation_inputs": 2,
+    "verified_key_positions": {
+     "0": 2,
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 1
+    },
+    "verified_position_combinations": {
+     "0,1,3": 1,
+     "0,2,4": 1
+    },
+    "verified_via": {
+     "ecdsa_bip143": 2
+    }
+   },
+   "providers": [
+    "casa"
+   ]
+  },
+  {
+   "bucket_id": "p2sh_redeem|2of2|unsorted|a8e8400d",
+   "bucket_timelock_values": null,
+   "fresh_verification_sample": {
+    "results": [
+     {
+      "commitment": "True",
+      "input_id": 984430,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "0b2193d9857824a042206c3d3e35a6519c08bd76b6cf2e73eff8a300a367ef90",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 984431,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "0b2193d9857824a042206c3d3e35a6519c08bd76b6cf2e73eff8a300a367ef90",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 984435,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "0b2193d9857824a042206c3d3e35a6519c08bd76b6cf2e73eff8a300a367ef90",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 984437,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "0b2193d9857824a042206c3d3e35a6519c08bd76b6cf2e73eff8a300a367ef90",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 984439,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "0b2193d9857824a042206c3d3e35a6519c08bd76b6cf2e73eff8a300a367ef90",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 984441,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "0b2193d9857824a042206c3d3e35a6519c08bd76b6cf2e73eff8a300a367ef90",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 558379,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "512ef22fa6c8a49a7042f461f48ec4774d3ab5eaa72ca6e950eafd1c873b240d",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 914144,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "92cb8984b54f578c7a5f81c1ef8620af6a0fd1ac60b22b29c875c4bbe2eebd5a",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 914145,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "92cb8984b54f578c7a5f81c1ef8620af6a0fd1ac60b22b29c875c4bbe2eebd5a",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 180427,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "96dbb931760cfee3974622cde318ab1f95ba079cad151cbaf80d3b7aaa00c984",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     }
+    ],
+    "spend_txs_attempted": 10
+   },
+   "n_scripts": 8,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [],
+    "ecdsa_inputs": 0,
+    "executed_branch_top": [],
+    "input_forms": {
+     "p2sh_redeem": 12
+    },
+    "n_observations": 12,
+    "n_scripts": 8,
+    "n_spend_txs": 6,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      24
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 12
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "1",
+      "n_outputs": ">5",
+      "n_txs": 4,
+      "sequence": "any_rbf",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "11-50",
+      "n_outputs": "2",
+      "n_txs": 1,
+      "sequence": "any_rbf",
+      "version": 2
+     },
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": "3-5",
+      "n_txs": 1,
+      "sequence": "any_rbf",
+      "version": 2
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      12
+     ]
+    ],
+    "tx_n_inputs_ge_50": 0,
+    "tx_n_inputs_top": [
+     [
+      12,
+      6
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      2
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      2,
+      6
+     ],
+     [
+      5,
+      2
+     ],
+     [
+      10,
+      1
+     ],
+     [
+      11,
+      1
+     ],
+     [
+      8,
+      1
+     ],
+     [
+      9,
+      1
+     ]
+    ],
+    "tx_sequence_class": {
+     "timelock": 12
+    },
+    "tx_sequence_values_top": [
+     [
+      0,
+      12
+     ]
+    ],
+    "tx_version": {
+     "2": 12
+    },
+    "validation_inputs": 10,
+    "verified_key_positions": {
+     "0": 10,
+     "1": 10
+    },
+    "verified_position_combinations": {
+     "0,1": 10
+    },
+    "verified_via": {
+     "ecdsa_bip143": 10
+    }
+   },
+   "providers": [
+    "blockstream_green"
+   ]
+  },
+  {
+   "bucket_id": "p2sh_redeem|2of3|unsorted|3bedcf6d",
+   "bucket_timelock_values": null,
+   "fresh_verification_sample": {
+    "results": [
+     {
+      "commitment": "True",
+      "input_id": 701482,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "644e2a185a3090e00c6d5d71f8e45bee7373d6663c21a9f413fbe946d2263df7",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 701483,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "644e2a185a3090e00c6d5d71f8e45bee7373d6663c21a9f413fbe946d2263df7",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 701484,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "644e2a185a3090e00c6d5d71f8e45bee7373d6663c21a9f413fbe946d2263df7",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 701485,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "644e2a185a3090e00c6d5d71f8e45bee7373d6663c21a9f413fbe946d2263df7",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 701486,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "644e2a185a3090e00c6d5d71f8e45bee7373d6663c21a9f413fbe946d2263df7",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 701487,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "644e2a185a3090e00c6d5d71f8e45bee7373d6663c21a9f413fbe946d2263df7",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     },
+     {
+      "commitment": "True",
+      "input_id": 701488,
+      "signatures_present": 2,
+      "signatures_verified": 2,
+      "txid": "644e2a185a3090e00c6d5d71f8e45bee7373d6663c21a9f413fbe946d2263df7",
+      "verified_positions": [
+       0,
+       1
+      ],
+      "via": "ecdsa_bip143"
+     }
+    ],
+    "spend_txs_attempted": 10
+   },
+   "n_scripts": 6,
+   "origin": "D-grade bucket",
+   "profile": {
+    "ecdsa_hashtype_bytes_top": [],
+    "ecdsa_inputs": 0,
+    "executed_branch_top": [],
+    "input_forms": {
+     "p2sh_redeem": 7
+    },
+    "n_observations": 7,
+    "n_scripts": 6,
+    "n_spend_txs": 1,
+    "schnorr_inputs": 0,
+    "sighash_types_top": [
+     [
+      "ALL",
+      14
+     ]
+    ],
+    "signatures_per_spend": {
+     "2": 7
+    },
+    "tx_clusters_top": [
+     {
+      "locktime_zero": true,
+      "n_inputs": "2-10",
+      "n_outputs": ">5",
+      "n_txs": 1,
+      "sequence": "all_final",
+      "version": 1
+     }
+    ],
+    "tx_locktime_top": [
+     [
+      0,
+      7
+     ]
+    ],
+    "tx_n_inputs_ge_50": 0,
+    "tx_n_inputs_top": [
+     [
+      8,
+      7
+     ]
+    ],
+    "tx_n_outputs_top": [
+     [
+      14,
+      7
+     ]
+    ],
+    "tx_sequence_class": {
+     "final": 7
+    },
+    "tx_sequence_values_top": [
+     [
+      4294967295,
+      7
+     ]
+    ],
+    "tx_version": {
+     "1": 7
+    },
+    "validation_inputs": 7,
+    "verified_key_positions": {
+     "0": 7,
+     "1": 7
+    },
+    "verified_position_combinations": {
+     "0,1": 7
+    },
+    "verified_via": {
+     "ecdsa_bip143": 7
+    }
+   },
+   "providers": [
+    "onramp"
+   ]
+  }
+ ],
+ "crossover": {
+  "keys_by_distinct_shape_count": {
+   "2": 7
+  },
+  "keys_in_bucket_scripts": 80099,
+  "keys_in_two_or_more_buckets": 7,
+  "n_strong_crossovers": 0,
+  "strong_crossovers": [],
+  "top_multi_bucket_keys": [
+   {
+    "buckets": {
+     "p2wsh_witness|2of3|sorted|796025d6": 20,
+     "p2wsh_witness|2of3|unsorted|796025d6": 64
+    },
+    "n_shapes": 2,
+    "pubkey_hex": "033f67b4653f6f60081c649081c5626c1d4bf03f6b9f092a713558d29cdbf64987"
+   },
+   {
+    "buckets": {
+     "p2sh_redeem|2of3|sorted|796025d6": 71,
+     "p2wsh_witness|2of3|sorted|796025d6": 5
+    },
+    "n_shapes": 2,
+    "pubkey_hex": "03c96d495bfdd5ba4145e3e046fee45e84a8a48ad05bd8dbb395c011a32cf9f880"
+   },
+   {
+    "buckets": {
+     "p2sh_redeem|2of3|sorted|796025d6": 8,
+     "p2sh_redeem|2of3|unsorted|796025d6": 32
+    },
+    "n_shapes": 2,
+    "pubkey_hex": "03a553e30733d7a8df6d390d59cc136e2c9d9cf4e808f3b6ab009beae68dd60822"
+   },
+   {
+    "buckets": {
+     "p2wsh_witness|2of3|sorted|796025d6": 11,
+     "p2wsh_witness|2of3|unsorted|796025d6": 1
+    },
+    "n_shapes": 2,
+    "pubkey_hex": "0374f3e239bf6a0b988d6bbd1798fa32829ceec30f4d345b4be172190d9e805ece"
+   },
+   {
+    "buckets": {
+     "p2wsh_witness|2of3|sorted|796025d6": 1,
+     "p2wsh_witness|2of3|unsorted|796025d6": 3
+    },
+    "n_shapes": 2,
+    "pubkey_hex": "02886d88e0efe0e83b7d3881627e5d12ccd236ac1a011561e23d530996dfe575a6"
+   },
+   {
+    "buckets": {
+     "p2sh_redeem|2of3|sorted|796025d6": 1,
+     "p2wsh_witness|2of3|sorted|796025d6": 3
+    },
+    "n_shapes": 2,
+    "pubkey_hex": "03e7e00ea57b70cfd9493f1d7e482a2bfe4c785d8e9bef25eb1fd3a528bc452e07"
+   },
+   {
+    "buckets": {
+     "p2sh_redeem|2of3|sorted|796025d6": 1,
+     "p2wsh_witness|2of3|sorted|796025d6": 3
+    },
+    "n_shapes": 2,
+    "pubkey_hex": "03f01a388aecf967af2d21a8578635e745a3990afdfde8099ac44bab3ecd9c0421"
+   }
+  ]
+ },
+ "fresh_requests_made": 0,
+ "generated_utc": "2026-10-19 03:23:19",
+ "onramp_candidates": [
+  {
+   "candidate_position_histogram": {
+    "1": 64
+   },
+   "co_key_set_size_histogram": {
+    "2": 64
+   },
+   "distinct_co_key_sets": 64,
+   "distinct_co_keys": 128,
+   "height_span": [
+    814374,
+    969769
+   ],
+   "n_scripts": 64,
+   "pubkey_hex": "033f67b4653f6f60081c649081c5626c1d4bf03f6b9f092a713558d29cdbf64987",
+   "scripts_containing_other_candidate": 0,
+   "top_co_key_sets": [
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "03f39d38535312d733bc7fcbd51dd45784ce4edea91c170478424046049b955a8d",
+      "2": "03d7f2b07aa661663443fe425b17dca83cd06eefcbbb814afd55f7502c22494ce4"
+     }
+    },
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "02b722ce5a699ba84f141e791ccc1f55a52eff11a3ccc9ff173bbb98e0fc5fa423",
+      "2": "020b135ba76a64ff51255741994bc2e16033b368e4c6ceefd932a0ed6af9f4632a"
+     }
+    },
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "02085e9915a52c68f3e5a93122aac23aa0339f9976a862b25c1338f32a0236e31c",
+      "2": "022a335c1a0ab382aef79aed497eadd33913b49e176979cc3fc5a6c6aa3f915c25"
+     }
+    },
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "02ef4d38c3e290ae19180747df76b48ac255bf7c540a0ad6bcd7effbc2b4b0817b",
+      "2": "027ca834b7da35f48d806e00c2bfa2984fdd1950f6ace9088901f948e3290ff322"
+     }
+    }
+   ],
+   "top_co_keys": [
+    [
+     "03d7f2b07aa661663443fe425b17dca83cd06eefcbbb814afd55f7502c22494ce4",
+     1
+    ],
+    [
+     "03f39d38535312d733bc7fcbd51dd45784ce4edea91c170478424046049b955a8d",
+     1
+    ],
+    [
+     "020b135ba76a64ff51255741994bc2e16033b368e4c6ceefd932a0ed6af9f4632a",
+     1
+    ],
+    [
+     "02b722ce5a699ba84f141e791ccc1f55a52eff11a3ccc9ff173bbb98e0fc5fa423",
+     1
+    ],
+    [
+     "02085e9915a52c68f3e5a93122aac23aa0339f9976a862b25c1338f32a0236e31c",
+     1
+    ],
+    [
+     "022a335c1a0ab382aef79aed497eadd33913b49e176979cc3fc5a6c6aa3f915c25",
+     1
+    ]
+   ]
+  },
+  {
+   "candidate_position_histogram": {
+    "1": 32
+   },
+   "co_key_set_size_histogram": {
+    "2": 32
+   },
+   "distinct_co_key_sets": 32,
+   "distinct_co_keys": 64,
+   "height_span": [
+    812688,
+    971251
+   ],
+   "n_scripts": 32,
+   "pubkey_hex": "03a553e30733d7a8df6d390d59cc136e2c9d9cf4e808f3b6ab009beae68dd60822",
+   "scripts_containing_other_candidate": 0,
+   "top_co_key_sets": [
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "021f37ced48b61934d74bba1e30b152c55f2996bfd8bd2b590e779d7357d5f57f6",
+      "2": "036ea79049170ae416b671ce3ffe6ad3c5d66ae84115ef1a3aba5941b7ba423fdd"
+     }
+    },
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "0292b628b03ecb667f626520a515d97057cdd6b6e0c270126acd756a993fe16eae",
+      "2": "028baa2d2b58159c39c1cd1e0b8b970c210e7abbaac9ad4e539ed49231640164e3"
+     }
+    },
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "022a855d1809750fa2c49efe0897ba3fe6c941787f544e0878e9c29b7dba6c3da9",
+      "2": "0305208b85944a8d108a9925795b40b2f8963e2f65640de37a2eadef5e80663cb3"
+     }
+    },
+    {
+     "n_scripts": 1,
+     "positions": {
+      "0": "03b89fdc815dc202cf5df3aba6ce743e213c12d6a8b362feb0b6fe7004270db794",
+      "2": "023414359dcf42453fffd094dd5d60a77ee8cf0cc054b1dc3cc5fc6066094e3d36"
+     }
+    }
+   ],
+   "top_co_keys": [
+    [
+     "021f37ced48b61934d74bba1e30b152c55f2996bfd8bd2b590e779d7357d5f57f6",
+     1
+    ],
+    [
+     "036ea79049170ae416b671ce3ffe6ad3c5d66ae84115ef1a3aba5941b7ba423fdd",
+     1
+    ],
+    [
+     "028baa2d2b58159c39c1cd1e0b8b970c210e7abbaac9ad4e539ed49231640164e3",
+     1
+    ],
+    [
+     "0292b628b03ecb667f626520a515d97057cdd6b6e0c270126acd756a993fe16eae",
+     1
+    ],
+    [
+     "022a855d1809750fa2c49efe0897ba3fe6c941787f544e0878e9c29b7dba6c3da9",
+     1
+    ],
+    [
+     "0305208b85944a8d108a9925795b40b2f8963e2f65640de37a2eadef5e80663cb3",
+     1
+    ]
+   ]
+  }
+ ],
+ "request_budget": 300
+}
