@@ -242,9 +242,20 @@ def verify_input_ecdsa(tx, input_index, script_bytes, amount):
     sigversion_arg = SIGVERSION_WITNESS_V0 if stack else SIGVERSION_BASE
     cscript = CScript(script_bytes)
 
+    # Consumption order: OP_CHECKMULTISIG compares script keys against
+    # signatures in witness push order, while standalone OP_CHECKSIG and
+    # OP_CHECKSIGVERIFY consume the top of the stack first, so for flat
+    # templates the witness items are consumed in reverse order. Matching
+    # follows the semantics of each script kind, otherwise one signature
+    # of a flat multi-key script is silently left unverified.
+    if kind == "cm":
+        consume = sig_items
+    else:
+        consume = list(reversed(sig_items))
+
     verified = []
     cursor = 0
-    for item in sig_items:
+    for item in consume:
         sig_der, hashtype = S.split_sighash(item)
         matched = None
         for k in range(cursor, len(keys)):

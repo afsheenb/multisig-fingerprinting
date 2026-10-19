@@ -295,3 +295,24 @@ all 36 nested P2SH-P2WSH inputs that had been stored as commitment
 FAILED re-checked against their cached mempool.space responses and
 every one flipped to ok, so the corpus carries zero commitment
 failures across the 2,154 validated inputs.
+
+## Flat-template signature consumption order (fixed 2026-10-19)
+
+A third defect surfaced during the behavioral enrichment pass, again on
+the cached-response re-check path. `verify_input_ecdsa` consumed witness
+signature items in push order for every script kind. That matches
+OP_CHECKMULTISIG semantics, but standalone OP_CHECKSIG and
+OP_CHECKSIGVERIFY consume the TOP of the stack first, so for flat
+multi-key templates (for example the Green optimized CSV layout
+`<P> OP_CHECKSIGVERIFY <P> OP_CHECKSIG ...`) the two witness signatures
+are consumed in reverse order relative to the script keys. Under the
+old matching, one signature of a flat two-key script silently failed to
+verify (4 of the stored validation rows verified 1 of 2 present).
+
+`verify_input_ecdsa` now reverses the signature items for non-CM kinds
+before the ordered key search; CHECKMULTISIG matching is unchanged.
+The 38 stored validation rows on flat scripts with 2+ present
+signatures were re-verified from the permanent cache (zero new
+requests): 37 now verify both signatures at positions 0 and 1, and 1
+verifies a single signature (its second witness item matches no script
+key, unchanged by the fix).
