@@ -1,6 +1,6 @@
 # Preliminary findings (pilot corpus)
 
-Generated 2026-10-18 15:43 UTC. **Scope: sampled corpus, heights 812688..972009.** All statistics below are RAW COUNTS over the sampled blocks, not population estimates and not extrapolations.
+Generated 2026-10-19 02:37 UTC. **Scope: sampled corpus, heights 812688..972009.** All statistics below are RAW COUNTS over the sampled blocks, not population estimates and not extrapolations.
 
 ## Interpretation rules (apply to every number below)
 - A shared script template NEVER implies shared ownership. Templates are structural shapes; unrelated wallets converge on the same shapes.
@@ -69,10 +69,10 @@ Generated 2026-10-18 15:43 UTC. **Scope: sampled corpus, heights 812688..972009.
 
 ## Example transactions
 - p2sh_redeem: c7d3315da094b60caf25e9a6dc4f115be634ac3de0dd7bc46066cb0aaf74214a input 0 (block 971251)
-- p2wsh: 2da553350199d67948a2083daac3f7050ead7c33fb8e07ed198d8b5a4154a90b input 0 (block 971251)
-- p2sh_p2wsh: f1fea383111deb64b9c4cb0046962dccb6c53fb2aaa00c2f87c4516e150b5669 input 0 (block 971251)
-- taproot_scriptpath: 0df2c76bee5bbe220fa84e2eba6ba60e0c8c8fbb9b74bb6eaed7e68d3a3fbdfb input 0 (block 971251)
-- taproot_keypath: 587fa5e18c4ee7229ec3efe17ba464b226e1fb96333c452f454da854a55bf1c4 input 0 (block 971251)
+- p2wsh: 29ad8c5777ba7a15d1564791abd2360748b304d963a2bdf4c01fb5a633bc5188 input 0 (block 971251)
+- p2sh_p2wsh: dabf366362b5e40656e94bbca31d8d97020d87563dc790363145691f07370466 input 0 (block 971251)
+- taproot_scriptpath: 3079291e865e879c2631ca16e64a74b4f7a77ecd4f90cffc4966ae44cba82c71 input 0 (block 971251)
+- taproot_keypath: f4a36a0d8a33f24a3a9b2b0381cb49511b4019b356adb492b87f84981a96de14 input 0 (block 971251)
 
 ## Local cryptographic validation (zero points)
 - Inputs checked against cached prevouts: 249 of 161202 script-revealing observations (the rest have no prevout in the sampled corpus)

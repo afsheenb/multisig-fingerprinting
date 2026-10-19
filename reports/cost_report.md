@@ -1,13 +1,13 @@
 # Blockchair cost report
 
-- HTTP requests: 233
-- Request points consumed: 260.0
+- HTTP requests: 234
+- Request points consumed: 261.0
 - Raw blocks retrieved: 181 (~274.5 MiB raw)
 - /bitcoin/dashboards/block/971984: 1 requests, 1.0 points
 - /bitcoin/outputs: 3 requests, 30.0 points
 - /bitcoin/raw/block/800000: 1 requests, 1.0 points
 - /bitcoin/raw/block/810750: 1 requests, 1.0 points
-- /bitcoin/raw/block/811800: 1 requests, 1.0 points
+- /bitcoin/raw/block/811800: 2 requests, 2.0 points
 - /bitcoin/raw/block/812093: 1 requests, 1.0 points
 - /bitcoin/raw/block/812429: 1 requests, 1.0 points
 - /bitcoin/raw/block/812597: 1 requests, 1.0 points
@@ -231,11 +231,11 @@
 - /bitcoin/raw/transaction/c0e0d8d33231a8926532b53469fbe6a05f9b16c0bf756a6d8ab30370a952e3be: 1 requests, 1.0 points
 - /bitcoin/raw/transaction/ee102e7c8beb70229c5c137da8b6260be10bd5f82bc61336ff1a23bfca6bdbe0: 1 requests, 1.0 points
 - /bitcoin/stats: 3 requests, 3.0 points
-- Revealed scripts per request point (pilot scan actuals): 291.181
+- Revealed scripts per request point (pilot scan actuals): 290.065
 
 ## Measured acquisition efficiency
 - Phase 1 benchmark (21 consecutive recent blocks, heights 971989..972009, 1 pt each): 159,562 inputs examined, 7,208 multisig-bearing inputs, i.e. ~343.24 multisig-bearing inputs per point (~343 multisig-bearing inputs per block).
-- Pilot scan (this corpus): 180 in-study blocks + 1 smoke-test block, 75707 distinct revealed scripts and 161202 spend observations, at ~1 point per raw block: 291.18 distinct revealed scripts per point. Not directly comparable with the benchmark number (a deduplicated script count versus multisig-bearing input observations); the pilot rate is pulled down by stratified sampling across the whole period, where 2023-era blocks carry far fewer multisig spends than recent ones.
+- Pilot scan (this corpus): 180 in-study blocks + 1 smoke-test block, 75707 distinct revealed scripts and 161202 spend observations, at ~1 point per raw block: 290.07 distinct revealed scripts per point. Not directly comparable with the benchmark number (a deduplicated script count versus multisig-bearing input observations); the pilot rate is pulled down by stratified sampling across the whole period, where 2023-era blocks carry far fewer multisig spends than recent ones.
 
 ## Full-period coverage extrapolation
 - Study period: heights 812688..972009 = 159,322 blocks at exactly 1 point per raw block = ~159,322 points, about 160 UTC days at the 1000 point/day budget.

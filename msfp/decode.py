@@ -188,7 +188,11 @@ def extract_input_records(block, height):
         block.nTime, datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     records = []
     for tx in block.vtx:
-        txid = b2lx(tx.GetHash())
+        # GetTxid() hashes the witness-stripped serialization: the txid
+        # the outside world uses. GetHash() is witness-inclusive (wtxid
+        # semantics) for segwit transactions and would break every
+        # external identifier.
+        txid = b2lx(tx.GetTxid())
         for idx, txin in enumerate(tx.vin):
             # Coinbase input has no meaningful script content.
             if txin.prevout.is_null():

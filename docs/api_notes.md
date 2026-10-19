@@ -213,7 +213,7 @@ ordering changes had no effect, so the client shells out to `curl` per
 request. The limiter, ledger, retry ladder, and cache are all
 transport-independent, so this costs nothing in discipline.
 
-## The corpus txid field holds wtxids for segwit transactions
+## The corpus txid field held wtxids for segwit transactions (FIXED 2026-10-19)
 
 The first `/tx/` probe returned 404 for a confirmed corpus txid. Root
 cause is local, not the service: `msfp/decode.py` stores
@@ -227,8 +227,50 @@ resolves it from the already-cached raw block for the input's height
 (`CTransaction.GetTxid()`); inputs whose block is not locally cached
 cannot be resolved and are logged as failures rather than fetched,
 which keeps the mempool client's request count bounded by the
-validation plan. This is a decode-layer defect worth its own fix; the
-resolution path only papers over it for blocks we already hold.
+validation plan.
+
+Fixed at the decode layer on 2026-10-19 (`extract_input_records` now
+stores `CTransaction.GetTxid()`), with the corpus rebuilt in place from
+the cached raw blocks: 582,340 of 615,233 `txs` rows and 1,173,880 of
+1,303,573 `inputs` rows were rewritten with real txids by in-place
+UPDATE from a wtxid->txid mapping decoded over all 181 cached blocks.
+Two properties made the zero-redecode-row path safe and are worth
+recording:
+
+- Outpoint hashes in the consensus serialization were ALWAYS real txids
+  (`txin.prevout.hash` is never a wtxid), so `inputs.prevout_txid`
+  needed no rebuild; verified by 977 intra-block prevout references in
+  block 892298 matching `GetTxid()` values and zero matching wtxid-only.
+  After the rewrite the `inputs.prevout_txid -> txs.txid` join grew
+  from 8,599 rows to 299,500, which is the same fact seen from the
+  corpus side.
+- `inputs.input_id` is assigned by AUTOINCREMENT in scan order, which
+  re-decoding would only reproduce if the original scan had walked
+  blocks in height order. Rewriting the txid columns in place preserves
+  the ids unconditionally, so `script_observations` (161,968 rows) and
+  `validation_results` (2,154 rows) stayed valid with no
+  re-verification compute spent.
+
+Integrity checks run before the rewrite: no two distinct wtxids map to
+one txid (no duplicate transactions in the corpus), no rewritten txid
+collides with any other row's pre-rewrite id, and every `txs`/`inputs`
+txid was present in the mapping. Counts after: 181 blocks / 615,233
+txs / 1,303,573 inputs / 76,435 revealed scripts, identical to the
+pre-rebuild corpus status. 200 of 200 sampled `validation_results`
+txids match mempool cache entries fetched earlier under independently
+resolved real txids. One deviation from a purely cache-only rebuild:
+block 811800 (the pre-client manual curl fetch) had no cached payload,
+so it was refetched through the client (1 point, recorded in
+`api_ledger`) rather than left carrying wtxids. Coinbase transactions
+remain absent from `txs` (their only input is skipped at extraction);
+the wtxid->txid mapping carries them, so a future insertion needs no
+migration.
+
+`msfp/verify.py:_real_txid` (wtxid -> real txid resolution from cached
+blocks) is now only needed for databases built before this fix; the
+mempool validation path still double-checks the fetched tx against the
+requested identifier (`b2lx(tx.GetTxid()) != real_txid` guard), which
+stays cheap and keeps the pipeline honest.
 
 ## Verification observations
 
